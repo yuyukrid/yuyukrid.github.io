@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ゆゆくりっど｜投資・副業・お金の情報メディア</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #12243d;
+    --navy-light: #1e3558;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --text-main: #1a1a2e;
+    --text-sub: #5a6a82;
+    --card-bg: #ffffff;
+    --border: #e8e0d0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--cream);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(30,53,88,0.8) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  .hero-avatar-wrap {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .hero-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    object-fit: cover;
+    display: block;
+    background: var(--navy-light);
+    /* ▼ プロフィール画像のURLに差し替えてください */
+    background-image: url('https://via.placeholder.com/200x200/1e3558/c9a84c?text=Y');
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero-avatar-ring {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.3);
+    animation: pulse-ring 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { transform: scale(1); opacity: 0.4; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+  }
+
+  .hero-text { flex: 1; }
+
+  .hero-label {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+  }
+
+  .hero-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero-name span {
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: rgba(201,168,76,0.7);
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-bio {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .hero-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 300;
+  }
+
+  .hero-sns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .sns-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .sns-btn:hover {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    animation: scroll-hint 2s ease-in-out infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(201,168,76,0.5), transparent);
+  }
+
+  @keyframes scroll-hint {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.8; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ─── SECTION COMMON ─── */
+  .section {
+    padding: 80px 24px;
+  }
+
+  .section-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title-wrap {}
+
+  .section-en {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  .see-all {
+    font-size: 12px;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .see-all:hover { opacity: 0.65; }
+
+  /* ─── YOUTUBE SECTION ─── */
+  .youtube-section {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .youtube-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .youtube-section .section-title { color: var(--white); }
+  .youtube-section .section-header { border-color: rgba(255,255,255,0.1); }
+
+  .yt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .yt-card {
+    background: var(--navy-light);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .yt-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+
+  .yt-thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--navy-mid);
+    overflow: hidden;
+  }
+
+  .yt-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .yt-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    transition: background 0.2s;
+  }
+
+  .yt-card:hover .yt-play { background: rgba(0,0,0,0.1); }
+
+  .yt-play-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(255,0,0,0.85);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: transform 0.2s;
+  }
+
+  .yt-card:hover .yt-play-icon { transform: scale(1.12); }
+
+  .yt-play-icon svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
+
+  .yt-info {
+    padding: 16px 18px 18px;
+  }
+
+  .yt-meta {
+    font-size: 11px;
+    color: rgba(201,168,76,0.6);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .yt-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ─── BLOG SECTION ─── */
+  .blog-section {
+    background: var(--cream);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .blog-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(10,22,40,0.12);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .blog-thumb {
+    aspect-ratio: 16/9;
+    background: var(--navy-light);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .blog-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-card:hover .blog-thumb img { transform: scale(1.04); }
+
+  .blog-cat {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.08em;
+  }
+
+  .blog-info {
+    padding: 20px 22px 24px;
+  }
+
+  .blog-date {
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .blog-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .blog-more::after {
+    content: '→';
+    transition: transform 0.2s;
+  }
+
+  .blog-card:hover .blog-more::after { transform: translateX(4px); }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    background: var(--navy);
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    margin-top: 24px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.5s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .hero-inner {
+      flex-direction: column;
+      text-align: center;
+      gap: 32px;
+    }
+    .hero-tags { justify-content: center; }
+    .hero-sns { justify-content: center; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════ HERO / PROFILE ════════════════ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-avatar-wrap fade-in">
+      <div class="hero-avatar-ring"></div>
+      <!-- ▼ プロフィール画像に差し替えてください -->
+      <div class="hero-avatar"></div>
+    </div>
+    <div class="hero-text">
+      <span class="hero-label fade-in delay-1">MONEY MEDIA</span>
+      <h1 class="hero-name fade-in delay-2"><span>ゆゆ</span>くりっど</h1>
+      <p class="hero-subtitle fade-in delay-2">Yuyukrid — Financial Freedom Guide</p>
+      <p class="hero-bio fade-in delay-3">
+        投資・副業・お金の知識を、初心者でもわかりやすく発信するメディア「ゆゆくりっど」です。<br>
+        ブログ・YouTube・SNSを通じて、資産形成への第一歩をサポートします。
+      </p>
+      <div class="hero-tags fade-in delay-3">
+        <span class="hero-tag">#投資入門</span>
+        <span class="hero-tag">#副業</span>
+        <span class="hero-tag">#資産形成</span>
+        <span class="hero-tag">#NISA</span>
+        <span class="hero-tag">#仮想通貨</span>
+        <span class="hero-tag">#不動産</span>
+      </div>
+      <div class="hero-sns fade-in delay-4">
+        <!-- ▼ 各SNSのURLに差し替えてください -->
+        <a href="https://www.youtube.com/@yuyushi17" target="_blank" class="sns-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2c-.3-1-1.1-1.8-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5C1.6 4.4.8 5.2.5 6.2 0 8.1 0 12 0 12s0 3.9.5 5.8c.3 1 1.1 1.8 2.1 2.1 1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5c1-.3 1.8-1.1 2.1-2.1.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+          YouTube
+        </a>
+        <a href="https://twitter.com/" target="_blank" class="sns-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.3 1h3.5l-7.6 8.7L23 23h-7l-5.5-7.2L4 23H.5l8.2-9.3L1 1h7.1l4.9 6.5L18.3 1zm-1.2 19.8h1.9L7 2.9H4.9l12.2 17.9z"/></svg>
+          X (Twitter)
+        </a>
+        <a href="https://regimag.jp/" target="_blank" class="sns-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>
+          ブログ
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+
+<!-- ════════════════ YOUTUBE SECTION ════════════════ -->
+<section class="section youtube-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <span class="section-en">Latest Videos</span>
+        <h2 class="section-title">最新YouTube動画</h2>
+      </div>
+      <a href="https://www.youtube.com/@yuyushi17" target="_blank" class="see-all" style="color:var(--gold-light);border-color:var(--gold-light);">すべて見る →</a>
+    </div>
+
+    <div class="yt-grid">
+
+      <!-- ▼ 動画カード 1 — YouTube動画IDを差し替えてください -->
+      <a href="https://www.youtube.com/watch?v=XXXXXXXXXXX" target="_blank" class="yt-card">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/XXXXXXXXXXX/maxresdefault.jpg" alt="動画タイトル1" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-meta">2025.04.01</p>
+          <p class="yt-title">【初心者向け】NISAの始め方を完全解説！2025年最新版</p>
+        </div>
+      </a>
+
+      <!-- ▼ 動画カード 2 -->
+      <a href="https://www.youtube.com/watch?v=YYYYYYYYYYY" target="_blank" class="yt-card">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/YYYYYYYYYYY/maxresdefault.jpg" alt="動画タイトル2" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-meta">2025.03.25</p>
+          <p class="yt-title">月5万円の副業収入を作る方法【実績公開】</p>
+        </div>
+      </a>
+
+      <!-- ▼ 動画カード 3 -->
+      <a href="https://www.youtube.com/watch?v=ZZZZZZZZZZZ" target="_blank" class="yt-card">
+        <div class="yt-thumb">
+          <img src="https://img.youtube.com/vi/ZZZZZZZZZZZ/maxresdefault.jpg" alt="動画タイトル3" loading="lazy">
+          <div class="yt-play">
+            <div class="yt-play-icon">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <p class="yt-meta">2025.03.18</p>
+          <p class="yt-title">Binance Japan完全ガイド｜口座開設から取引まで</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ BLOG SECTION ════════════════ -->
+<section class="section blog-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <span class="section-en">Latest Articles</span>
+        <h2 class="section-title">最新ブログ記事</h2>
+      </div>
+      <!-- ▼ ブログのURLに差し替えてください -->
+      <a href="https://regimag.jp/" target="_blank" class="see-all">すべて見る →</a>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- ▼ ブログカード 1 — 各リンク・画像・タイトルを差し替えてください -->
+      <a href="https://regimag.jp/記事URL" target="_blank" class="blog-card">
+        <div class="blog-thumb">
+          <!-- ▼ アイキャッチ画像のURLに差し替えてください -->
+          <img src="https://via.placeholder.com/600x338/0a1628/c9a84c?text=Article+1" alt="記事タイトル1" loading="lazy">
+          <span class="blog-cat">NISA</span>
+        </div>
+        <div class="blog-info">
+          <p class="blog-date">2025.04.01</p>
+          <h3 class="blog-title">【2025年最新】新NISAの活用法完全ガイド｜初心者でもわかる積立投資の始め方</h3>
+          <span class="blog-more">続きを読む</span>
+        </div>
+      </a>
+
+      <!-- ▼ ブログカード 2 -->
+      <a href="https://regimag.jp/記事URL" target="_blank" class="blog-card">
+        <div class="blog-thumb">
+          <img src="https://via.placeholder.com/600x338/12243d/e8c97a?text=Article+2" alt="記事タイトル2" loading="lazy">
+          <span class="blog-cat">副業</span>
+        </div>
+        <div class="blog-info">
+          <p class="blog-date">2025.03.28</p>
+          <h3 class="blog-title">アキュラホームの特徴・評判まとめ｜注文住宅を検討している方へ</h3>
+          <span class="blog-more">続きを読む</span>
+        </div>
+      </a>
+
+      <!-- ▼ ブログカード 3 -->
+      <a href="https://regimag.jp/記事URL" target="_blank" class="blog-card">
+        <div class="blog-thumb">
+          <img src="https://via.placeholder.com/600x338/1e3558/c9a84c?text=Article+3" alt="記事タイトル3" loading="lazy">
+          <span class="blog-cat">仮想通貨</span>
+        </div>
+        <div class="blog-info">
+          <p class="blog-date">2025.03.20</p>
+          <h3 class="blog-title">Binance Japan（バイナンスジャパン）の口座開設方法・手数料・使い方を徹底解説</h3>
+          <span class="blog-more">続きを読む</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════ FOOTER ════════════════ -->
+<footer class="footer">
+  <p class="footer-logo"><span>ゆゆ</span>くりっど</p>
+  <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:4px;">投資・副業・お金の情報メディア</p>
+  <div class="footer-links">
+    <a href="https://regimag.jp/" target="_blank">ブログ</a>
+    <a href="https://www.youtube.com/@yuyushi17" target="_blank">YouTube</a>
+    <a href="https://twitter.com/" target="_blank">X</a>
+    <a href="#" target="_blank">プライバシーポリシー</a>
+  </div>
+  <p class="footer-copy">© 2025 ゆゆくりっど All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
