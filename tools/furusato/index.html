@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ふるさと納税 控除上限額かんたん計算ツール | ゆゆくりっど</title>
+  <meta name="description" content="年収と家族構成を入力するだけでふるさと納税の控除上限額がわかる無料計算ツール。夫婦合算・住宅ローン控除・医療費控除にも対応。2025年度版。" />
+  <meta property="og:title" content="ふるさと納税 控除上限額かんたん計算 | ゆゆくりっど" />
+  <meta property="og:description" content="夫婦合算・住宅ローン対応の無料ふるさと納税シミュレーター。2025年度版。" />
+  <meta property="og:url" content="https://yuyukrid.github.io/tools/furusato/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://yuyukrid.github.io/tools/furusato/" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: #fdf6ec;
+      -webkit-text-size-adjust: 100%;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    input[type=number] { -moz-appearance: textfield; }
+    button { font-family: inherit; }
+
+```
+/* パンくず */
+.breadcrumb {
+  padding: 8px 16px;
+  font-size: 11px;
+  color: #a08060;
+  background: #fff8f0;
+  border-bottom: 1px solid #f0e0cc;
+}
+.breadcrumb a { color: #8B4513; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* フッター */
+.site-footer {
+  margin-top: 0;
+  padding: 24px 16px;
+  background: #3d1a00;
+  text-align: center;
+}
+.site-footer a { color: #CD853F; text-decoration: none; font-size: 13px; }
+.site-footer p { color: rgba(255,200,150,0.5); font-size: 11px; margin-top: 10px; }
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- パンくず -->
+
+  <nav class="breadcrumb">
+    <a href="https://yuyukrid.github.io/">ゆゆくりっど</a>
+    &nbsp;›&nbsp; ふるさと納税 計算ツール
+  </nav>
+
+  <div id="root"></div>
+
+  <!-- フッター -->
+
+  <footer class="site-footer">
+    <a href="https://yuyukrid.github.io/">🏠 ゆゆくりっど トップへ戻る</a>
+    <p>© 2025 ゆゆくりっど ／ 計算結果は目安です。正確な金額は税務署・税理士にご確認ください。</p>
+  </footer>
+
+  <!-- React 18 + Babel CDN -->
+
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+
+  <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState, useMemo } = React;
+
+    // ─────────────────────────────
+    // 計算ロジック
+    // ─────────────────────────────
+
+    function calcSalaryDeduction(income) {
+      if (income <= 1625000) return 550000;
+      if (income <= 1800000) return Math.floor(income * 0.4) - 100000;
+      if (income <= 3600000) return Math.floor(income * 0.3) + 80000;
+      if (income <= 6600000) return Math.floor(income * 0.2) + 440000;
+      if (income <= 8500000) return Math.floor(income * 0.1) + 1100000;
+      return 1950000;
+    }
+
+    function calcIncomeTax(taxableIncome) {
+      if (taxableIncome <= 0) return 0;
+      if (taxableIncome <= 1950000) return Math.floor(taxableIncome * 0.05);
+      if (taxableIncome <= 3300000) return Math.floor(taxableIncome * 0.10 - 97500);
+      if (taxableIncome <= 6950000) return Math.floor(taxableIncome * 0.20 - 427500);
+      if (taxableIncome <= 9000000) return Math.floor(taxableIncome * 0.23 - 636000);
+      if (taxableIncome <= 18000000) return Math.floor(taxableIncome * 0.33 - 1536000);
+      if (taxableIncome <= 40000000) return Math.floor(taxableIncome * 0.40 - 2796000);
+      return Math.floor(taxableIncome * 0.45 - 4796000);
+    }
+
+    function calcIncomeTaxRate(taxableIncome) {
+      if (taxableIncome <= 1950000) return 0.05;
+      if (taxableIncome <= 3300000) return 0.10;
+      if (taxableIncome <= 6950000) return 0.20;
+      if (taxableIncome <= 9000000) return 0.23;
+      if (taxableIncome <= 18000000) return 0.33;
+      if (taxableIncome <= 40000000) return 0.40;
+      return 0.45;
+    }
+
+    const C  = { income: 380000, j: 330000 };
+    const SP = { income: 380000, j: 330000 };
+
+    function getFamilyDeductions(familyType) {
+      switch (familyType) {
+        case "single":        return { income: 0,                       juminzei: 0 };
+        case "both_child1":   return { income: C.income,                juminzei: C.j };
+        case "both_child2":   return { income: C.income*2,              juminzei: C.j*2 };
+        case "both_child3":   return { income: C.income*3,              juminzei: C.j*3 };
+        case "both_in":       return { income: SP.income,               juminzei: SP.j };
+        case "both_in_c1":    return { income: SP.income+C.income,      juminzei: SP.j+C.j };
+        case "both_in_c2":    return { income: SP.income+C.income*2,    juminzei: SP.j+C.j*2 };
+        case "both_in_c3":    return { income: SP.income+C.income*3,    juminzei: SP.j+C.j*3 };
+        case "spouse":        return { income: SP.income,               juminzei: SP.j };
+        case "spouse_child1": return { income: SP.income+C.income,      juminzei: SP.j+C.j };
+        case "spouse_child2": return { income: SP.income+C.income*2,    juminzei: SP.j+C.j*2 };
+        case "spouse_child3": return { income: SP.income+C.income*3,    juminzei: SP.j+C.j*3 };
+        case "single_c1":     return { income: C.income,                juminzei: C.j };
+        case "single_c2":     return { income: C.income*2,              juminzei: C.j*2 };
+        case "single_c3":     return { income: C.income*3,              juminzei: C.j*3 };
+        default:              return { income: 0,                       juminzei: 0 };
+      }
+    }
+
+    function calcLimitDetailed(incomeYen, familyType, housingLoan = 0, medicalExpense = 0) {
+      const income = incomeYen;
+      const empty = { limit: 2000, benefit: 0, taxableJumin: 0, taxableJuminRaw: 0, juminzeiShotokuWari: 0, taxRate: 0, incomeTax: 0, housingJuminReduction: 0, familyJuminDeduction: 0, reason: "low_income" };
+      if (income < 1000000) return empty;
+
+      const salaryDeduction = calcSalaryDeduction(income);
+      const salaryIncome    = income - salaryDeduction;
+      const socialInsurance = Math.floor(income * 0.1422);
+      const medDeduction    = Math.max(0, medicalExpense - Math.min(100000, Math.floor(salaryIncome * 0.05)));
+
+      const { income: famIncome, juminzei: famJumin } = getFamilyDeductions(familyType);
+
+      const taxableIncome   = Math.max(0, salaryIncome - socialInsurance - 480000 - famIncome - medDeduction);
+      const taxableJuminRaw = salaryIncome - socialInsurance - 430000 - famJumin - medDeduction;
+      const taxableJumin    = Math.max(0, taxableJuminRaw);
+
+      const incomeTax             = calcIncomeTax(taxableIncome);
+      const housingOverflow       = Math.max(0, housingLoan - incomeTax);
+      const housingJuminReduction = Math.min(housingOverflow, 97500);
+      const juminzeiShotokuWari   = Math.max(0, Math.floor(taxableJumin * 0.10) - housingJuminReduction);
+
+      const taxRate     = calcIncomeTaxRate(taxableIncome);
+      const denominator = 0.9 - taxRate * 1.021;
+      if (denominator <= 0) return { ...empty, reason: "high_income_edge" };
+
+      const limit   = Math.max(2000, Math.floor((juminzeiShotokuWari * 0.2) / denominator) + 2000);
+      const benefit = Math.max(0, limit - 2000);
+
+      let reason = null;
+      if (taxableJuminRaw <= 0)                              reason = "no_taxable_jumin";
+      else if (juminzeiShotokuWari < 10000)                  reason = "very_low_jumin";
+      else if (housingJuminReduction > 0 && benefit < 5000)  reason = "housing_loan_squeeze";
+      else if (housingJuminReduction > 0)                    reason = "housing_loan_warn";
+
+      return { limit, benefit, taxableJumin, taxableJuminRaw, juminzeiShotokuWari, taxRate, incomeTax, housingJuminReduction, familyJuminDeduction: famJumin, reason };
+    }
+
+    function getDiagnosis(detail, incomeYen) {
+      if (!detail) return null;
+      const { reason, juminzeiShotokuWari, familyJuminDeduction, housingJuminReduction, incomeTax } = detail;
+      if (incomeYen < 1000000) return {
+        type: "error", icon: "🚫", title: "節税効果なし",
+        lines: ["年収が100万円未満のため住民税がほぼ課税されていません。住民税・所得税から控除される仕組みのため、納税額が少ないと節税効果がありません。"],
+      };
+      if (reason === "no_taxable_jumin") return {
+        type: "error", icon: "🚫", title: "節税効果なし（住民税の課税所得がゼロ）",
+        lines: [
+          `配偶者控除・扶養控除の合計（約${Math.floor(familyJuminDeduction/10000)}万円）により、住民税の課税所得がマイナスになっています。`,
+          "住民税所得割額がゼロのため控除上限額が自己負担（2,000円）と同額となり節税効果がありません。",
+          "💡 年収アップ or 扶養対象が減ると節税効果が生まれます。",
+        ],
+      };
+      if (reason === "housing_loan_squeeze") return {
+        type: "error", icon: "🏠", title: "住宅ローン控除により節税効果がほぼゼロ",
+        lines: [
+          `住宅ローン控除が所得税（約${incomeTax.toLocaleString()}円）を超えているため、住民税から約${housingJuminReduction.toLocaleString()}円が追加控除されています。`,
+          "その結果ふるさと納税の控除上限額が大幅に圧縮されています。",
+          "💡 住宅ローン控除が終わる年 or 年収が上がると改善します。",
+        ],
+      };
+      if (reason === "housing_loan_warn") return {
+        type: "warn", icon: "🏠", title: "住宅ローン控除の影響あり",
+        lines: [
+          `住宅ローン控除が所得税（約${incomeTax.toLocaleString()}円）を超えているため、住民税から約${housingJuminReduction.toLocaleString()}円が追加控除されています。`,
+          "その分だけふるさと納税の上限額が下がっています。",
+        ],
+      };
+      if (reason === "very_low_jumin") return {
+        type: "warn", icon: "⚠️", title: "節税効果が非常に小さい",
+        lines: [
+          `住民税の所得割額が約${juminzeiShotokuWari.toLocaleString()}円と少なく、控除上限額が自己負担（2,000円）をわずかに上回る程度です。`,
+          "💡 無理に寄付すると損になる場合があります。返礼品の価値と比較して判断しましょう。",
+        ],
+      };
+      return null;
+    }
+
+    // ─────────────────────────────
+    // 定数
+    // ─────────────────────────────
+
+    const FAMILY_GROUPS = [
+      { label: "👤 独身・共働き（配偶者控除なし）", color: "#5c6bc0", options: [
+        { value: "single",      emoji: "🧑",       label: "独身" },
+        { value: "both_child1", emoji: "🧑‍👦",     label: "共働き＋子1人" },
+        { value: "both_child2", emoji: "🧑‍👧‍👦",   label: "共働き＋子2人" },
+        { value: "both_child3", emoji: "👨‍👧‍👦👦", label: "共働き＋子3人" },
+      ]},
+      { label: "💑 共働き（配偶者が扶養内・103万以下）", color: "#2e7d32", options: [
+        { value: "both_in",    emoji: "👫",         label: "配偶者扶養内・子なし" },
+        { value: "both_in_c1", emoji: "👨‍👩‍👦",     label: "配偶者扶養内＋子1人" },
+        { value: "both_in_c2", emoji: "👨‍👩‍👧‍👦",   label: "配偶者扶養内＋子2人" },
+        { value: "both_in_c3", emoji: "👨‍👩‍👧‍👦👦", label: "配偶者扶養内＋子3人" },
+      ]},
+      { label: "🏠 専業主婦/夫", color: "#c0392b", options: [
+        { value: "spouse",        emoji: "👫",         label: "配偶者のみ" },
+        { value: "spouse_child1", emoji: "👨‍👩‍👦",     label: "配偶者＋子1人" },
+        { value: "spouse_child2", emoji: "👨‍👩‍👧‍👦",   label: "配偶者＋子2人" },
+        { value: "spouse_child3", emoji: "👨‍👩‍👧‍👦👦", label: "配偶者＋子3人" },
+      ]},
+      { label: "🧑‍👧 ひとり親", color: "#6d4c41", options: [
+        { value: "single_c1", emoji: "🧑‍👦",     label: "子1人" },
+        { value: "single_c2", emoji: "🧑‍👧‍👦",   label: "子2人" },
+        { value: "single_c3", emoji: "🧑‍👧‍👦👦", label: "子3人" },
+      ]},
+    ];
+
+    const INCOME_PRESETS = [300, 400, 500, 600, 700, 800, 1000, 1200, 1500];
+    const TABLE_INCOMES  = [200, 300, 400, 500, 600, 700, 800, 1000, 1200, 1500, 2000];
+    const RETURN_ITEMS   = [
+      { emoji: "🥩", name: "黒毛和牛",     unit: "g",    per: 10000, qty: 500 },
+      { emoji: "🦀", name: "カニ・海鮮",   unit: "g",    per: 10000, qty: 400 },
+      { emoji: "🍚", name: "白米",         unit: "kg",   per: 3000,  qty: 5   },
+      { emoji: "✈️", name: "旅行クーポン", unit: "円分", per: 1,     qty: 1   },
+    ];
+
+    // ─────────────────────────────
+    // スタイル定数
+    // ─────────────────────────────
+
+    const cardStyle  = { background: "#fffdf9", borderRadius: 13, padding: "14px 13px", marginTop: 10, border: "1.5px solid #e8ddd0", boxShadow: "0 2px 8px rgba(139,69,19,0.05)" };
+    const subCard    = { background: "rgba(255,255,255,0.08)", borderRadius: 8, padding: "8px 10px" };
+    const labelStyle = { fontSize: 12, color: "#7a5a30", fontWeight: 600, marginBottom: 5 };
+
+    // ─────────────────────────────
+    // PersonInput
+    // ─────────────────────────────
+
+    function PersonInput({ data, onChange, color }) {
+      const [showAdv, setShowAdv] = useState(false);
+      return (
+        <div>
+          <div style={{ marginBottom: 12 }}>
+            <div style={labelStyle}>年収（額面・税込）</div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 7 }}>
+              {INCOME_PRESETS.map(v => (
+                <button key={v} onClick={() => onChange({ ...data, income: String(v) })}
+                  style={{ padding: "4px 9px", borderRadius: 14, border: data.income === String(v) ? `2px solid ${color}` : "1.5px solid #ddd", background: data.income === String(v) ? color : "#fff", color: data.income === String(v) ? "#fff" : "#666", fontSize: 11, fontWeight: 600, cursor: "pointer" }}>
+                  {v}万
+                </button>
+              ))}
+            </div>
+            <div style={{ position: "relative" }}>
+              <input type="number" value={data.income} placeholder="例：500"
+                onChange={e => onChange({ ...data, income: e.target.value })}
+                style={{ width: "100%", padding: "11px 44px 11px 12px", borderRadius: 9, border: `2px solid ${data.income ? color : "#e0d0c0"}`, fontSize: 18, fontWeight: 700, color: "#4a2c0a", background: "#fffdf9", boxSizing: "border-box", outline: "none" }} />
+              <span style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: "#a08060", fontWeight: 600 }}>万円</span>
+            </div>
+            <div style={{ marginTop: 6, padding: "7px 9px", background: "#fff8ee", borderRadius: 8, border: "1px solid #f0d9b5" }}>
+              <p style={{ fontSize: 10, color: "#7a5a30", margin: "0 0 2px", fontWeight: 700 }}>📄 源泉徴収票の「支払金額」欄を入力</p>
+              <p style={{ fontSize: 10, color: "#a08060", margin: 0 }}>各種控除を引く前の額面金額（個人の年収）です</p>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 10 }}>
+            <div style={labelStyle}>家族構成</div>
+            {FAMILY_GROUPS.map(group => (
+              <div key={group.label} style={{ marginBottom: 8 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: group.color, marginBottom: 4, paddingLeft: 4, borderLeft: `2px solid ${group.color}` }}>{group.label}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                  {group.options.map(opt => (
+                    <button key={opt.value} onClick={() => onChange({ ...data, familyType: opt.value })}
+                      style={{ display: "flex", alignItems: "center", gap: 7, padding: "7px 10px", borderRadius: 7, border: data.familyType === opt.value ? `2px solid ${group.color}` : "1.5px solid #e8ddd0", background: data.familyType === opt.value ? `${group.color}18` : "#fffdf9", cursor: "pointer", textAlign: "left" }}>
+                      <span style={{ fontSize: 14 }}>{opt.emoji}</span>
+                      <span style={{ fontSize: 11, fontWeight: data.familyType === opt.value ? 700 : 400, color: data.familyType === opt.value ? group.color : "#555", flex: 1 }}>{opt.label}</span>
+                      {data.familyType === opt.value && <span style={{ color: group.color, fontSize: 12 }}>✓</span>}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <button onClick={() => setShowAdv(!showAdv)}
+            style={{ width: "100%", padding: "7px", borderRadius: 7, border: "1.5px dashed #c8b89a", background: "transparent", color: "#8a6840", fontSize: 11, fontWeight: 600, cursor: "pointer", marginBottom: showAdv ? 8 : 0 }}>
+            {showAdv ? "▲ 詳細設定を閉じる" : "▼ 住宅ローン・医療費を入力（任意）"}
+          </button>
+
+          {showAdv && (
+            <div style={{ padding: "10px 12px", background: "#fff8ee", borderRadius: 9, border: "1px solid #f0d9b5" }}>
+              <div style={{ marginBottom: 10 }}>
+                <div style={{ fontSize: 11, color: "#7a5a30", fontWeight: 700, marginBottom: 3 }}>🏠 住宅ローン控除額（年間）</div>
+                <p style={{ fontSize: 10, color: "#a08060", margin: "0 0 5px", lineHeight: 1.5 }}>所得税を超えた分が住民税から引かれ、ふるさと納税の上限が下がります。</p>
+                <div style={{ position: "relative" }}>
+                  <input type="number" value={data.housingLoan} placeholder="例：200000"
+                    onChange={e => onChange({ ...data, housingLoan: e.target.value })}
+                    style={{ width: "100%", padding: "8px 30px 8px 10px", borderRadius: 7, border: "1.5px solid #e0d0c0", fontSize: 13, fontWeight: 600, color: "#4a2c0a", background: "#fffdf9", boxSizing: "border-box", outline: "none" }} />
+                  <span style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", fontSize: 10, color: "#a08060" }}>円</span>
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: 11, color: "#7a5a30", fontWeight: 700, marginBottom: 3 }}>🏥 年間医療費合計</div>
+                <p style={{ fontSize: 10, color: "#a08060", margin: "0 0 5px", lineHeight: 1.5 }}>10万円超の分が課税所得から引かれ、ふるさと納税の上限が下がります。</p>
+                <div style={{ position: "relative" }}>
+                  <input type="number" value={data.medicalExpense} placeholder="例：150000"
+                    onChange={e => onChange({ ...data, medicalExpense: e.target.value })}
+                    style={{ width: "100%", padding: "8px 30px 8px 10px", borderRadius: 7, border: "1.5px solid #e0d0c0", fontSize: 13, fontWeight: 600, color: "#4a2c0a", background: "#fffdf9", boxSizing: "border-box", outline: "none" }} />
+                  <span style={{ position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)", fontSize: 10, color: "#a08060" }}>円</span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ─────────────────────────────
+    // ResultPanel
+    // ─────────────────────────────
+
+    function ResultPanel({ detail, incomeYen, accentColor = "#FFD700" }) {
+      const limit       = detail?.limit   || 2000;
+      const benefit     = detail?.benefit || 0;
+      const returnValue = Math.floor(limit * 0.3);
+      const diagnosis   = getDiagnosis(detail, incomeYen);
+
+      return (
+        <div style={{ background: "linear-gradient(135deg, #3d1a00 0%, #6b3010 100%)", borderRadius: 14, padding: "16px 14px" }}>
+          <div style={{ fontSize: 10, color: "rgba(255,200,150,0.65)", marginBottom: 4 }}>控除上限額（目安）</div>
+          <div style={{ fontSize: 36, fontWeight: 800, color: accentColor, lineHeight: 1, marginBottom: 10 }}>
+            {limit.toLocaleString()}<span style={{ fontSize: 14, color: `${accentColor}99` }}>円</span>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7, marginBottom: 10 }}>
+            <div style={subCard}>
+              <div style={{ fontSize: 9, color: "rgba(255,180,130,0.7)", marginBottom: 2 }}>自己負担</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>2,000<span style={{ fontSize: 10 }}>円</span></div>
+            </div>
+            <div style={subCard}>
+              <div style={{ fontSize: 9, color: "rgba(255,180,130,0.7)", marginBottom: 2 }}>節税メリット</div>
+              <div style={{ fontSize: 16, fontWeight: 700, color: benefit > 0 ? "#7fff7f" : "#ff8080" }}>
+                {benefit.toLocaleString()}<span style={{ fontSize: 10 }}>円</span>
+              </div>
+            </div>
+          </div>
+
+          {benefit > 0 && (
+            <div style={{ background: "rgba(255,50,50,0.15)", border: "1px solid rgba(255,100,100,0.3)", borderRadius: 9, padding: "9px 11px", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#ff9090", marginBottom: 3 }}>⚡ やらないと損する金額</div>
+              <div style={{ fontSize: 12, color: "rgba(255,210,190,0.9)", lineHeight: 1.6 }}>
+                今年ふるさと納税をしないと<br />
+                <span style={{ fontSize: 18, fontWeight: 800, color: "#FF6B6B" }}>{benefit.toLocaleString()}円</span>
+                <span style={{ fontSize: 11 }}> 分を余分に納税します</span>
+              </div>
+            </div>
+          )}
+
+          {benefit > 0 && (
+            <div style={{ background: "rgba(255,255,255,0.07)", borderRadius: 9, padding: "10px 11px", marginBottom: 10 }}>
+              <div style={{ fontSize: 10, color: "rgba(255,200,150,0.8)", fontWeight: 700, marginBottom: 6 }}>
+                🎁 上限いっぱい寄付した場合の返礼品（30%換算）
+              </div>
+              <div style={{ fontSize: 13, fontWeight: 700, color: "#FFD700", marginBottom: 6 }}>
+                約 {returnValue.toLocaleString()}円相当
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {RETURN_ITEMS.map(item => {
+                  const val = item.unit === "円分"
+                    ? `${returnValue.toLocaleString()}円分`
+                    : `${Math.floor((returnValue / item.per) * item.qty).toLocaleString()}${item.unit}`;
+                  return (
+                    <div key={item.name} style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "rgba(255,215,180,0.85)" }}>
+                      <span>{item.emoji} {item.name}</span>
+                      <span style={{ fontWeight: 700 }}>{val}{item.unit !== "円分" && <span style={{ fontSize: 9, color: "rgba(255,200,150,0.5)" }}> 目安</span>}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {diagnosis && (
+            <div style={{ borderRadius: 9, padding: "10px 11px", background: diagnosis.type === "error" ? "rgba(220,50,50,0.15)" : "rgba(255,180,0,0.12)", border: `1px solid ${diagnosis.type === "error" ? "rgba(255,100,100,0.35)" : "rgba(255,200,50,0.35)"}` }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: diagnosis.type === "error" ? "#ff8080" : "#ffd060", marginBottom: 6 }}>
+                {diagnosis.icon} {diagnosis.title}
+              </div>
+              {diagnosis.lines.map((l, i) => (
+                <p key={i} style={{ fontSize: 10, color: "rgba(255,225,195,0.85)", lineHeight: 1.65, margin: i === 0 ? 0 : "4px 0 0" }}>{l}</p>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ─────────────────────────────
+    // メインコンポーネント
+    // ─────────────────────────────
+
+    const INIT = { income: "", familyType: "single", housingLoan: "", medicalExpense: "" };
+
+    function FurusatoCalc() {
+      const [mode,      setMode]      = useState("single");
+      const [personA,   setPersonA]   = useState({ ...INIT });
+      const [personB,   setPersonB]   = useState({ ...INIT, familyType: "both_in" });
+      const [showTable, setShowTable] = useState(false);
+      const [copied,    setCopied]    = useState(false);
+
+      const toNum = s => { const v = parseFloat(s); return isNaN(v) ? 0 : Math.floor(v * 10000); };
+      const numA = toNum(personA.income);
+      const numB = toNum(personB.income);
+
+      const detailA = useMemo(() => calcLimitDetailed(numA, personA.familyType, parseFloat(personA.housingLoan)||0, parseFloat(personA.medicalExpense)||0), [numA, personA.familyType, personA.housingLoan, personA.medicalExpense]);
+      const detailB = useMemo(() => mode === "couple" ? calcLimitDetailed(numB, personB.familyType, parseFloat(personB.housingLoan)||0, parseFloat(personB.medicalExpense)||0) : null, [mode, numB, personB.familyType, personB.housingLoan, personB.medicalExpense]);
+
+      const hasA = numA >= 1000000;
+      const hasB = mode === "couple" && numB >= 1000000;
+      const coupleTotal   = (detailA?.limit||2000) + (detailB?.limit||2000);
+      const coupleBenefit = (detailA?.benefit||0)  + (detailB?.benefit||0);
+
+      const buildShareText = () => {
+        if (mode === "couple" && hasB) {
+          return `【ふるさと納税シミュレーション】\n夫：${personA.income}万円 → 上限 ${detailA.limit.toLocaleString()}円\n妻：${personB.income}万円 → 上限 ${detailB.limit.toLocaleString()}円\n世帯合計：${coupleTotal.toLocaleString()}円（節税 ${coupleBenefit.toLocaleString()}円）\n\n「ゆゆくりっど」より\nhttps://yuyukrid.github.io/tools/furusato/`;
+        }
+        return `【ふるさと納税シミュレーション】\n年収：${personA.income}万円 → 上限 ${detailA.limit.toLocaleString()}円\n節税メリット：${detailA.benefit.toLocaleString()}円\n\n「ゆゆくりっど」より\nhttps://yuyukrid.github.io/tools/furusato/`;
+      };
+
+      const handleCopy      = () => { navigator.clipboard.writeText(buildShareText()).then(() => { setCopied(true); setTimeout(() => setCopied(false), 2000); }); };
+      const handleShareX    = () => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(buildShareText())}`, "_blank");
+      const handleShareLine = () => window.open(`https://social-plugins.line.me/lineit/share?text=${encodeURIComponent(buildShareText())}`, "_blank");
+
+      return (
+        <div style={{ minHeight: "100vh", background: "linear-gradient(135deg,#fdf6ec,#f5ede0,#eee4d4)" }}>
+
+          {/* ヘッダー */}
+          <div style={{ background: "linear-gradient(135deg,#8B4513,#A0522D,#CD853F)", padding: "26px 18px 34px", position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", top: -28, right: -28, width: 110, height: 110, borderRadius: "50%", background: "rgba(255,255,255,0.06)" }} />
+            <div style={{ position: "absolute", bottom: -18, left: -18, width: 75, height: 75, borderRadius: "50%", background: "rgba(255,255,255,0.04)" }} />
+            <div style={{ position: "relative", maxWidth: 540, margin: "0 auto" }}>
+              <div style={{ fontSize: 10, color: "rgba(255,220,180,0.75)", letterSpacing: "0.2em", marginBottom: 5, fontWeight: 600 }}>🗾 FURUSATO NOZEI SIMULATOR</div>
+              <h1 style={{ color: "#fff", fontSize: 21, fontWeight: 700, margin: "0 0 4px", lineHeight: 1.3 }}>ふるさと納税<br />控除上限額かんたん計算</h1>
+              <p style={{ color: "rgba(255,220,180,0.75)", fontSize: 11, margin: 0 }}>夫婦合算・住宅ローン・医療費対応 ／ 2025年度版</p>
+            </div>
+          </div>
+
+          <div style={{ maxWidth: 540, margin: "0 auto", padding: "0 12px 40px" }}>
+
+            {/* モード切替 */}
+            <div style={{ display: "flex", gap: 6, margin: "14px 0 0", background: "#fff", borderRadius: 11, padding: 4, border: "1.5px solid #e8ddd0" }}>
+              {[["single","👤 個人計算"],["couple","👫 夫婦合算"]].map(([m,l]) => (
+                <button key={m} onClick={() => setMode(m)} style={{ flex: 1, padding: "8px 0", borderRadius: 8, border: "none", background: mode === m ? "#8B4513" : "transparent", color: mode === m ? "#fff" : "#888", fontWeight: 700, fontSize: 13, cursor: "pointer" }}>{l}</button>
+              ))}
+            </div>
+            {mode === "couple" && (
+              <p style={{ fontSize: 10, color: "#a08060", margin: "5px 0 0", lineHeight: 1.6 }}>
+                ふるさと納税は個人単位の計算です。夫・妻それぞれ入力して世帯合計を確認しましょう。
+              </p>
+            )}
+
+            {/* 入力カード */}
+            {mode === "single" ? (
+              <div style={cardStyle}>
+                <PersonInput data={personA} onChange={setPersonA} color="#8B4513" />
+              </div>
+            ) : (
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 10 }}>
+                <div style={{ ...cardStyle, marginTop: 0 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#8B4513", marginBottom: 8, paddingBottom: 6, borderBottom: "1.5px solid #f0ddd0" }}>夫（または本人）</div>
+                  <PersonInput data={personA} onChange={setPersonA} color="#8B4513" />
+                </div>
+                <div style={{ ...cardStyle, marginTop: 0 }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#2e7d32", marginBottom: 8, paddingBottom: 6, borderBottom: "1.5px solid #d0ecd0" }}>妻（またはパートナー）</div>
+                  <PersonInput data={personB} onChange={setPersonB} color="#2e7d32" />
+                </div>
+              </div>
+            )}
+
+            {/* 結果 */}
+            {mode === "single" ? (
+              hasA ? (
+                <div style={{ marginTop: 12 }}>
+                  <ResultPanel detail={detailA} incomeYen={numA} />
+                </div>
+              ) : (
+                <div style={{ ...cardStyle, textAlign: "center", padding: "26px 14px", border: "2px dashed #d9c9b0", background: "rgba(255,255,255,0.4)", marginTop: 12 }}>
+                  <div style={{ fontSize: 30, marginBottom: 8 }}>🏡</div>
+                  <div style={{ fontSize: 13, color: "#a08060", fontWeight: 600 }}>年収を入力すると<br />控除上限額が計算されます</div>
+                </div>
+              )
+            ) : (
+              (hasA || hasB) && (
+                <div style={{ marginTop: 12 }}>
+                  <div style={{ display: "grid", gridTemplateColumns: hasA && hasB ? "1fr 1fr" : "1fr", gap: 8, marginBottom: 10 }}>
+                    {hasA && (
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: "#8B4513", marginBottom: 4 }}>夫の結果</div>
+                        <ResultPanel detail={detailA} incomeYen={numA} accentColor="#FFD700" />
+                      </div>
+                    )}
+                    {hasB && (
+                      <div>
+                        <div style={{ fontSize: 10, fontWeight: 700, color: "#2e7d32", marginBottom: 4 }}>妻の結果</div>
+                        <ResultPanel detail={detailB} incomeYen={numB} accentColor="#90ff90" />
+                      </div>
+                    )}
+                  </div>
+                  {hasA && hasB && (
+                    <div style={{ background: "linear-gradient(135deg,#1a2a0a,#2e4a10)", borderRadius: 14, padding: "16px", textAlign: "center" }}>
+                      <div style={{ fontSize: 10, color: "rgba(180,255,150,0.65)", marginBottom: 5, fontWeight: 600 }}>🏠 世帯合計</div>
+                      <div style={{ fontSize: 10, color: "rgba(180,255,150,0.6)", marginBottom: 4 }}>合計控除上限額</div>
+                      <div style={{ fontSize: 34, fontWeight: 800, color: "#C8FF90", lineHeight: 1 }}>{coupleTotal.toLocaleString()}<span style={{ fontSize: 14 }}>円</span></div>
+                      <div style={{ marginTop: 7, fontSize: 13, color: "rgba(200,255,150,0.8)" }}>
+                        節税メリット：<span style={{ fontWeight: 700, color: "#90ff90", fontSize: 16 }}>{coupleBenefit.toLocaleString()}円</span>
+                      </div>
+                      {coupleBenefit > 0 && (
+                        <div style={{ marginTop: 8, padding: "7px 10px", background: "rgba(255,50,50,0.15)", borderRadius: 8, border: "1px solid rgba(255,100,100,0.25)" }}>
+                          <span style={{ fontSize: 11, color: "rgba(255,160,160,0.9)" }}>⚡ 今年やらないと世帯で <span style={{ fontWeight: 800, fontSize: 14, color: "#FF8080" }}>{coupleBenefit.toLocaleString()}円</span> 損します</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )
+            )}
+
+            {/* シェアボタン */}
+            {(hasA || hasB) && (
+              <div style={{ marginTop: 12 }}>
+                <div style={{ fontSize: 12, color: "#8a6840", fontWeight: 700, marginBottom: 7 }}>📤 結果をシェア</div>
+                <div style={{ display: "flex", gap: 7 }}>
+                  <button onClick={handleCopy} style={{ flex: 1, padding: "10px 0", borderRadius: 9, border: "1.5px solid #e0d0c0", background: copied ? "#e8f5e9" : "#fff", color: copied ? "#2e7d32" : "#555", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>
+                    {copied ? "✅ コピー済み" : "📋 コピー"}
+                  </button>
+                  <button onClick={handleShareX} style={{ flex: 1, padding: "10px 0", borderRadius: 9, border: "none", background: "#000", color: "#fff", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>
+                    𝕏 シェア
+                  </button>
+                  <button onClick={handleShareLine} style={{ flex: 1, padding: "10px 0", borderRadius: 9, border: "none", background: "#06C755", color: "#fff", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>
+                    LINE
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* 年収別一覧表 */}
+            <div style={{ ...cardStyle, marginTop: 12 }}>
+              <button onClick={() => setShowTable(!showTable)} style={{ width: "100%", background: "transparent", border: "none", cursor: "pointer", textAlign: "left", padding: 0 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "#4a2c0a" }}>📊 年収別 控除上限額一覧</div>
+                  <span style={{ color: "#8a6840", fontSize: 12, fontWeight: 700 }}>{showTable ? "▲ 閉じる" : "▼ 開く"}</span>
+                </div>
+                <div style={{ fontSize: 11, color: "#a08060", marginTop: 2 }}>
+                  現在の家族構成：{FAMILY_GROUPS.flatMap(g => g.options).find(o => o.value === personA.familyType)?.label || ""}
+                </div>
+              </button>
+              {showTable && (
+                <div style={{ marginTop: 10, overflowX: "auto" }}>
+                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 11 }}>
+                    <thead>
+                      <tr style={{ background: "#8B4513" }}>
+                        {["年収","上限額","節税額","返礼品目安"].map(h => (
+                          <th key={h} style={{ padding: "7px 5px", color: "#fff", fontWeight: 700, textAlign: "center" }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TABLE_INCOMES.map((inc, i) => {
+                        const d = calcLimitDetailed(inc * 10000, personA.familyType);
+                        const highlight = numA > 0 && Math.abs(inc - parseFloat(personA.income || "0")) < 51;
+                        return (
+                          <tr key={inc} style={{ background: highlight ? "#fff3e0" : i % 2 === 0 ? "#fffdf9" : "#faf6f0" }}>
+                            <td style={{ padding: "6px 5px", textAlign: "center", borderBottom: "1px solid #f0e8dc", fontWeight: highlight ? 700 : 400, color: highlight ? "#8B4513" : "#333" }}>
+                              {highlight ? "👉 " : ""}{inc}万
+                            </td>
+                            <td style={{ padding: "6px 5px", textAlign: "center", borderBottom: "1px solid #f0e8dc", fontWeight: 600, color: d.benefit > 0 ? "#4a2c0a" : "#bbb" }}>{d.limit.toLocaleString()}円</td>
+                            <td style={{ padding: "6px 5px", textAlign: "center", borderBottom: "1px solid #f0e8dc", fontWeight: d.benefit > 0 ? 700 : 400, color: d.benefit > 0 ? "#2e7d32" : "#bbb" }}>{d.benefit > 0 ? `${d.benefit.toLocaleString()}円` : "―"}</td>
+                            <td style={{ padding: "6px 5px", textAlign: "center", borderBottom: "1px solid #f0e8dc", color: "#8B4513" }}>{d.benefit > 0 ? `約${Math.floor(d.limit * 0.3 / 1000)}千円` : "―"}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+            {/* 注意書き */}
+            <div style={{ marginTop: 10, padding: "11px 13px", background: "rgba(255,255,255,0.5)", borderRadius: 11, border: "1px solid #e8ddd0" }}>
+              <p style={{ fontSize: 10, color: "#8a7060", lineHeight: 1.7, margin: 0 }}>
+                ⚠️ 計算は目安です。実際の控除額は各種控除・給与以外の収入等により異なります。確定申告またはワンストップ特例制度の手続きをお忘れなく。
+              </p>
+            </div>
+
+          </div>
+        </div>
+      );
+    }
+
+    // マウント
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<FurusatoCalc />);
+  </script>
+
+</body>
+</html>
