@@ -50,7 +50,129 @@
 .site-footer p { color: rgba(255,200,150,0.5); font-size: 11px; margin-top: 10px; }
 ```
 
-  </style>
+/* ─── TOOLS SECTION ─── */
+.tools-section {
+background: linear-gradient(135deg, #0a1628 0%, #12243d 100%);
+position: relative;
+overflow: hidden;
+}
+
+.tools-section::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+}
+
+.tools-section .section-title { color: var(–white); }
+.tools-section .section-header { border-color: rgba(255,255,255,0.1); }
+
+.tools-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 24px;
+}
+
+.tool-card {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(201,168,76,0.25);
+border-radius: 14px;
+padding: 28px 28px 24px;
+text-decoration: none;
+display: block;
+transition: all 0.3s ease;
+position: relative;
+overflow: hidden;
+}
+
+.tool-card::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(201,168,76,0.06), transparent);
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.tool-card:hover {
+transform: translateY(-5px);
+border-color: rgba(201,168,76,0.6);
+box-shadow: 0 20px 48px rgba(0,0,0,0.4);
+}
+
+.tool-card:hover::before { opacity: 1; }
+
+.tool-icon {
+font-size: 36px;
+margin-bottom: 14px;
+display: block;
+}
+
+.tool-badge {
+display: inline-block;
+background: rgba(201,168,76,0.15);
+border: 1px solid rgba(201,168,76,0.35);
+color: var(–gold-light);
+font-size: 10px;
+letter-spacing: 0.12em;
+padding: 3px 10px;
+border-radius: 12px;
+margin-bottom: 12px;
+font-weight: 500;
+}
+
+.tool-name {
+font-family: ‘Noto Serif JP’, serif;
+font-size: 18px;
+font-weight: 700;
+color: var(–white);
+margin-bottom: 8px;
+line-height: 1.4;
+}
+
+.tool-desc {
+font-size: 13px;
+color: rgba(255,255,255,0.55);
+line-height: 1.8;
+font-weight: 300;
+margin-bottom: 20px;
+}
+
+.tool-features {
+display: flex;
+flex-wrap: wrap;
+gap: 6px;
+margin-bottom: 20px;
+}
+
+.tool-feature {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.1);
+color: rgba(255,255,255,0.6);
+font-size: 11px;
+padding: 3px 10px;
+border-radius: 4px;
+}
+
+.tool-link {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+font-size: 13px;
+font-weight: 600;
+color: var(–gold);
+letter-spacing: 0.05em;
+}
+
+.tool-link::after {
+content: ‘→’;
+transition: transform 0.2s;
+}
+
+.tool-card:hover .tool-link::after { transform: translateX(5px); }
+
+</style>
 </head>
 <body>
 
