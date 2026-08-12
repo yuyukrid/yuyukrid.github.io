@@ -160,6 +160,7 @@
         <p class="hero-copy">ゆゆくりっどは、新NISA・資産形成・副業などのお金の基礎を、初心者の方にもわかりやすく整理してお届けする情報メディアです。動画と記事から、知りたいテーマを選んでください。</p>
         <div class="cta-row">
           <a class="button button-primary" href="#videos">最新動画を見る</a>
+          <a class="button button-secondary" href="/nisa-checklist.html" data-analytics="nisa_checklist_landing" data-cta-location="hero">新NISAの確認シート</a>
           <a class="button button-secondary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer" data-analytics="blog_hero" data-cta-location="hero">ブログを読む</a>
         </div>
         <div class="topic-list" aria-label="主なテーマ">
@@ -278,7 +279,7 @@
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[data-analytics]');
       if (!link || typeof window.gtag !== 'function') return;
-      window.gtag('event', 'outbound_cta_click', {
+      window.gtag('event', link.hostname === window.location.hostname ? 'site_cta_click' : 'outbound_cta_click', {
         destination: link.dataset.analytics,
         cta_location: link.dataset.ctaLocation || 'unknown',
         link_url: link.href,
