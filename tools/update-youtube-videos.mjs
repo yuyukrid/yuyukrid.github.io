@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -73,6 +73,18 @@ try {
   const xml = await response.text();
   const videos = parseFeed(xml);
   if (videos.length < 3) throw new Error('表示に必要な動画数を取得できませんでした。');
+
+  let existingData = null;
+  try {
+    existingData = JSON.parse(await readFile(outputPath, 'utf8'));
+  } catch {
+    // 初回実行時は公開データが存在しないため、そのまま生成する。
+  }
+
+  if (JSON.stringify(existingData?.videos) === JSON.stringify(videos)) {
+    console.log('最新動画に変更はありません。');
+    process.exit(0);
+  }
 
   const data = {
     channelId: CHANNEL_ID,
