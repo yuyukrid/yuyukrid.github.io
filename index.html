@@ -16,6 +16,13 @@
   <meta name="twitter:title" content="ゆゆくりっど｜投資・副業・お金の情報メディア">
   <meta name="twitter:description" content="新NISA・資産形成・副業などのお金の基礎を初心者向けにわかりやすく解説します。">
   <title>ゆゆくりっど｜投資・副業・お金の情報メディア</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-31T0RF0KFP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-31T0RF0KFP');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
@@ -153,7 +160,7 @@
         <p class="hero-copy">ゆゆくりっどは、新NISA・資産形成・副業などのお金の基礎を、初心者の方にもわかりやすく整理してお届けする情報メディアです。動画と記事から、知りたいテーマを選んでください。</p>
         <div class="cta-row">
           <a class="button button-primary" href="#videos">最新動画を見る</a>
-          <a class="button button-secondary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer">ブログを読む</a>
+          <a class="button button-secondary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer" data-analytics="blog_hero" data-cta-location="hero">ブログを読む</a>
         </div>
         <div class="topic-list" aria-label="主なテーマ">
           <span class="topic">新NISA</span>
@@ -181,7 +188,7 @@
           <p class="video-status">最新動画を読み込んでいます。</p>
         </div>
         <div class="cta-row">
-          <a class="button button-primary" href="https://www.youtube.com/@yuyushi17" target="_blank" rel="noopener noreferrer">YouTubeチャンネルを見る</a>
+          <a class="button button-primary" href="https://www.youtube.com/@yuyushi17" target="_blank" rel="noopener noreferrer" data-analytics="youtube_channel" data-cta-location="latest_videos">YouTubeチャンネルを見る</a>
         </div>
       </div>
     </section>
@@ -192,7 +199,7 @@
           <span class="section-kicker" style="color:#f2d58e">Articles</span>
           <h2 id="blog-title">記事で、基礎からじっくり学ぶ。</h2>
           <p>動画だけではわかりにくい用語や考え方を、記事でもわかりやすく解説しています。初めての方は、気になるテーマからご覧ください。</p>
-          <a class="button button-primary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer">ブログ記事を読む</a>
+          <a class="button button-primary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer" data-analytics="blog_articles" data-cta-location="articles">ブログ記事を読む</a>
         </div>
         <div class="trust-card">
           <span class="section-kicker">Reading guide</span>
@@ -251,7 +258,7 @@
         const videos = Array.isArray(data.videos) ? data.videos.slice(0, 3) : [];
         if (!videos.length) throw new Error('表示できる動画がありません。');
         videoGrid.innerHTML = videos.map((video) => `
-          <a class="video-card" href="${escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer">
+          <a class="video-card" href="${escapeHtml(video.url)}" target="_blank" rel="noopener noreferrer" data-analytics="youtube_latest_video" data-cta-location="latest_videos">
             <div class="video-thumb">
               <img src="${escapeHtml(video.thumbnail)}" alt="${escapeHtml(video.title)}" loading="lazy">
               <span class="video-badge">YouTube</span>
@@ -267,6 +274,17 @@
       }
     }
     renderLatestVideos();
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[data-analytics]');
+      if (!link || typeof window.gtag !== 'function') return;
+      window.gtag('event', 'outbound_cta_click', {
+        destination: link.dataset.analytics,
+        cta_location: link.dataset.ctaLocation || 'unknown',
+        link_url: link.href,
+        link_text: link.textContent.trim().replace(/\s+/g, ' ').slice(0, 100)
+      });
+    });
   </script>
 </body>
 </html>
