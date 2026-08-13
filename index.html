@@ -84,6 +84,14 @@
     .topic { padding: 5px 10px; border: 1px solid rgba(255,255,255,.16); border-radius: 5px; color: rgba(255,255,255,.72); font-size: 11px; }
     .notice { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.14); padding: 16px 0; background: var(--ink-soft); color: rgba(255,255,255,.76); font-size: 12px; }
     .notice p { margin: 0; }
+    .checklist-section { background: #f3f0e8; }
+    .checklist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .checklist-card { display: flex; flex-direction: column; min-height: 252px; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); text-decoration: none; box-shadow: 0 8px 24px rgba(10,22,40,.05); transition: transform .2s ease, box-shadow .2s ease; }
+    .checklist-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .checklist-card .card-kicker { color: #9b792a; font-size: 11px; font-weight: 700; letter-spacing: .10em; }
+    .checklist-card h3 { margin: 12px 0 9px; font-size: 22px; line-height: 1.5; }
+    .checklist-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .checklist-card .card-link { margin-top: auto; padding-top: 22px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
     .section { padding: 92px 0; }
     .section-alt { background: var(--white); }
     .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
@@ -127,7 +135,7 @@
       .site-nav { gap: 13px; font-size: 12px; }
       .hero { min-height: auto; padding: 135px 0 72px; }
       .section { padding: 66px 0; }
-      .video-grid { grid-template-columns: 1fr; }
+      .video-grid, .checklist-grid { grid-template-columns: 1fr; }
       .media-flow, .about { grid-template-columns: 1fr; }
       .section-head, .footer-top { flex-direction: column; align-items: flex-start; }
     }
@@ -175,6 +183,29 @@
     <aside class="notice" aria-label="投資に関する注意事項">
       <div class="container"><p>本サイトは情報提供を目的としています。投資には価格変動等のリスクがあり、元本や将来の成果を保証するものではありません。個別の判断はご自身の責任で行ってください。</p></div>
     </aside>
+
+    <section class="section checklist-section" aria-labelledby="checklists-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Free checklists</span>
+            <h2 id="checklists-title">始める前の「確認シート」を、テーマ別に。</h2>
+          </div>
+          <p class="section-lead">焦って決める前に、今の状況や前提を整理する無料PDFです。自分に近いテーマから確認してください。</p>
+        </div>
+        <div class="checklist-grid">
+          <a class="checklist-card" href="/nisa-checklist.html" data-analytics="nisa_checklist_landing" data-cta-location="checklist_hub">
+            <span class="card-kicker">NEW NISA</span><h3>新NISAを始める前の確認シート</h3><p>目的・家計・リスクを整理して、制度を学ぶ前の準備をします。</p><span class="card-link">無料PDFを見る →</span>
+          </a>
+          <a class="checklist-card" href="/asset-formation-checklist.html" data-analytics="asset_checklist_landing" data-cta-location="checklist_hub">
+            <span class="card-kicker">ASSET BUILDING</span><h3>資産形成を考える前の確認シート</h3><p>家計、ライフプラン、金融商品の役割を基本から整理します。</p><span class="card-link">無料PDFを見る →</span>
+          </a>
+          <a class="checklist-card" href="/side-job-checklist.html" data-analytics="sidejob_checklist_landing" data-cta-location="checklist_hub">
+            <span class="card-kicker">SIDE JOB</span><h3>副業を始める前の確認シート</h3><p>本業のルール、時間、健康との両立を確認します。</p><span class="card-link">無料PDFを見る →</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <section id="videos" class="section" aria-labelledby="videos-title">
       <div class="container">
