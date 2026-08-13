@@ -102,6 +102,11 @@
     .checklist-card h3 { margin: 12px 0 9px; font-size: 22px; line-height: 1.5; }
     .checklist-card p { margin: 0; color: var(--muted); font-size: 13px; }
     .checklist-card .card-link { margin-top: auto; padding-top: 22px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+    .checklist-card.featured-guide { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; min-height: 0; padding: 22px 26px; background: var(--ink); color: var(--white); }
+    .checklist-card.featured-guide .card-kicker, .checklist-card.featured-guide .card-link { color: #f2d58e; }
+    .checklist-card.featured-guide h3 { margin: 6px 0; font-size: 21px; }
+    .checklist-card.featured-guide p { color: rgba(255,255,255,.75); }
+    .checklist-card.featured-guide .guide-arrow { white-space: nowrap; color: #f2d58e; font-weight: 700; }
     .section { padding: 92px 0; }
     .section-alt { background: var(--white); }
     .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; }
@@ -213,6 +218,9 @@
           </a>
           <a class="checklist-card" href="/side-job-checklist.html" data-analytics="sidejob_checklist_landing" data-cta-location="checklist_hub">
             <span class="card-kicker">SIDE JOB</span><h3>副業を始める前の確認シート</h3><p>本業のルール、時間、健康との両立を確認します。</p><span class="card-link">無料PDFを見る →</span>
+          </a>
+          <a class="checklist-card featured-guide" href="/crowdfunding-guide.html" data-analytics="crowdfunding_guide_landing" data-cta-location="checklist_hub">
+            <div><span class="card-kicker">COMPARISON GUIDE</span><h3>クラウドファンディングを比べる前の確認ガイド</h3><p>特典や締切の前に、仕組み・資金拘束・最低額・リスクを整理します。</p></div><span class="guide-arrow">確認ガイドへ →</span>
           </a>
         </div>
       </div>
