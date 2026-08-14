@@ -1,0 +1,20 @@
+/* Mobile guide helper UI: shown only after the primary CTA leaves the viewport. */
+body.has-mobile-guide-cta { padding-bottom: 84px; }
+.mobile-guide-cta { position:fixed; z-index:50; left:50%; bottom:12px; width:min(560px,calc(100% - 24px)); display:none; gap:10px; align-items:center; padding:10px; border:1px solid rgba(255,255,255,.18); border-radius:14px; background:rgba(8,26,45,.97); box-shadow:0 14px 32px rgba(0,0,0,.22); color:#fff; transform:translate(-50%,14px); opacity:0; transition:transform .18s cubic-bezier(.23,1,.32,1),opacity .18s cubic-bezier(.23,1,.32,1); }
+.mobile-guide-cta.is-visible { transform:translate(-50%,0); opacity:1; }
+.mobile-guide-cta__link { flex:1; min-height:44px; display:inline-flex; align-items:center; justify-content:center; padding:10px 14px; border-radius:9px; background:#f1cd6f; color:#152a3e; font-size:.9rem; font-weight:700; line-height:1.35; text-align:center; text-decoration:none; }
+.mobile-guide-cta__close { flex:0 0 38px; min-height:38px; padding:0; border:1px solid rgba(255,255,255,.48); border-radius:50%; background:transparent; color:#fff; font:inherit; font-size:1.15rem; line-height:1; }
+.mobile-guide-cta__link:focus-visible,.mobile-guide-cta__close:focus-visible { outline:3px solid #fff; outline-offset:3px; }
+.guide-faq { padding:54px 0; background:#f8f7f3; }
+.guide-faq .section-head { margin-bottom:22px; }
+.guide-faq__list { display:grid; gap:10px; max-width:860px; }
+.guide-faq details { border:1px solid #dfe4e7; border-radius:10px; background:#fff; }
+.guide-faq summary { position:relative; padding:17px 50px 17px 20px; color:#203247; cursor:pointer; font-weight:700; list-style:none; }
+.guide-faq summary::-webkit-details-marker { display:none; }
+.guide-faq summary::after { content:"＋"; position:absolute; right:20px; top:50%; color:#8a6a1b; font-size:1.25rem; transform:translateY(-50%); }
+.guide-faq details[open] summary::after { content:"−"; }
+.guide-faq__answer { margin:0; padding:0 20px 18px; color:#5f6f7d; font-size:.92rem; }
+.guide-faq details:focus-within { outline:3px solid rgba(213,175,82,.7); outline-offset:2px; }
+@media (max-width:720px) { .mobile-guide-cta { display:flex; } .guide-faq { padding:46px 0; } }
+@media (min-width:721px) { body.has-mobile-guide-cta { padding-bottom:0; } }
+@media (prefers-reduced-motion:reduce) { .mobile-guide-cta { transition:none; } }

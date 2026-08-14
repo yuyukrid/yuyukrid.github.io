@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" data-guide-theme="nisa">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/mobile-guide-ui.css">
   <style>
     :root { --navy:#0a1d33; --blue:#174a77; --gold:#d5af52; --pale:#f6f2e8; --ink:#203247; --muted:#5f6f7d; }
     * { box-sizing:border-box; }
@@ -87,7 +88,7 @@
         <h1>新NISAを始める前に、<br>まず確認したい7つのこと。</h1>
         <p class="lead">制度の言葉や商品の情報を見る前に、自分の目的・家計・リスクへの向き合い方を整理するための、初心者向けチェックリストです。</p>
         <div class="actions">
-          <a class="button button-primary" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-analytics="nisa_checklist_download" data-cta-location="checklist_hero">チェックリストをPDFで見る</a>
+          <a class="button button-primary" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-analytics="nisa_checklist_download" data-cta-location="checklist_hero" data-mobile-guide-primary>チェックリストをPDFで見る</a>
           <a class="button button-secondary" href="https://lin.ee/YHQthXp" target="_blank" rel="noopener noreferrer" data-analytics="line_nisa_hero" data-cta-location="checklist_hero">LINEで新NISAの更新を受け取る</a>
         </div>
       </div>
@@ -136,6 +137,16 @@
       </div>
     </section>
 
+    <section class="guide-faq" aria-labelledby="nisa-faq-title">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow" style="color:#b17c16">FAQ</div><h2 id="nisa-faq-title">よくある質問</h2><p>チェックリストを使う前に、確認したい点をまとめました。</p></div>
+        <div class="guide-faq__list">
+          <details data-guide-faq><summary>チェックリストの利用に費用はかかりますか？</summary><p class="guide-faq__answer">いいえ、無料でPDFをご覧いただけます。登録を必須にするものではありません。</p></details>
+          <details data-guide-faq><summary>特定の金融商品を勧められることはありますか？</summary><p class="guide-faq__answer">いいえ、特定の商品の推奨や勧誘は行わず、ご自身の判断のための確認視点をまとめています。</p></details>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="wrap">
         <div class="line-box">
@@ -146,12 +157,14 @@
           </div>
           <div><a class="button" href="https://lin.ee/YHQthXp" target="_blank" rel="noopener noreferrer" data-analytics="line_nisa_next_step" data-cta-location="theme_next_step">LINEで新NISAの更新を受け取る</a></div>
         </div>
-        <p class="note">本ページおよびチェックリストは情報提供を目的としています。特定の金融商品・投資行動を推奨するものではなく、投資には価格変動等により元本割れのおそれがあります。制度は変更される場合があるため、最新の情報は<a href="https://www.fsa.go.jp/policy/nisa2/" target="_blank" rel="noopener noreferrer">金融庁のNISA特設サイト</a>でご確認ください。</p>
+        <p class="note" data-mobile-guide-stop>本ページおよびチェックリストは情報提供を目的としています。特定の金融商品・投資行動を推奨するものではなく、投資には価格変動等により元本割れのおそれがあります。制度は変更される場合があるため、最新の情報は<a href="https://www.fsa.go.jp/policy/nisa2/" target="_blank" rel="noopener noreferrer">金融庁のNISA特設サイト</a>でご確認ください。</p>
       </div>
     </section>
   </main>
 
   <footer><div class="wrap">© 2026 ゆゆくりっど　|　<a href="/start.html" data-analytics="start_hub_reselect" data-cta-location="footer">目的から選び直す</a>　|　<a href="/privacy.html">プライバシーポリシー</a></div></footer>
+  <aside class="mobile-guide-cta" data-mobile-guide-cta hidden aria-label="モバイル補助導線"><a class="mobile-guide-cta__link" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-mobile-guide-link data-destination="nisa_checklist_download">チェックリストをPDFで見る</a><button class="mobile-guide-cta__close" type="button" data-mobile-guide-close aria-label="補助導線を閉じる">×</button></aside>
+  <script src="/assets/mobile-guide-ui.js" defer></script>
   <script>
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[data-analytics]');
