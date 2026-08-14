@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-12T13:56:09.764Z",
+  "updatedAt": "2026-08-14T03:01:23.389Z",
   "videos": [
+    {
+      "id": "wIDE98oTuPI",
+      "title": "「優先劣後方式」「目論見書」って",
+      "url": "https://www.youtube.com/shorts/wIDE98oTuPI",
+      "thumbnail": "https://i4.ytimg.com/vi/wIDE98oTuPI/hqdefault.jpg",
+      "published": "2026-08-13T05:04:39+00:00",
+      "dateLabel": "2026.08.13"
+    },
     {
       "id": "Qyq75IXbHG0",
       "title": "「日経平均2%高」って聞いて、",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/ayUwIAtCPa4/hqdefault.jpg",
       "published": "2026-08-07T02:55:25+00:00",
       "dateLabel": "2026.08.07"
-    },
-    {
-      "id": "KRfXy0gdJmI",
-      "title": "【PR】これまでとは少し違うタイプの",
-      "url": "https://www.youtube.com/shorts/KRfXy0gdJmI",
-      "thumbnail": "https://i4.ytimg.com/vi/KRfXy0gdJmI/hqdefault.jpg",
-      "published": "2026-08-06T10:15:27+00:00",
-      "dateLabel": "2026.08.06"
     }
   ]
 }
