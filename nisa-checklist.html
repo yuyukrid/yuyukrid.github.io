@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/mobile-guide-ui.css">
+  <link rel="stylesheet" href="/assets/guide-conversion-ui.css">
   <style>
     :root { --navy:#0a1d33; --blue:#174a77; --gold:#d5af52; --pale:#f6f2e8; --ink:#203247; --muted:#5f6f7d; }
     * { box-sizing:border-box; }
@@ -88,9 +89,10 @@
         <h1>新NISAを始める前に、<br>まず確認したい7つのこと。</h1>
         <p class="lead">制度の言葉や商品の情報を見る前に、自分の目的・家計・リスクへの向き合い方を整理するための、初心者向けチェックリストです。</p>
         <div class="actions">
-          <a class="button button-primary" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-analytics="nisa_checklist_download" data-cta-location="checklist_hero" data-mobile-guide-primary>チェックリストをPDFで見る</a>
+          <a class="button button-primary" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-analytics="nisa_checklist_download" data-cta-location="checklist_hero" data-mobile-guide-primary data-guide-download="new_nisa_checklist">チェックリストをPDFで見る</a>
           <a class="button button-secondary" href="https://lin.ee/YHQthXp" target="_blank" rel="noopener noreferrer" data-analytics="line_nisa_hero" data-cta-location="checklist_hero">LINEで新NISAの更新を受け取る</a>
         </div>
+        <p class="guide-action-note"><strong>PDFを開いたら：</strong>気になる項目を1つ書き出し、次に <a href="/asset-formation-checklist.html" data-analytics="nisa_hero_next_asset" data-cta-location="guide_after_download">資産形成の確認シート</a> を読むと、お金全体の前提を整理できます。</p>
       </div>
     </section>
 
@@ -164,6 +166,8 @@
 
   <footer><div class="wrap">© 2026 ゆゆくりっど　|　<a href="/start.html" data-analytics="start_hub_reselect" data-cta-location="footer">目的から選び直す</a>　|　<a href="/privacy.html">プライバシーポリシー</a></div></footer>
   <aside class="mobile-guide-cta" data-mobile-guide-cta hidden aria-label="モバイル補助導線"><a class="mobile-guide-cta__link" href="/downloads/new-nisa-checklist.pdf" target="_blank" rel="noopener noreferrer" data-mobile-guide-link data-destination="nisa_checklist_download">チェックリストをPDFで見る</a><button class="mobile-guide-cta__close" type="button" data-mobile-guide-close aria-label="補助導線を閉じる">×</button></aside>
+  <script src="/assets/theme-resume.js" defer></script>
+  <script src="/assets/guide-conversion-events.js" defer></script>
   <script src="/assets/mobile-guide-ui.js" defer></script>
   <script>
     document.addEventListener('click', (event) => {

@@ -1,0 +1,5 @@
+/* Conversion guidance shown directly beneath a guide's primary action. */
+.guide-action-note { max-width:760px; margin:18px 0 0; padding:13px 16px; border-left:3px solid #f1cd6f; border-radius:0 8px 8px 0; background:rgba(8,24,42,.28); color:#f3f6f8; font-size:.87rem; line-height:1.7; }
+.guide-action-note strong { color:#fff4c4; }
+.guide-action-note a { color:#fff; font-weight:700; }
+@media (max-width:720px) { .guide-action-note { margin-top:14px; padding:12px 14px; font-size:.82rem; } }

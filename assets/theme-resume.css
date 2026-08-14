@@ -1,0 +1,10 @@
+.theme-resume { display:flex; align-items:center; justify-content:space-between; gap:18px; max-width:920px; margin:24px 0 0; padding:18px 20px; border:1px solid #d8c186; border-radius:12px; background:#fffaf0; color:#3f3a2d; }
+.theme-resume[hidden] { display:none; }
+.theme-resume__eyebrow { margin:0 0 3px; color:#8e6c20; font-size:.72rem; font-weight:700; letter-spacing:.1em; }
+.theme-resume__title { margin:0; font-family:"Noto Serif JP",serif; font-size:1.05rem; line-height:1.45; }
+.theme-resume__copy { margin:4px 0 0; color:#5f6870; font-size:.85rem; }
+.theme-resume__actions { display:flex; align-items:center; gap:12px; flex:0 0 auto; }
+.theme-resume__link { display:inline-flex; align-items:center; justify-content:center; min-height:42px; padding:10px 14px; border-radius:8px; background:#10263f; color:#fff; font-size:.87rem; font-weight:700; text-decoration:none; }
+.theme-resume__dismiss { padding:7px 0; border:0; background:transparent; color:#63707e; font:inherit; font-size:.78rem; text-decoration:underline; cursor:pointer; }
+.theme-resume__link:focus-visible,.theme-resume__dismiss:focus-visible { outline:3px solid #c69e3d; outline-offset:3px; }
+@media (max-width:680px) { .theme-resume { align-items:flex-start; flex-direction:column; gap:12px; padding:16px; } .theme-resume__actions { width:100%; justify-content:space-between; } }
