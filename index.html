@@ -71,9 +71,11 @@
     .header-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
     .brand { font-family: "Noto Serif JP", serif; font-size: 22px; font-weight: 900; text-decoration: none; letter-spacing: .03em; }
     .brand span { color: var(--gold); }
-    .site-nav { display: flex; align-items: center; gap: 24px; font-size: 13px; }
+    .site-nav { display: flex; align-items: center; gap: 20px; font-size: 13px; }
     .site-nav a { color: rgba(255,255,255,.82); text-decoration: none; }
     .site-nav a:hover { color: var(--gold); }
+    .site-nav a:first-child { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(242,213,142,.7); border-radius: 7px; color: #fff; font-weight: 700; }
+    .site-nav a:first-child:hover { border-color: var(--gold); background: rgba(208,173,85,.16); color: #fff; }
     .hero { position: relative; min-height: 680px; padding: 160px 0 90px; overflow: hidden; background: radial-gradient(circle at 82% 26%, rgba(208,173,85,.16), transparent 25%), radial-gradient(circle at 13% 90%, rgba(55,96,152,.42), transparent 32%), var(--ink); color: var(--white); }
     .hero::after { content: ""; position: absolute; inset: 0; opacity: .18; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black, transparent); }
     .hero-inner { position: relative; z-index: 1; max-width: 800px; }
@@ -82,11 +84,13 @@
     h1, h2, h3 { font-family: "Noto Serif JP", serif; letter-spacing: .02em; }
     h1 { max-width: 760px; margin: 24px 0 22px; font-size: clamp(38px, 5.4vw, 66px); line-height: 1.35; font-weight: 900; }
     h1 strong { color: #f2d58e; font-weight: inherit; }
-    .hero-copy { max-width: 650px; margin: 0; color: rgba(255,255,255,.82); font-size: 16px; }
+    .hero-copy { max-width: 650px; margin: 0; color: rgba(255,255,255,.88); font-size: 16px; }
+    .hero-hint { margin: 18px 0 0; color: #f2d58e; font-size: 13px; font-weight: 700; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-    .button { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 10px 19px; border: 1px solid transparent; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+    .button { display: inline-flex; justify-content: center; align-items: center; min-height: 50px; padding: 11px 20px; border: 1px solid transparent; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
     .button:hover { transform: translateY(-2px); }
-    .button-primary { background: var(--gold); color: var(--ink); }
+    .button:focus-visible, .site-nav a:focus-visible, .checklist-card:focus-visible, .video-card:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
+    .button-primary { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(208,173,85,.22); }
     .button-primary:hover { background: #e3c16d; }
     .button-secondary { border-color: rgba(255,255,255,.45); color: var(--white); background: rgba(255,255,255,.05); }
     .button-secondary:hover { border-color: var(--gold); color: #f2d58e; }
@@ -95,14 +99,14 @@
     .notice { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.14); padding: 16px 0; background: var(--ink-soft); color: rgba(255,255,255,.76); font-size: 12px; }
     .notice p { margin: 0; }
     .checklist-section { background: #f3f0e8; }
-    .checklist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .checklist-card { display: flex; flex-direction: column; min-height: 252px; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); text-decoration: none; box-shadow: 0 8px 24px rgba(10,22,40,.05); transition: transform .2s ease, box-shadow .2s ease; }
+    .checklist-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; }
+    .checklist-card { grid-column: span 2; display: flex; flex-direction: column; min-height: 252px; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); text-decoration: none; box-shadow: 0 8px 24px rgba(10,22,40,.05); transition: transform .2s ease, box-shadow .2s ease; }
     .checklist-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
     .checklist-card .card-kicker { color: #9b792a; font-size: 11px; font-weight: 700; letter-spacing: .10em; }
     .checklist-card h3 { margin: 12px 0 9px; font-size: 22px; line-height: 1.5; }
     .checklist-card p { margin: 0; color: var(--muted); font-size: 13px; }
     .checklist-card .card-link { margin-top: auto; padding-top: 22px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
-    .checklist-card.featured-guide { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; min-height: 0; padding: 22px 26px; background: var(--ink); color: var(--white); }
+    .checklist-card.featured-guide { grid-column: span 3; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; min-height: 0; padding: 22px 26px; background: var(--ink); color: var(--white); }
     .checklist-card.featured-guide .card-kicker, .checklist-card.featured-guide .card-link { color: #f2d58e; }
     .checklist-card.featured-guide h3 { margin: 6px 0; font-size: 21px; }
     .checklist-card.featured-guide p { color: rgba(255,255,255,.75); }
@@ -150,16 +154,27 @@
       .site-nav { gap: 13px; font-size: 12px; }
       .hero { min-height: auto; padding: 135px 0 72px; }
       .section { padding: 66px 0; }
-      .video-grid, .checklist-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .checklist-grid { grid-template-columns: repeat(2, 1fr); }
+      .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
       .media-flow, .about { grid-template-columns: 1fr; }
       .section-head, .footer-top { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 480px) {
       .container { width: min(100% - 32px, 1120px); }
-      .site-nav a:not(:last-child) { display: none; }
-      h1 { font-size: 36px; }
-      .cta-row { flex-direction: column; }
-      .button { width: 100%; }
+      .site-header { padding: 14px 0; }
+      .site-nav { gap: 0; }
+      .site-nav a { display: none; }
+      .site-nav a:first-child { display: inline-flex; min-height: 34px; padding: 5px 10px; font-size: 12px; }
+      .hero { padding: 122px 0 62px; }
+      h1 { font-size: 35px; line-height: 1.38; }
+      .hero-copy { font-size: 15px; }
+      .topic-list { margin-top: 28px; }
+      .cta-row { flex-direction: column; margin-top: 26px; }
+      .button { width: 100%; min-height: 52px; }
+      .checklist-grid { grid-template-columns: 1fr; }
+      .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
+      .section-head { margin-bottom: 28px; }
     }
   </style>
 </head>
@@ -182,11 +197,12 @@
       <div class="container hero-inner">
         <span class="eyebrow">BEGINNER-FRIENDLY MONEY MEDIA</span>
         <h1 id="hero-title">お金の「わからない」を、<strong>今日からの一歩</strong>に。</h1>
-        <p class="hero-copy">ゆゆくりっどは、新NISA・資産形成・副業などのお金の基礎を、初心者の方にもわかりやすく整理してお届けする情報メディアです。動画と記事から、知りたいテーマを選んでください。</p>
+        <p class="hero-copy">新NISA・資産形成・副業などのお金の基礎を、初心者の方にもわかりやすく整理する情報メディアです。まずは今の目的に近い無料ガイドを選んでください。</p>
+        <p class="hero-hint">迷ったら、目的から選ぶだけで大丈夫です。</p>
         <div class="cta-row">
-          <a class="button button-primary" href="/start.html" data-analytics="start_hub" data-cta-location="hero">目的から選ぶ</a>
-          <a class="button button-secondary" href="#videos">最新動画を見る</a>
-          <a class="button button-secondary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer" data-analytics="blog_hero" data-cta-location="hero">ブログを読む</a>
+          <a class="button button-primary" href="/start.html" data-analytics="start_hub" data-cta-location="hero">無料ガイドを目的から選ぶ</a>
+          <a class="button button-secondary" href="#videos">最新動画から見る</a>
+          <a class="button button-secondary" href="https://regimag.jp/b/blog/detail" target="_blank" rel="noopener noreferrer" data-analytics="blog_hero" data-cta-location="hero">ブログで読む</a>
         </div>
         <div class="topic-list" aria-label="主なテーマ">
           <span class="topic">新NISA</span>
