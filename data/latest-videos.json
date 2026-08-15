@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-14T03:01:23.389Z",
+  "updatedAt": "2026-08-15T01:53:01.436Z",
   "videos": [
+    {
+      "id": "-O7MkL6baOs",
+      "title": "明日、新しい不動産クラウド",
+      "url": "https://www.youtube.com/shorts/-O7MkL6baOs",
+      "thumbnail": "https://i2.ytimg.com/vi/-O7MkL6baOs/hqdefault.jpg",
+      "published": "2026-08-14T14:31:40+00:00",
+      "dateLabel": "2026.08.14"
+    },
     {
       "id": "wIDE98oTuPI",
       "title": "「優先劣後方式」「目論見書」って",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/9DJ0YvgLTss/hqdefault.jpg",
       "published": "2026-08-08T13:51:09+00:00",
       "dateLabel": "2026.08.08"
-    },
-    {
-      "id": "ayUwIAtCPa4",
-      "title": "「日経平均が下がった」って聞いて、",
-      "url": "https://www.youtube.com/shorts/ayUwIAtCPa4",
-      "thumbnail": "https://i2.ytimg.com/vi/ayUwIAtCPa4/hqdefault.jpg",
-      "published": "2026-08-07T02:55:25+00:00",
-      "dateLabel": "2026.08.07"
     }
   ]
 }
