@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-15T01:53:01.436Z",
+  "updatedAt": "2026-08-16T01:59:44.635Z",
   "videos": [
+    {
+      "id": "f3h7QLxs3Xw",
+      "title": "昨日お伝えしたSENSE OWNERSに",
+      "url": "https://www.youtube.com/shorts/f3h7QLxs3Xw",
+      "thumbnail": "https://i3.ytimg.com/vi/f3h7QLxs3Xw/hqdefault.jpg",
+      "published": "2026-08-15T13:32:03+00:00",
+      "dateLabel": "2026.08.15"
+    },
     {
       "id": "-O7MkL6baOs",
       "title": "明日、新しい不動産クラウド",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i1.ytimg.com/vi/PiK0GiVV1bs/hqdefault.jpg",
       "published": "2026-08-10T02:40:46+00:00",
       "dateLabel": "2026.08.10"
-    },
-    {
-      "id": "9DJ0YvgLTss",
-      "title": "「業種を分散する」って、自分で",
-      "url": "https://www.youtube.com/shorts/9DJ0YvgLTss",
-      "thumbnail": "https://i2.ytimg.com/vi/9DJ0YvgLTss/hqdefault.jpg",
-      "published": "2026-08-08T13:51:09+00:00",
-      "dateLabel": "2026.08.08"
     }
   ]
 }
