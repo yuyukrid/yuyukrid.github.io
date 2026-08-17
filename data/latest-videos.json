@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-16T01:59:44.635Z",
+  "updatedAt": "2026-08-17T01:57:40.654Z",
   "videos": [
+    {
+      "id": "FSPuy8Yx4s4",
+      "title": "良い面も気になる点も同じ熱量でお伝えします。",
+      "url": "https://www.youtube.com/shorts/FSPuy8Yx4s4",
+      "thumbnail": "https://i3.ytimg.com/vi/FSPuy8Yx4s4/hqdefault.jpg",
+      "published": "2026-08-16T15:19:14+00:00",
+      "dateLabel": "2026.08.17"
+    },
     {
       "id": "f3h7QLxs3Xw",
       "title": "昨日お伝えしたSENSE OWNERSに",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i3.ytimg.com/vi/vv0-PGnwNJk/hqdefault.jpg",
       "published": "2026-08-11T04:42:41+00:00",
       "dateLabel": "2026.08.11"
-    },
-    {
-      "id": "PiK0GiVV1bs",
-      "title": "「分散」って言葉、なんとなく分かった気に",
-      "url": "https://www.youtube.com/shorts/PiK0GiVV1bs",
-      "thumbnail": "https://i1.ytimg.com/vi/PiK0GiVV1bs/hqdefault.jpg",
-      "published": "2026-08-10T02:40:46+00:00",
-      "dateLabel": "2026.08.10"
     }
   ]
 }
