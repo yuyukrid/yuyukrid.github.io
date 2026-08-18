@@ -1,8 +1,24 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-17T01:57:40.654Z",
+  "updatedAt": "2026-08-18T01:53:23.742Z",
   "videos": [
+    {
+      "id": "gtJVhfQGzcg",
+      "title": "「日経平均5連騰」って聞いて、",
+      "url": "https://www.youtube.com/shorts/gtJVhfQGzcg",
+      "thumbnail": "https://i4.ytimg.com/vi/gtJVhfQGzcg/hqdefault.jpg",
+      "published": "2026-08-18T01:33:22+00:00",
+      "dateLabel": "2026.08.18"
+    },
+    {
+      "id": "pYNPYwmm-Vc",
+      "title": "積立投資中に相場が下がったら、",
+      "url": "https://www.youtube.com/shorts/pYNPYwmm-Vc",
+      "thumbnail": "https://i1.ytimg.com/vi/pYNPYwmm-Vc/hqdefault.jpg",
+      "published": "2026-08-17T13:35:07+00:00",
+      "dateLabel": "2026.08.17"
+    },
     {
       "id": "FSPuy8Yx4s4",
       "title": "良い面も気になる点も同じ熱量でお伝えします。",
@@ -34,22 +50,6 @@
       "thumbnail": "https://i4.ytimg.com/vi/wIDE98oTuPI/hqdefault.jpg",
       "published": "2026-08-13T05:04:39+00:00",
       "dateLabel": "2026.08.13"
-    },
-    {
-      "id": "Qyq75IXbHG0",
-      "title": "「日経平均2%高」って聞いて、",
-      "url": "https://www.youtube.com/shorts/Qyq75IXbHG0",
-      "thumbnail": "https://i2.ytimg.com/vi/Qyq75IXbHG0/hqdefault.jpg",
-      "published": "2026-08-12T12:46:32+00:00",
-      "dateLabel": "2026.08.12"
-    },
-    {
-      "id": "vv0-PGnwNJk",
-      "title": "投資先を選ぶとき、利回りの数字しか",
-      "url": "https://www.youtube.com/shorts/vv0-PGnwNJk",
-      "thumbnail": "https://i3.ytimg.com/vi/vv0-PGnwNJk/hqdefault.jpg",
-      "published": "2026-08-11T04:42:41+00:00",
-      "dateLabel": "2026.08.11"
     }
   ]
 }
