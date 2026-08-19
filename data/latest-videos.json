@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-18T01:53:23.742Z",
+  "updatedAt": "2026-08-19T01:55:50.845Z",
   "videos": [
+    {
+      "id": "ad8alRG5qHU",
+      "title": "【訂正とお知らせ】今朝、本日締切と",
+      "url": "https://www.youtube.com/shorts/ad8alRG5qHU",
+      "thumbnail": "https://i2.ytimg.com/vi/ad8alRG5qHU/hqdefault.jpg",
+      "published": "2026-08-18T12:18:01+00:00",
+      "dateLabel": "2026.08.18"
+    },
     {
       "id": "gtJVhfQGzcg",
       "title": "「日経平均5連騰」って聞いて、",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/-O7MkL6baOs/hqdefault.jpg",
       "published": "2026-08-14T14:31:40+00:00",
       "dateLabel": "2026.08.14"
-    },
-    {
-      "id": "wIDE98oTuPI",
-      "title": "「優先劣後方式」「目論見書」って",
-      "url": "https://www.youtube.com/shorts/wIDE98oTuPI",
-      "thumbnail": "https://i4.ytimg.com/vi/wIDE98oTuPI/hqdefault.jpg",
-      "published": "2026-08-13T05:04:39+00:00",
-      "dateLabel": "2026.08.13"
     }
   ]
 }
