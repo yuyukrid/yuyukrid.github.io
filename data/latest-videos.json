@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-19T01:55:50.845Z",
+  "updatedAt": "2026-08-20T01:54:27.444Z",
   "videos": [
+    {
+      "id": "d2-BvixeBiA",
+      "title": "おかげさまで、Instagramのフォロワーが",
+      "url": "https://www.youtube.com/shorts/d2-BvixeBiA",
+      "thumbnail": "https://i1.ytimg.com/vi/d2-BvixeBiA/hqdefault.jpg",
+      "published": "2026-08-19T14:15:55+00:00",
+      "dateLabel": "2026.08.19"
+    },
     {
       "id": "ad8alRG5qHU",
       "title": "【訂正とお知らせ】今朝、本日締切と",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i3.ytimg.com/vi/f3h7QLxs3Xw/hqdefault.jpg",
       "published": "2026-08-15T13:32:03+00:00",
       "dateLabel": "2026.08.15"
-    },
-    {
-      "id": "-O7MkL6baOs",
-      "title": "明日、新しい不動産クラウド",
-      "url": "https://www.youtube.com/shorts/-O7MkL6baOs",
-      "thumbnail": "https://i2.ytimg.com/vi/-O7MkL6baOs/hqdefault.jpg",
-      "published": "2026-08-14T14:31:40+00:00",
-      "dateLabel": "2026.08.14"
     }
   ]
 }
