@@ -89,7 +89,7 @@
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
     .button { display: inline-flex; justify-content: center; align-items: center; min-height: 50px; padding: 11px 20px; border: 1px solid transparent; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 700; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
     .button:hover { transform: translateY(-2px); }
-    .button:focus-visible, .site-nav a:focus-visible, .checklist-card:focus-visible, .video-card:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
+    .button:focus-visible, .site-nav a:focus-visible, .checklist-card:focus-visible, .video-card:focus-visible, .blog-card:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
     .button-primary { background: var(--gold); color: var(--ink); box-shadow: 0 8px 20px rgba(208,173,85,.22); }
     .button-primary:hover { background: #e3c16d; }
     .button-secondary { border-color: rgba(255,255,255,.45); color: var(--white); background: rgba(255,255,255,.05); }
@@ -127,6 +127,18 @@
     .video-date { margin: 0 0 7px; color: #9b792a; font-size: 11px; letter-spacing: .04em; }
     .video-title { display: -webkit-box; margin: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 15px; line-height: 1.65; }
     .video-status { grid-column: 1 / -1; margin: 0; color: var(--muted); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .blog-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 24px rgba(10,22,40,.05); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+    .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .blog-thumb { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(135deg, #172942, #315a86); }
+    .blog-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .blog-badge { position: absolute; left: 12px; bottom: 12px; padding: 4px 9px; border-radius: 4px; background: rgba(10,22,40,.86); color: #f2d58e; font-size: 10px; letter-spacing: .04em; }
+    .blog-body { flex: 1; padding: 17px 18px 19px; }
+    .blog-date { margin: 0 0 7px; color: #9b792a; font-size: 11px; letter-spacing: .04em; }
+    .blog-title { display: -webkit-box; margin: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; font-size: 15px; line-height: 1.65; }
+    .blog-source { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
+    .blog-status { grid-column: 1 / -1; margin: 0; color: var(--muted); }
+    .blog-notice { margin: 20px 0 0; padding: 14px 17px; border-left: 3px solid var(--gold); background: var(--gold-pale); color: #594b2e; font-size: 12px; }
     .media-flow { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: stretch; }
     .content-card, .trust-card { border-radius: var(--radius); padding: clamp(25px, 4vw, 46px); }
     .content-card { background: var(--ink); color: var(--white); }
@@ -154,7 +166,7 @@
       .site-nav { gap: 13px; font-size: 12px; }
       .hero { min-height: auto; padding: 135px 0 72px; }
       .section { padding: 66px 0; }
-      .video-grid { grid-template-columns: 1fr; }
+      .video-grid, .blog-grid { grid-template-columns: 1fr; }
       .checklist-grid { grid-template-columns: repeat(2, 1fr); }
       .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
       .media-flow, .about { grid-template-columns: 1fr; }
@@ -269,24 +281,38 @@
     </section>
 
     <section id="blog" class="section section-alt" aria-labelledby="blog-title">
-      <div class="container media-flow">
-        <div class="content-card">
-          <span class="section-kicker" style="color:#f2d58e">Articles</span>
-          <h2 id="blog-title">記事で、基礎からじっくり学ぶ。</h2>
-          <p>動画だけではわかりにくい用語や考え方を、記事でもわかりやすく解説しています。初めての方は、目的別ガイドで確認したいことを整理してから、気になるテーマの記事をお選びください。</p>
-          <div class="cta-row">
-            <a class="button button-primary" href="/start.html" data-analytics="start_hub" data-cta-location="articles">目的別ガイドを見る</a>
-            <a class="button button-secondary" href="https://regimag.jp/b/blog/detail/?blog=3869" target="_blank" rel="noopener noreferrer" data-analytics="blog_articles" data-cta-location="articles">ブログ記事を読む</a>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Latest articles</span>
+            <h2 id="blog-title">最新のブログ記事</h2>
           </div>
+          <p class="section-lead">公開RSSから最新記事を自動で反映しています。記事はレジまぐブログで公開しており、PRを含む場合はカードに表示します。</p>
         </div>
-        <div class="trust-card">
-          <span class="section-kicker">Reading guide</span>
-          <h2>情報を見るときに大切にしたいこと</h2>
-          <ul class="check-list">
-            <li>更新日と情報の出典を確認する</li>
-            <li>メリットだけでなく、リスクや前提も確認する</li>
-            <li>一つの情報だけで結論を急がない</li>
-          </ul>
+        <div id="blog-grid" class="blog-grid" aria-live="polite">
+          <p class="blog-status">最新記事を読み込んでいます。</p>
+        </div>
+        <p class="blog-notice"><strong>記事を読む前に：</strong>掲載記事にはアフィリエイト広告を含む場合があります。記事を開いた後は、更新日、PR表示、メリットだけでなくリスク・条件・公式情報を確認してください。</p>
+        <div class="cta-row">
+          <a class="button button-primary" href="https://regimag.jp/b/view/list/blog/3869/" target="_blank" rel="noopener noreferrer" data-analytics="blog_list" data-cta-location="latest_articles">ブログ記事を一覧で見る</a>
+          <a class="button button-secondary" href="/start.html" data-analytics="start_hub" data-cta-location="latest_articles">目的別ガイドを見る</a>
+        </div>
+        <div class="media-flow" style="margin-top:36px">
+          <div class="content-card">
+            <span class="section-kicker" style="color:#f2d58e">READING FLOW</span>
+            <h2>気になる記事は、確認シートと一緒に読む。</h2>
+            <p>記事を読む前に目的や注意点を整理すると、必要な情報を選びやすくなります。投資・契約・申込みを急ぐための案内ではありません。</p>
+            <a class="button button-primary" href="/start.html" data-analytics="start_hub" data-cta-location="articles_support">目的別ガイドを見る</a>
+          </div>
+          <div class="trust-card">
+            <span class="section-kicker">Reading guide</span>
+            <h2>情報を見るときに大切にしたいこと</h2>
+            <ul class="check-list">
+              <li>更新日と情報の出典を確認する</li>
+              <li>メリットだけでなく、リスクや前提も確認する</li>
+              <li>一つの情報だけで結論を急がない</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -332,6 +358,7 @@
 
   <script>
     const videoGrid = document.getElementById('video-grid');
+    const blogGrid = document.getElementById('blog-grid');
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
     }[character]));
@@ -360,6 +387,32 @@
       }
     }
     renderLatestVideos();
+
+    async function renderLatestBlogArticles() {
+      try {
+        const response = await fetch('/data/latest-blog-articles.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('ブログ記事データを取得できませんでした。');
+        const data = await response.json();
+        const articles = Array.isArray(data.articles) ? data.articles.slice(0, 3) : [];
+        if (!articles.length) throw new Error('表示できるブログ記事がありません。');
+        blogGrid.innerHTML = articles.map((article) => `
+          <a class="blog-card" href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer" data-analytics="blog_latest_article" data-cta-location="latest_articles">
+            <div class="blog-thumb">
+              <img src="${escapeHtml(article.thumbnail)}" alt="" loading="lazy">
+              ${article.hasPromotionNotice ? '<span class="blog-badge">PRを含む場合があります</span>' : '<span class="blog-badge">レジまぐブログ</span>'}
+            </div>
+            <div class="blog-body">
+              <p class="blog-date">${escapeHtml(article.dateLabel || '')}</p>
+              <h3 class="blog-title">${escapeHtml(article.title)}</h3>
+              <p class="blog-source">レジまぐブログで読む →</p>
+            </div>
+          </a>
+        `).join('');
+      } catch (error) {
+        blogGrid.innerHTML = '<p class="blog-status">最新記事はブログ一覧でご覧いただけます。</p>';
+      }
+    }
+    renderLatestBlogArticles();
 
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a[data-analytics]');

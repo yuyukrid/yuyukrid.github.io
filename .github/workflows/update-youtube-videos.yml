@@ -1,4 +1,4 @@
-name: 最新YouTube動画を更新
+name: 最新YouTube動画とブログ記事を更新
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-youtube-videos
+  group: update-public-content
   cancel-in-progress: false
 
 jobs:
@@ -24,17 +24,19 @@ jobs:
         with:
           node-version: '22'
 
-      - name: 最新動画データを生成
-        run: node tools/update-youtube-videos.mjs
+      - name: 最新動画・ブログ記事データを生成
+        run: |
+          node tools/update-youtube-videos.mjs
+          node tools/update-blog-articles.mjs
 
       - name: 変更をコミット
         run: |
-          if git diff --quiet -- data/latest-videos.json; then
-            echo "動画データに変更はありません。"
+          if git diff --quiet -- data/latest-videos.json data/latest-blog-articles.json; then
+            echo "動画・ブログ記事データに変更はありません。"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest-videos.json
-          git commit -m "chore: 最新YouTube動画を更新"
+          git add data/latest-videos.json data/latest-blog-articles.json
+          git commit -m "chore: 最新動画とブログ記事を更新"
           git push
