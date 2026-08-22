@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-20T01:54:27.444Z",
+  "updatedAt": "2026-08-22T01:53:36.065Z",
   "videos": [
+    {
+      "id": "2dGjEVwZDD8",
+      "title": "今週の日経平均、5営業日でどれだけ",
+      "url": "https://www.youtube.com/shorts/2dGjEVwZDD8",
+      "thumbnail": "https://i3.ytimg.com/vi/2dGjEVwZDD8/hqdefault.jpg",
+      "published": "2026-08-21T14:36:16+00:00",
+      "dateLabel": "2026.08.21"
+    },
     {
       "id": "d2-BvixeBiA",
       "title": "おかげさまで、Instagramのフォロワーが",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i3.ytimg.com/vi/FSPuy8Yx4s4/hqdefault.jpg",
       "published": "2026-08-16T15:19:14+00:00",
       "dateLabel": "2026.08.17"
-    },
-    {
-      "id": "f3h7QLxs3Xw",
-      "title": "昨日お伝えしたSENSE OWNERSに",
-      "url": "https://www.youtube.com/shorts/f3h7QLxs3Xw",
-      "thumbnail": "https://i3.ytimg.com/vi/f3h7QLxs3Xw/hqdefault.jpg",
-      "published": "2026-08-15T13:32:03+00:00",
-      "dateLabel": "2026.08.15"
     }
   ]
 }
