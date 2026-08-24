@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-23T02:02:07.537Z",
+  "updatedAt": "2026-08-24T02:00:11.625Z",
   "videos": [
+    {
+      "id": "dktRbn7txLo",
+      "title": "オルカンとS&P500、",
+      "url": "https://www.youtube.com/shorts/dktRbn7txLo",
+      "thumbnail": "https://i1.ytimg.com/vi/dktRbn7txLo/hqdefault.jpg",
+      "published": "2026-08-23T12:20:18+00:00",
+      "dateLabel": "2026.08.23"
+    },
     {
       "id": "D2G3dK179wY",
       "title": "つみたて投資枠と成長投資枠、",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i4.ytimg.com/vi/gtJVhfQGzcg/hqdefault.jpg",
       "published": "2026-08-18T01:33:22+00:00",
       "dateLabel": "2026.08.18"
-    },
-    {
-      "id": "pYNPYwmm-Vc",
-      "title": "積立投資中に相場が下がったら、",
-      "url": "https://www.youtube.com/shorts/pYNPYwmm-Vc",
-      "thumbnail": "https://i1.ytimg.com/vi/pYNPYwmm-Vc/hqdefault.jpg",
-      "published": "2026-08-17T13:35:07+00:00",
-      "dateLabel": "2026.08.17"
     }
   ]
 }
