@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-27T09:56:47.062Z",
+  "updatedAt": "2026-08-29T07:09:33.192Z",
   "videos": [
+    {
+      "id": "iQ4H8dRJcBo",
+      "title": "【今週の1問】",
+      "url": "https://www.youtube.com/shorts/iQ4H8dRJcBo",
+      "thumbnail": "https://i2.ytimg.com/vi/iQ4H8dRJcBo/hqdefault.jpg",
+      "published": "2026-08-29T02:57:52+00:00",
+      "dateLabel": "2026.08.29"
+    },
     {
       "id": "5WmrPv8fkms",
       "title": "同じ「全世界株式」なら",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i3.ytimg.com/vi/2dGjEVwZDD8/hqdefault.jpg",
       "published": "2026-08-21T14:36:16+00:00",
       "dateLabel": "2026.08.21"
-    },
-    {
-      "id": "d2-BvixeBiA",
-      "title": "おかげさまで、Instagramのフォロワーが",
-      "url": "https://www.youtube.com/shorts/d2-BvixeBiA",
-      "thumbnail": "https://i1.ytimg.com/vi/d2-BvixeBiA/hqdefault.jpg",
-      "published": "2026-08-19T14:15:55+00:00",
-      "dateLabel": "2026.08.19"
     }
   ]
 }
