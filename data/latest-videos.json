@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-29T07:09:33.192Z",
+  "updatedAt": "2026-08-31T05:44:26.179Z",
   "videos": [
+    {
+      "id": "JtpUBQsFjTQ",
+      "title": "NISAとiDeCo、",
+      "url": "https://www.youtube.com/shorts/JtpUBQsFjTQ",
+      "thumbnail": "https://i3.ytimg.com/vi/JtpUBQsFjTQ/hqdefault.jpg",
+      "published": "2026-08-30T14:02:31+00:00",
+      "dateLabel": "2026.08.30"
+    },
     {
       "id": "iQ4H8dRJcBo",
       "title": "【今週の1問】",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i1.ytimg.com/vi/D2G3dK179wY/hqdefault.jpg",
       "published": "2026-08-22T13:09:56+00:00",
       "dateLabel": "2026.08.22"
-    },
-    {
-      "id": "2dGjEVwZDD8",
-      "title": "今週の日経平均、5営業日でどれだけ",
-      "url": "https://www.youtube.com/shorts/2dGjEVwZDD8",
-      "thumbnail": "https://i3.ytimg.com/vi/2dGjEVwZDD8/hqdefault.jpg",
-      "published": "2026-08-21T14:36:16+00:00",
-      "dateLabel": "2026.08.21"
     }
   ]
 }
