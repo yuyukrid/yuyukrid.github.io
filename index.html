@@ -127,6 +127,14 @@
     .video-date { margin: 0 0 7px; color: #9b792a; font-size: 11px; letter-spacing: .04em; }
     .video-title { display: -webkit-box; margin: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 15px; line-height: 1.65; }
     .video-status { grid-column: 1 / -1; margin: 0; color: var(--muted); }
+    .broadcast-detail-card { margin-top: 36px; }
+    .broadcast-card { display: block; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(135deg, var(--ink) 0%, var(--ink-soft) 100%); color: var(--white); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+    .broadcast-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .broadcast-content { max-width: 600px; }
+    .broadcast-kicker { display: inline-block; padding: 4px 10px; border: 1px solid rgba(208,173,85,.48); border-radius: 999px; color: #f2d58e; font-size: 11px; letter-spacing: .1em; margin-bottom: 12px; }
+    .broadcast-title { margin: 0 0 12px; font-size: 24px; font-family: "Noto Serif JP", serif; line-height: 1.4; }
+    .broadcast-description { margin: 0 0 16px; color: rgba(255,255,255,.78); font-size: 14px; line-height: 1.8; }
+    .broadcast-link { color: #f2d58e; font-size: 13px; font-weight: 700; }
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
     .blog-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 24px rgba(10,22,40,.05); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
     .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
@@ -276,7 +284,17 @@
         </div>
         <div class="cta-row">
           <a class="button button-primary" href="https://www.youtube.com/@yuyushi17" target="_blank" rel="noopener noreferrer" data-analytics="youtube_channel" data-cta-location="latest_videos">YouTubeチャンネルを見る</a>
-          <a class="button button-secondary" href="/broadcast-2026-09-01.html" data-analytics="broadcast_detail" data-cta-location="latest_videos">配信内容の詳細を読む</a>
+        </div>
+
+        <div class="broadcast-detail-card" style="margin-top: 36px;">
+          <a href="/broadcast-2026-09-01.html" class="broadcast-card" data-analytics="broadcast_detail" data-cta-location="latest_videos">
+            <div class="broadcast-content">
+              <span class="broadcast-kicker">配信内容の深掘り解説</span>
+              <h3 class="broadcast-title">積立の頻度、毎月と毎日どっちがいい？</h3>
+              <p class="broadcast-description">新NISAのつみたて投資枠で迷う「毎月」と「毎日」の違いを徹底解説。管理のしやすさと購入タイミングの分散、どちらを優先すべきかを整理します。</p>
+              <span class="broadcast-link">詳細を読む →</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
