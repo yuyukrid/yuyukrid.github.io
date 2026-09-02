@@ -7,6 +7,9 @@ const FEED_URL = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const outputPath = resolve(__dirname, '../data/latest-videos.json');
 
+const MAX_RETRIES = 3;
+const RETRY_DELAYS_MS = [5000, 10000, 15000]; // 5秒, 10秒, 15秒
+
 function decodeXml(value = '') {
   return value
     .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
@@ -64,11 +67,46 @@ function parseFeed(xml) {
   });
 }
 
+async function fetchWithRetry(url, maxRetries = MAX_RETRIES) {
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Accept': 'application/rss+xml, application/xml, text/xml, */*',
+  };
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, { headers });
+
+      if (response.ok) {
+        return response;
+      }
+
+      // 404 または 5xx エラーの場合はリトライ
+      if ((response.status === 404 || response.status >= 500) && attempt < maxRetries - 1) {
+        const delay = RETRY_DELAYS_MS[attempt] || 15000;
+        console.log(`HTTP ${response.status} が返りました。${delay / 1000}秒後にリトライします... (${attempt + 1}/${maxRetries})`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
+
+      throw new Error(`YouTubeフィードの取得に失敗しました: ${response.status}`);
+    } catch (error) {
+      // ネットワークエラーなどの場合もリトライ
+      if (attempt < maxRetries - 1 && error instanceof TypeError) {
+        const delay = RETRY_DELAYS_MS[attempt] || 15000;
+        console.log(`ネットワークエラーが発生しました。${delay / 1000}秒後にリトライします... (${attempt + 1}/${maxRetries})`);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  throw new Error('リトライ回数の上限に達しました。');
+}
+
 try {
-  const response = await fetch(FEED_URL, {
-    headers: { 'User-Agent': 'yuyukrid.github.io content updater' },
-  });
-  if (!response.ok) throw new Error(`YouTubeフィードの取得に失敗しました: ${response.status}`);
+  const response = await fetchWithRetry(FEED_URL);
 
   const xml = await response.text();
   const videos = parseFeed(xml);
