@@ -1,8 +1,32 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-08-31T05:44:26.179Z",
+  "updatedAt": "2026-09-02T11:51:41.068Z",
   "videos": [
+    {
+      "id": "shiOVCekfeg",
+      "title": "【新NISA】積立は毎月？毎日？正しい頻度の選び方",
+      "url": "https://www.youtube.com/shorts/shiOVCekfeg",
+      "thumbnail": "https://i4.ytimg.com/vi/shiOVCekfeg/hqdefault.jpg",
+      "published": "2026-09-02T11:40:53+00:00",
+      "dateLabel": "2026.09.02"
+    },
+    {
+      "id": "Ceaa3ZaWyMw",
+      "title": "【PR】9月最新版に更新しました",
+      "url": "https://www.youtube.com/shorts/Ceaa3ZaWyMw",
+      "thumbnail": "https://i4.ytimg.com/vi/Ceaa3ZaWyMw/hqdefault.jpg",
+      "published": "2026-09-01T12:10:33+00:00",
+      "dateLabel": "2026.09.01"
+    },
+    {
+      "id": "W2O3wBGDrZ8",
+      "title": "【今週の1問】",
+      "url": "https://www.youtube.com/shorts/W2O3wBGDrZ8",
+      "thumbnail": "https://i4.ytimg.com/vi/W2O3wBGDrZ8/hqdefault.jpg",
+      "published": "2026-08-31T15:15:00+00:00",
+      "dateLabel": "2026.09.01"
+    },
     {
       "id": "JtpUBQsFjTQ",
       "title": "NISAとiDeCo、",
@@ -26,30 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/5WmrPv8fkms/hqdefault.jpg",
       "published": "2026-08-26T12:59:27+00:00",
       "dateLabel": "2026.08.26"
-    },
-    {
-      "id": "Hi5b2RVrVSc",
-      "title": "新しい不動産クラウドファンディングを",
-      "url": "https://www.youtube.com/shorts/Hi5b2RVrVSc",
-      "thumbnail": "https://i1.ytimg.com/vi/Hi5b2RVrVSc/hqdefault.jpg",
-      "published": "2026-08-24T14:17:04+00:00",
-      "dateLabel": "2026.08.24"
-    },
-    {
-      "id": "dktRbn7txLo",
-      "title": "オルカンとS&P500、",
-      "url": "https://www.youtube.com/shorts/dktRbn7txLo",
-      "thumbnail": "https://i1.ytimg.com/vi/dktRbn7txLo/hqdefault.jpg",
-      "published": "2026-08-23T12:20:18+00:00",
-      "dateLabel": "2026.08.23"
-    },
-    {
-      "id": "D2G3dK179wY",
-      "title": "つみたて投資枠と成長投資枠、",
-      "url": "https://www.youtube.com/shorts/D2G3dK179wY",
-      "thumbnail": "https://i1.ytimg.com/vi/D2G3dK179wY/hqdefault.jpg",
-      "published": "2026-08-22T13:09:56+00:00",
-      "dateLabel": "2026.08.22"
     }
   ]
 }
