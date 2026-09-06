@@ -106,7 +106,14 @@ async function fetchWithRetry(url, maxRetries = MAX_RETRIES) {
 }
 
 try {
-  const response = await fetchWithRetry(FEED_URL);
+  let response;
+  try {
+    response = await fetchWithRetry(FEED_URL);
+  } catch (error) {
+    console.warn(`YouTubeフィードを取得できないため、既存データを保持します: ${error instanceof Error ? error.message : error}`);
+    console.warn('次回の GitHub Actions 実行時に再取得します。');
+    process.exit(0);
+  }
 
   const xml = await response.text();
   const videos = parseFeed(xml);
