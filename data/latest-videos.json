@@ -1,8 +1,24 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-09-02T11:51:41.068Z",
+  "updatedAt": "2026-09-07T04:50:45.551Z",
   "videos": [
+    {
+      "id": "welLNYh3cuY",
+      "title": "【新NISA】ボーナス月設定は使うべき？毎月と特定月、正しい選び方",
+      "url": "https://www.youtube.com/shorts/welLNYh3cuY",
+      "thumbnail": "https://i4.ytimg.com/vi/welLNYh3cuY/hqdefault.jpg",
+      "published": "2026-09-06T15:26:42+00:00",
+      "dateLabel": "2026.09.07"
+    },
+    {
+      "id": "QC6HsKD4bLk",
+      "title": "9/20（日）21:00開催「海外資産」無料オンラインセミナーについて、公開情報を整理しました",
+      "url": "https://www.youtube.com/shorts/QC6HsKD4bLk",
+      "thumbnail": "https://i2.ytimg.com/vi/QC6HsKD4bLk/hqdefault.jpg",
+      "published": "2026-09-05T14:22:05+00:00",
+      "dateLabel": "2026.09.05"
+    },
     {
       "id": "shiOVCekfeg",
       "title": "【新NISA】積立は毎月？毎日？正しい頻度の選び方",
@@ -34,22 +50,6 @@
       "thumbnail": "https://i3.ytimg.com/vi/JtpUBQsFjTQ/hqdefault.jpg",
       "published": "2026-08-30T14:02:31+00:00",
       "dateLabel": "2026.08.30"
-    },
-    {
-      "id": "iQ4H8dRJcBo",
-      "title": "【今週の1問】",
-      "url": "https://www.youtube.com/shorts/iQ4H8dRJcBo",
-      "thumbnail": "https://i2.ytimg.com/vi/iQ4H8dRJcBo/hqdefault.jpg",
-      "published": "2026-08-29T02:57:52+00:00",
-      "dateLabel": "2026.08.29"
-    },
-    {
-      "id": "5WmrPv8fkms",
-      "title": "同じ「全世界株式」なら",
-      "url": "https://www.youtube.com/shorts/5WmrPv8fkms",
-      "thumbnail": "https://i2.ytimg.com/vi/5WmrPv8fkms/hqdefault.jpg",
-      "published": "2026-08-26T12:59:27+00:00",
-      "dateLabel": "2026.08.26"
     }
   ]
 }
