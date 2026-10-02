@@ -1,8 +1,24 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-09-22T16:05:46.868Z",
+  "updatedAt": "2026-10-02T05:34:06.498Z",
   "videos": [
+    {
+      "id": "jIuF_666ptY",
+      "title": "【新NISA】費用と使いやすさ、比べるときのチェックポイント",
+      "url": "https://www.youtube.com/shorts/jIuF_666ptY",
+      "thumbnail": "https://i3.ytimg.com/vi/jIuF_666ptY/hqdefault.jpg",
+      "published": "2026-10-02T00:18:08+00:00",
+      "dateLabel": "2026.10.02"
+    },
+    {
+      "id": "ttbkVg5Ty3c",
+      "title": "【新NISA】投資信託とETF、同じ指数でも何が違う？",
+      "url": "https://www.youtube.com/shorts/ttbkVg5Ty3c",
+      "thumbnail": "https://i1.ytimg.com/vi/ttbkVg5Ty3c/hqdefault.jpg",
+      "published": "2026-09-27T15:29:54+00:00",
+      "dateLabel": "2026.09.28"
+    },
     {
       "id": "dD2qv8kGX6s",
       "title": "証券会社、1つにまとめるか分けるか、自分に合う方法を説明できますか？",
@@ -34,22 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/13o0OTfU0OA/hqdefault.jpg",
       "published": "2026-09-15T13:30:25+00:00",
       "dateLabel": "2026.09.15"
-    },
-    {
-      "id": "RR6M9x7iCSw",
-      "title": "【新NISA】一括投資と積立投資、正しい選び方",
-      "url": "https://www.youtube.com/shorts/RR6M9x7iCSw",
-      "thumbnail": "https://i3.ytimg.com/vi/RR6M9x7iCSw/hqdefault.jpg",
-      "published": "2026-09-13T17:57:50+00:00",
-      "dateLabel": "2026.09.14"
-    },
-    {
-      "id": "VGkZLaa6DSo",
-      "title": "【リマインド】トーチーズFund No.65｜募集開始は9/17・先着順",
-      "url": "https://www.youtube.com/shorts/VGkZLaa6DSo",
-      "thumbnail": "https://i3.ytimg.com/vi/VGkZLaa6DSo/hqdefault.jpg",
-      "published": "2026-09-12T13:11:31+00:00",
-      "dateLabel": "2026.09.12"
     }
   ]
 }
