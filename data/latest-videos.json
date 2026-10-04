@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-02T05:48:42.115Z",
+  "updatedAt": "2026-10-04T06:01:03.183Z",
   "videos": [
+    {
+      "id": "bHqbpDMm7JE",
+      "title": "【PR】2026年10月のクラファン募集日・締切日まとめ",
+      "url": "https://www.youtube.com/shorts/bHqbpDMm7JE",
+      "thumbnail": "https://i.ytimg.com/vi/bHqbpDMm7JE/hqdefault.jpg",
+      "published": "2026-10-04T06:01:03.155Z",
+      "dateLabel": "2026.10.04"
+    },
     {
       "id": "jIuF_666ptY",
       "title": "【新NISA】費用と使いやすさ、比べるときのチェックポイント",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/tDYpX6oaHFg/hqdefault.jpg",
       "published": "2026-09-16T14:07:52+00:00",
       "dateLabel": "2026.09.16"
-    },
-    {
-      "id": "13o0OTfU0OA",
-      "title": "【PR・訂正】トーチーズ No.65運用期間変更のご報告🙇",
-      "url": "https://www.youtube.com/shorts/13o0OTfU0OA",
-      "thumbnail": "https://i.ytimg.com/vi/13o0OTfU0OA/hqdefault.jpg",
-      "published": "2026-09-15T13:30:25+00:00",
-      "dateLabel": "2026.09.15"
     }
   ]
 }
