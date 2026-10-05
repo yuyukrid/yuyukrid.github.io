@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-04T06:01:03.183Z",
+  "updatedAt": "2026-10-05T05:50:37.554Z",
   "videos": [
+    {
+      "id": "fnTXgWGDHJM",
+      "title": "【PR】年率18%は実際いくら？先着式ファンドの見方｜トーチーズNo.66",
+      "url": "https://www.youtube.com/shorts/fnTXgWGDHJM",
+      "thumbnail": "https://i.ytimg.com/vi/fnTXgWGDHJM/hqdefault.jpg",
+      "published": "2026-10-05T05:50:37.242Z",
+      "dateLabel": "2026.10.05"
+    },
     {
       "id": "bHqbpDMm7JE",
       "title": "【PR】2026年10月のクラファン募集日・締切日まとめ",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/Xs-8LiYHe8E/hqdefault.jpg",
       "published": "2026-09-18T13:20:11+00:00",
       "dateLabel": "2026.09.18"
-    },
-    {
-      "id": "tDYpX6oaHFg",
-      "title": "【保存版】「週間−1.55%」の裏側、実は−3.60%動いていた話",
-      "url": "https://www.youtube.com/shorts/tDYpX6oaHFg",
-      "thumbnail": "https://i.ytimg.com/vi/tDYpX6oaHFg/hqdefault.jpg",
-      "published": "2026-09-16T14:07:52+00:00",
-      "dateLabel": "2026.09.16"
     }
   ]
 }
