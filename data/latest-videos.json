@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-05T05:50:37.554Z",
+  "updatedAt": "2026-10-13T06:52:04.490Z",
   "videos": [
+    {
+      "id": "bRUo0DGJDlU",
+      "title": "【新NISA】NISA口座、何を見て選ぶ？確認したい4つ",
+      "url": "https://www.youtube.com/shorts/bRUo0DGJDlU",
+      "thumbnail": "https://i.ytimg.com/vi/bRUo0DGJDlU/hqdefault.jpg",
+      "published": "2026-10-13T06:52:04.452Z",
+      "dateLabel": "2026.10.13"
+    },
     {
       "id": "fnTXgWGDHJM",
       "title": "【PR】年率18%は実際いくら？先着式ファンドの見方｜トーチーズNo.66",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/dD2qv8kGX6s/hqdefault.jpg",
       "published": "2026-09-22T09:14:10+00:00",
       "dateLabel": "2026.09.22"
-    },
-    {
-      "id": "Xs-8LiYHe8E",
-      "title": "特定口座、源泉徴収あり・なしどっちが自分に合うか説明できますか？",
-      "url": "https://www.youtube.com/shorts/Xs-8LiYHe8E",
-      "thumbnail": "https://i.ytimg.com/vi/Xs-8LiYHe8E/hqdefault.jpg",
-      "published": "2026-09-18T13:20:11+00:00",
-      "dateLabel": "2026.09.18"
     }
   ]
 }
