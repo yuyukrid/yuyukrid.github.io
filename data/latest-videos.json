@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-16T04:40:04.499Z",
+  "updatedAt": "2026-10-21T04:58:09.637Z",
   "videos": [
+    {
+      "id": "JcaYZSuzl1o",
+      "title": "【PR・告知】不動産クラファン、新ファンドが出る前の4つの準備",
+      "url": "https://www.youtube.com/shorts/JcaYZSuzl1o",
+      "thumbnail": "https://i.ytimg.com/vi/JcaYZSuzl1o/hqdefault.jpg",
+      "published": "2026-10-21T04:58:09.592Z",
+      "dateLabel": "2026.10.21"
+    },
     {
       "id": "JfkQ9kh9l2c",
       "title": "【PR】副業Webライターのスクール、申し込む前に確認したい3つ",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/jIuF_666ptY/hqdefault.jpg",
       "published": "2026-10-02T00:18:08+00:00",
       "dateLabel": "2026.10.02"
-    },
-    {
-      "id": "ttbkVg5Ty3c",
-      "title": "【新NISA】投資信託とETF、同じ指数でも何が違う？",
-      "url": "https://www.youtube.com/shorts/ttbkVg5Ty3c",
-      "thumbnail": "https://i.ytimg.com/vi/ttbkVg5Ty3c/hqdefault.jpg",
-      "published": "2026-09-27T15:29:54+00:00",
-      "dateLabel": "2026.09.28"
     }
   ]
 }
