@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-25T04:52:31.893Z",
+  "updatedAt": "2026-10-26T04:56:39.831Z",
   "videos": [
+    {
+      "id": "P13nscsPdB4",
+      "title": "【PR】らくたま50号、本日12時から募集開始｜条件とリスク",
+      "url": "https://www.youtube.com/shorts/P13nscsPdB4",
+      "thumbnail": "https://i.ytimg.com/vi/P13nscsPdB4/hqdefault.jpg",
+      "published": "2026-10-26T04:56:39.788Z",
+      "dateLabel": "2026.10.26"
+    },
     {
       "id": "Xar-VCGYVeM",
       "title": "【PR】らくたま50号、申し込む前に確認したい3つ",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/fnTXgWGDHJM/hqdefault.jpg",
       "published": "2026-10-05T03:17:58+00:00",
       "dateLabel": "2026.10.05"
-    },
-    {
-      "id": "bHqbpDMm7JE",
-      "title": "【PR】2026年10月のクラファン募集日・締切日まとめ",
-      "url": "https://www.youtube.com/shorts/bHqbpDMm7JE",
-      "thumbnail": "https://i.ytimg.com/vi/bHqbpDMm7JE/hqdefault.jpg",
-      "published": "2026-10-03T06:21:48+00:00",
-      "dateLabel": "2026.10.03"
     }
   ]
 }
