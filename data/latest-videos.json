@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-26T04:56:39.831Z",
+  "updatedAt": "2026-10-28T05:52:36.865Z",
   "videos": [
+    {
+      "id": "UQjx5yMYqVo",
+      "title": "【PR】renga第4号ってどんなファンド？両国・馬込の2物件 #shorts",
+      "url": "https://www.youtube.com/shorts/UQjx5yMYqVo",
+      "thumbnail": "https://i.ytimg.com/vi/UQjx5yMYqVo/hqdefault.jpg",
+      "published": "2026-10-28T05:52:36.824Z",
+      "dateLabel": "2026.10.28"
+    },
     {
       "id": "P13nscsPdB4",
       "title": "【PR】らくたま50号、本日12時から募集開始｜条件とリスク",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/bRUo0DGJDlU/hqdefault.jpg",
       "published": "2026-10-12T08:02:20+00:00",
       "dateLabel": "2026.10.12"
-    },
-    {
-      "id": "fnTXgWGDHJM",
-      "title": "【PR】年率18%は実際いくら？先着式ファンドの見方｜トーチーズNo.66",
-      "url": "https://www.youtube.com/shorts/fnTXgWGDHJM",
-      "thumbnail": "https://i.ytimg.com/vi/fnTXgWGDHJM/hqdefault.jpg",
-      "published": "2026-10-05T03:17:58+00:00",
-      "dateLabel": "2026.10.05"
     }
   ]
 }
