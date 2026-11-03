@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-10-28T05:52:36.865Z",
+  "updatedAt": "2026-11-03T06:56:33.235Z",
   "videos": [
+    {
+      "id": "koViQCQIyQI",
+      "title": "【不動産クラファン】資料の読み方チェックリスト5つ",
+      "url": "https://www.youtube.com/shorts/koViQCQIyQI",
+      "thumbnail": "https://i.ytimg.com/vi/koViQCQIyQI/hqdefault.jpg",
+      "published": "2026-11-03T06:56:33.211Z",
+      "dateLabel": "2026.11.03"
+    },
     {
       "id": "UQjx5yMYqVo",
       "title": "【PR】renga第4号ってどんなファンド？両国・馬込の2物件 #shorts",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/JfkQ9kh9l2c/hqdefault.jpg",
       "published": "2026-10-14T14:05:21+00:00",
       "dateLabel": "2026.10.14"
-    },
-    {
-      "id": "bRUo0DGJDlU",
-      "title": "【新NISA】NISA口座、何を見て選ぶ？確認したい4つ",
-      "url": "https://www.youtube.com/shorts/bRUo0DGJDlU",
-      "thumbnail": "https://i.ytimg.com/vi/bRUo0DGJDlU/hqdefault.jpg",
-      "published": "2026-10-12T08:02:20+00:00",
-      "dateLabel": "2026.10.12"
     }
   ]
 }
