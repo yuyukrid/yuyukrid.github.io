@@ -178,7 +178,15 @@
       .video-grid, .blog-grid { grid-template-columns: 1fr; }
       .checklist-grid { grid-template-columns: 1fr; }
       .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
-      .checklist-card.featured-guide { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 22px 24px; }
+      .checklist-card.featured-guide {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+        padding: 22px 20px !important;
+      }
+      .checklist-card.featured-guide > div { width: 100% !important; }
+      .checklist-card.featured-guide .guide-arrow { margin-top: 6px !important; align-self: flex-start !important; }
       .media-flow, .about { grid-template-columns: 1fr; }
       .section-head, .footer-top { flex-direction: column; align-items: flex-start; }
     }
