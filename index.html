@@ -170,31 +170,50 @@
     .footer-links a { color: rgba(255,255,255,.72); font-size: 13px; text-decoration: none; }
     .footer-links a:hover { color: #f2d58e; }
     .copyright { margin: 22px 0 0; color: rgba(255,255,255,.38); font-size: 11px; }
+    .u-nowrap { white-space: nowrap; display: inline-block; }
     @media (max-width: 800px) {
       .site-nav { gap: 13px; font-size: 12px; }
-      .hero { min-height: auto; padding: 135px 0 72px; }
-      .section { padding: 66px 0; }
+      .hero { min-height: auto; padding: 125px 0 64px; }
+      .section { padding: 56px 0; }
       .video-grid, .blog-grid { grid-template-columns: 1fr; }
-      .checklist-grid { grid-template-columns: repeat(2, 1fr); }
+      .checklist-grid { grid-template-columns: 1fr; }
       .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
+      .checklist-card.featured-guide { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 22px 24px; }
       .media-flow, .about { grid-template-columns: 1fr; }
       .section-head, .footer-top { flex-direction: column; align-items: flex-start; }
     }
+    @media (max-width: 600px) {
+      .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 26px; }
+      .cta-row .button-primary { grid-column: 1 / -1; min-height: 50px; font-size: 15px; }
+      .cta-row .button-secondary { min-height: 44px; padding: 10px 12px; font-size: 13px; text-align: center; justify-content: center; }
+      .cta-row .button-secondary:last-child { grid-column: 1 / -1; }
+    }
     @media (max-width: 480px) {
-      .container { width: min(100% - 32px, 1120px); }
+      .container { width: min(100% - 28px, 1120px); }
       .site-header { padding: 14px 0; }
       .site-nav { gap: 0; }
       .site-nav a { display: none; }
-      .site-nav a:first-child { display: inline-flex; min-height: 34px; padding: 5px 10px; font-size: 12px; }
-      .hero { padding: 122px 0 62px; }
-      h1 { font-size: 35px; line-height: 1.38; }
-      .hero-copy { font-size: 15px; }
-      .topic-list { margin-top: 28px; }
-      .cta-row { flex-direction: column; margin-top: 26px; }
-      .button { width: 100%; min-height: 52px; }
-      .checklist-grid { grid-template-columns: 1fr; }
-      .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
-      .section-head { margin-bottom: 28px; }
+      .site-nav a:first-child {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 5px 12px;
+        font-size: 12px;
+        background: rgba(214, 180, 92, 0.15);
+        border: 1px solid rgba(242, 213, 142, 0.8);
+        border-radius: 20px;
+      }
+      .hero { padding: 110px 0 52px; }
+      h1 { font-size: 31px; line-height: 1.36; letter-spacing: -0.02em; }
+      .hero-copy { font-size: 14.5px; line-height: 1.7; }
+      .topic-list { margin-top: 24px; gap: 8px; }
+      .checklist-card { padding: 22px 18px; min-height: 0; }
+      .checklist-card h3 { font-size: 18.5px; line-height: 1.45; margin: 10px 0 7px; word-break: keep-all; overflow-wrap: anywhere; }
+      .checklist-card p { font-size: 12.5px; line-height: 1.6; }
+      .checklist-card.featured-guide { padding: 20px 18px; }
+      .checklist-card.featured-guide h3 { font-size: 18.5px; line-height: 1.45; margin: 8px 0 6px; word-break: keep-all; overflow-wrap: anywhere; }
+      .checklist-card.featured-guide p { font-size: 12.5px; line-height: 1.6; }
+      .section-head { margin-bottom: 24px; }
     }
   </style>
 </head>
@@ -252,19 +271,19 @@
         </div>
         <div class="checklist-grid">
           <a class="checklist-card" href="/nisa-checklist.html" data-analytics="nisa_checklist_landing" data-cta-location="checklist_hub">
-            <span class="card-kicker">NEW NISA</span><h3>新NISAを始める前の確認シート</h3><p>目的・家計・リスクを整理して、制度を学ぶ前の準備をします。</p><span class="card-link">無料PDFを見る →</span>
+            <span class="card-kicker">NEW NISA</span><h3>新NISAを始める前の<span class="u-nowrap">確認シート</span></h3><p>目的・家計・リスクを整理して、制度を学ぶ前の準備をします。</p><span class="card-link">無料PDFを見る →</span>
           </a>
           <a class="checklist-card" href="/asset-formation-checklist.html" data-analytics="asset_checklist_landing" data-cta-location="checklist_hub">
-            <span class="card-kicker">ASSET BUILDING</span><h3>資産形成を考える前の確認シート</h3><p>家計、ライフプラン、金融商品の役割を基本から整理します。</p><span class="card-link">無料PDFを見る →</span>
+            <span class="card-kicker">ASSET BUILDING</span><h3>資産形成を考える前の<span class="u-nowrap">確認シート</span></h3><p>家計、ライフプラン、金融商品の役割を基本から整理します。</p><span class="card-link">無料PDFを見る →</span>
           </a>
           <a class="checklist-card" href="/side-job-checklist.html" data-analytics="sidejob_checklist_landing" data-cta-location="checklist_hub">
-            <span class="card-kicker">SIDE JOB</span><h3>副業を始める前の確認シート</h3><p>本業のルール、時間、健康との両立を確認します。</p><span class="card-link">無料PDFを見る →</span>
+            <span class="card-kicker">SIDE JOB</span><h3>副業を始める前の<span class="u-nowrap">確認シート</span></h3><p>本業のルール、時間、健康との両立を確認します。</p><span class="card-link">無料PDFを見る →</span>
           </a>
           <a class="checklist-card featured-guide" href="/crowdfunding-checklist.html" data-analytics="crowdfunding_checklist_landing" data-cta-location="checklist_hub">
-            <div><span class="card-kicker">FREE COMPARISON CHECKLIST</span><h3>クラウドファンディング比較前チェックシート</h3><p>利回りや特典の前に、仕組み・資金拘束・情報開示・リスクを整理します。</p></div><span class="guide-arrow">無料PDFを見る →</span>
+            <div><span class="card-kicker">FREE COMPARISON CHECKLIST</span><h3>クラウドファンディング<br>比較前<span class="u-nowrap">チェックシート</span></h3><p>利回りや特典の前に、仕組み・資金拘束・情報開示・リスクを整理します。</p></div><span class="guide-arrow">無料PDFを見る →</span>
           </a>
           <a class="checklist-card featured-guide" href="/renovation-estimate-checklist.html" data-analytics="renovation_estimate_checklist_landing" data-cta-location="checklist_hub">
-            <div><span class="card-kicker">FREE COMPARISON CHECKLIST</span><h3>リノベーション見積もり前チェックシート</h3><p>費用だけで決めず、希望・内訳・追加費用・契約条件を整理します。</p></div><span class="guide-arrow">無料PDFを見る →</span>
+            <div><span class="card-kicker">FREE COMPARISON CHECKLIST</span><h3>リノベーション<br>見積もり前<span class="u-nowrap">チェックシート</span></h3><p>費用だけで決めず、希望・内訳・追加費用・契約条件を整理します。</p></div><span class="guide-arrow">無料PDFを見る →</span>
           </a>
         </div>
       </div>
