@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-06T06:57:14.667Z",
+  "updatedAt": "2026-11-07T06:09:34.460Z",
   "videos": [
+    {
+      "id": "jg8OZkoTP1Q",
+      "title": "11月クラファン18選｜締切間近まとめ #shorts",
+      "url": "https://www.youtube.com/shorts/jg8OZkoTP1Q",
+      "thumbnail": "https://i.ytimg.com/vi/jg8OZkoTP1Q/hqdefault.jpg",
+      "published": "2026-11-07T06:09:34.418Z",
+      "dateLabel": "2026.11.07"
+    },
     {
       "id": "Wrj_4s4eOe4",
       "title": "副業の商材探しはここ｜代理店ドットコムの使い方 #Shorts",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/Xar-VCGYVeM/hqdefault.jpg",
       "published": "2026-10-25T04:52:31.857Z",
       "dateLabel": "2026.10.25"
-    },
-    {
-      "id": "JcaYZSuzl1o",
-      "title": "【PR・告知】不動産クラファン、新ファンドが出る前の4つの準備",
-      "url": "https://www.youtube.com/shorts/JcaYZSuzl1o",
-      "thumbnail": "https://i.ytimg.com/vi/JcaYZSuzl1o/hqdefault.jpg",
-      "published": "2026-10-21T04:58:09.592Z",
-      "dateLabel": "2026.10.21"
     }
   ]
 }
