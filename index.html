@@ -146,6 +146,15 @@
     .blog-title { display: -webkit-box; margin: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; font-size: 15px; line-height: 1.65; }
     .blog-source { margin: 12px 0 0; color: var(--muted); font-size: 11px; }
     .blog-status { grid-column: 1 / -1; margin: 0; color: var(--muted); }
+    .column-section { background: #f3f0e8; }
+    .column-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .column-card { display: flex; flex-direction: column; min-height: 100%; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--white); text-decoration: none; box-shadow: 0 8px 24px rgba(10,22,40,.05); transition: transform .2s ease, box-shadow .2s ease; }
+    .column-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .column-kicker { color: #9b792a; font-size: 11px; font-weight: 700; letter-spacing: .10em; }
+    .column-card h3 { margin: 11px 0 8px; font-size: 18px; line-height: 1.5; }
+    .column-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .column-card .column-link { margin-top: auto; padding-top: 18px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
+    .column-card:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
     .blog-notice { margin: 20px 0 0; padding: 14px 17px; border-left: 3px solid var(--gold); background: var(--gold-pale); color: #594b2e; font-size: 12px; }
     .media-flow { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: stretch; }
     .content-card, .trust-card { border-radius: var(--radius); padding: clamp(25px, 4vw, 46px); }
@@ -175,7 +184,7 @@
       .site-nav { gap: 13px; font-size: 12px; }
       .hero { min-height: auto; padding: 125px 0 64px; }
       .section { padding: 56px 0; }
-      .video-grid, .blog-grid { grid-template-columns: 1fr; }
+      .video-grid, .blog-grid, .column-grid { grid-template-columns: 1fr; }
       .checklist-grid { grid-template-columns: 1fr; }
       .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
       .checklist-card.featured-guide {
@@ -235,6 +244,7 @@
         <a href="/beginner-guide.html" data-analytics="beginner_guide_landing" data-cta-location="header">はじめての方へ</a>
         <a href="#videos">動画</a>
         <a href="#blog">ブログ</a>
+        <a href="/column/" data-analytics="column_index" data-cta-location="header">コラム</a>
         <a href="/media.html" data-analytics="media_directory" data-cta-location="header">公式メディア</a>
         <a href="#about">このメディアについて</a>
       </nav>
@@ -363,6 +373,60 @@
       </div>
     </section>
 
+    <section id="columns" class="section column-section" aria-labelledby="columns-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Editorial columns</span>
+            <h2 id="columns-title">判断の手順を、解説コラムで。</h2>
+          </div>
+          <p class="section-lead">仕組み・数字の読み方・リスクの確認順を、テーマごとに長文で整理しています。動画やチェックシートと合わせて読むと、確認しやすい項目が見つかります。</p>
+        </div>
+        <div class="column-grid">
+          <a class="column-card" href="/column/crowdfunding-basics.html" data-analytics="column_crowdfunding_basics" data-cta-location="column_hub">
+            <span class="column-kicker">INVESTMENT BASICS</span>
+            <h3>クラウドファンディング入門｜仕組み・利回りの見方・元本割れ対策</h3>
+            <p>お金の流れ、利回りの数字が何を指すか、元本割れが起きる3つの経路と対策を整理。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/nisa-crowdfunding.html" data-analytics="column_nisa_crowdfunding" data-cta-location="column_hub">
+            <span class="column-kicker">ASSET BUILDING</span>
+            <h3>新NISA×クラウドファンディング｜堅実にお金を育てる3層モデル</h3>
+            <p>制度の基本と、守る・育てる・挑戦するの配分。資金拘束をライフイベントと重ねない考え方。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/side-job-selection.html" data-analytics="column_side_job" data-cta-location="column_hub">
+            <span class="column-kicker">SIDE JOB</span>
+            <h3>副業の選び方｜失敗しないための5つの基準と90日ステップ</h3>
+            <p>就業規則・税務・時間の確認から、仕事の3つの型、最初の90日の進め方まで。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/digital-securities-vs-crowdfunding.html" data-analytics="column_compare_st" data-cta-location="column_hub">
+            <span class="column-kicker">COMPARISON</span>
+            <h3>デジタル証券と不動産クラファン｜似て見える2つの違いを6項目で分解</h3>
+            <p>根拠となる制度、保有する権利、流動性、リスクの出方を比較して選び分ける。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/household-defense.html" data-analytics="column_household" data-cta-location="column_hub">
+            <span class="column-kicker">HOUSEHOLD</span>
+            <h3>資産運用を長く続けるための家計防衛とポートフォリオ管理</h3>
+            <p>整える順番、防衛資金の目安、固定費の見直し、リバランスと記録の作り方。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/investment-info-literacy.html" data-analytics="column_literacy" data-cta-location="column_hub">
+            <span class="column-kicker">LITERACY</span>
+            <h3>投資情報の見極め方｜広告記事の読み分けと危険なサイン</h3>
+            <p>一次情報の探し方、PR表記の読み方、数字のトリックと公的な相談先。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+        </div>
+        <div class="cta-row">
+          <a class="button button-primary" href="/column/" data-analytics="column_index" data-cta-location="column_hub">コラム一覧を見る</a>
+          <a class="button button-secondary" href="/about.html" data-analytics="about_operator" data-cta-location="column_hub">運営者情報と編集方針</a>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container about">
         <div>
@@ -371,6 +435,7 @@
         </div>
         <div>
           <p class="about-copy">投資・副業・お金に関する情報は多く、初めの一歩で迷うことも少なくありません。ゆゆくりっどでは、初心者が基礎を理解し、自分で考えるためのきっかけとなる情報を発信します。</p>
+          <p class="about-copy"><strong>運営者は牛山雄太（ゆゆし）</strong>です。投資・資産運用と副業に10年以上関わり、2020年からブログを、2026年から当サイトを運営しています。経歴と編集方針は<a href="/about.html" data-analytics="about_operator" data-cta-location="about">運営者情報</a>、ご連絡は<a href="/contact.html" data-analytics="contact" data-cta-location="about">お問い合わせ</a>をご覧ください。</p>
           <p class="about-copy">最新の発信はYouTubeとブログでご案内しています。内容は適宜見直し、情報の更新日・前提条件・リスクにも注意してご覧ください。<a href="/beginner-guide.html" data-analytics="beginner_guide_landing" data-cta-location="about">はじめての方へ</a>、Instagramで見た内容を探すための<a href="/post-guides.html" data-analytics="post_guides_landing" data-cta-location="about">投稿テーマまとめ</a>、<a href="/quick-checks.html" data-analytics="quick_checks_landing" data-cta-location="about">30秒確認カード</a>、<a href="/glossary.html" data-analytics="term_hub_landing" data-cta-location="about">用語・公式情報ミニハブ</a>も利用できます。</p>
         </div>
       </div>
@@ -386,6 +451,9 @@
         </div>
         <div class="footer-links">
           <a href="/media.html" data-analytics="media_directory" data-cta-location="footer">公式メディア一覧</a>
+          <a href="/column/" data-analytics="column_index" data-cta-location="footer">コラム一覧</a>
+          <a href="/about.html" data-analytics="about_operator" data-cta-location="footer">運営者情報</a>
+          <a href="/contact.html" data-analytics="contact" data-cta-location="footer">お問い合わせ</a>
           <a href="https://www.instagram.com/yuyushi17" target="_blank" rel="noopener noreferrer" data-analytics="media_instagram" data-cta-location="footer">Instagram</a>
           <a href="https://regimag.jp/b/blog/detail/?blog=3869" target="_blank" rel="noopener noreferrer" data-analytics="media_regimag" data-cta-location="footer">ブログ</a>
           <a href="https://www.youtube.com/@yuyushi17" target="_blank" rel="noopener noreferrer" data-analytics="media_youtube" data-cta-location="footer">YouTube</a>
