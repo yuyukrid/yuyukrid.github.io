@@ -1,8 +1,24 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-13T06:54:17.338Z",
+  "updatedAt": "2026-11-14T06:38:47.012Z",
   "videos": [
+    {
+      "id": "yMgMcHVYA1w",
+      "title": "【PR】新NISAだけだと値動きにソワソワする人へ📊",
+      "url": "https://www.youtube.com/shorts/yMgMcHVYA1w",
+      "thumbnail": "https://i.ytimg.com/vi/yMgMcHVYA1w/hqdefault.jpg",
+      "published": "2026-11-14T06:38:46.984Z",
+      "dateLabel": "2026.11.14"
+    },
+    {
+      "id": "Es7BvdYx5x4",
+      "title": "【完全放置】銀行預金の7,000倍！？初心者向け不動産クラファン2選✨",
+      "url": "https://www.youtube.com/shorts/Es7BvdYx5x4",
+      "thumbnail": "https://i.ytimg.com/vi/Es7BvdYx5x4/hqdefault.jpg",
+      "published": "2026-11-14T06:38:47.012Z",
+      "dateLabel": "2026.11.14"
+    },
     {
       "id": "geUvBszj4Jw",
       "title": "下諏訪のケーキ屋さん「Patisserie Ciel」名物・雲のシフォンがふわっふわだった☁️🧁 #PR",
@@ -34,22 +50,6 @@
       "thumbnail": "https://i.ytimg.com/vi/jg8OZkoTP1Q/hqdefault.jpg",
       "published": "2026-11-06T13:59:32+00:00",
       "dateLabel": "2026.11.06"
-    },
-    {
-      "id": "Wrj_4s4eOe4",
-      "title": "副業の商材探しはここ｜代理店ドットコムの使い方 #Shorts",
-      "url": "https://www.youtube.com/shorts/Wrj_4s4eOe4",
-      "thumbnail": "https://i.ytimg.com/vi/Wrj_4s4eOe4/hqdefault.jpg",
-      "published": "2026-11-05T12:14:48+00:00",
-      "dateLabel": "2026.11.05"
-    },
-    {
-      "id": "koViQCQIyQI",
-      "title": "【不動産クラファン】資料の読み方チェックリスト5つ",
-      "url": "https://www.youtube.com/shorts/koViQCQIyQI",
-      "thumbnail": "https://i.ytimg.com/vi/koViQCQIyQI/hqdefault.jpg",
-      "published": "2026-11-03T04:31:23+00:00",
-      "dateLabel": "2026.11.03"
     }
   ]
 }
