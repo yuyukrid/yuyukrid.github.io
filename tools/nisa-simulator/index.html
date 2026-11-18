@@ -132,6 +132,7 @@
     }
     .kicker { display: inline-flex; align-items: center; gap: 8px; color: #a8822c; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
     .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    .h1-sub { display: inline; }
     h1 { margin: 14px 0 12px; font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 4.2vw, 36px); line-height: 1.45; font-weight: 900; color: var(--brown); }
     .hero p { max-width: 700px; color: #5a4634; font-size: 14.5px; }
 
@@ -288,7 +289,10 @@
     }
     @media (max-width: 600px) {
       .wrap, .wrap-narrow { width: min(100% - 26px, 1080px); }
-      .top-nav { gap: 11px; font-size: 11.5px; }
+      .top-inner { flex-wrap: wrap; gap: 8px 16px; padding: 12px 0; }
+      .brand { font-size: 17px; white-space: nowrap; }
+      .top-nav { gap: 8px 13px; font-size: 11px; }
+      .h1-sub { display: block; }
       .hero { padding: 32px 0 28px; }
       .tool-card { padding: 20px 15px 18px; border-radius: 14px; }
       .results { gap: 9px; }
@@ -331,7 +335,7 @@
 <div class="hero">
   <div class="wrap">
     <p class="kicker">NISA SIMULATOR</p>
-    <h1>新NISA つみたて投資シミュレーター</h1>
+    <h1>新NISA <span class="h1-sub">つみたて投資シミュレーター</span></h1>
     <p>毎月の積立額・想定年利・積立期間を動かすと、最終評価額・積立元本・運用益・非課税メリットをその場で計算します。金額はすべて目安です。入力した金額が外部に送信されることはありません。</p>
   </div>
 </div>
