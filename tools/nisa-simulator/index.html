@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新NISA つみたて投資シミュレーター｜毎月の積立でいくらになる？｜ゆゆくりっど</title>
+  <meta name="description" content="毎月の積立額・想定年利・積立期間を入れるだけで、新NISAの最終評価額・積立元本・運用益・課税口座との手取り差をその場で計算。積み上げグラフと年ごとの早見表つきの無料シミュレーターです。" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://yuyukrid.github.io/tools/nisa-simulator/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:site_name" content="ゆゆくりっど" />
+  <meta property="og:title" content="新NISA つみたて投資シミュレーター｜ゆゆくりっど" />
+  <meta property="og:description" content="毎月の積立額・想定年利・期間から、最終評価額と非課税メリットをその場で計算。グラフと早見表で推移を確認できます。" />
+  <meta property="og:url" content="https://yuyukrid.github.io/tools/nisa-simulator/" />
+  <meta name="twitter:card" content="summary" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-31T0RF0KFP"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-31T0RF0KFP');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "新NISA つみたて投資シミュレーター",
+    "url": "https://yuyukrid.github.io/tools/nisa-simulator/",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "ja",
+    "description": "毎月の積立額・想定年利・積立期間から、新NISAでの最終評価額、積立元本、運用益、課税口座との手取り差を計算する無料ツールです。",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    "publisher": { "@type": "Organization", "name": "ゆゆくりっど", "url": "https://yuyukrid.github.io/" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://yuyukrid.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "新NISA つみたて投資シミュレーター" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "このシミュレーターの金額は実際の運用結果と同じになりますか",
+        "acceptedAnswer": { "@type": "Answer", "text": "同じにはなりません。毎月一定額を、毎年一定の利率で複利運用した場合の試算です。実際の投資信託は日ごとに価格が変動し、手数料もかかるため、結果は目安としてお考えください。" }
+      },
+      {
+        "@type": "Question",
+        "name": "想定年利は何パーセントで計算すればいいですか",
+        "acceptedAnswer": { "@type": "Answer", "text": "長期の株式インデックス運用では年3〜5%前後を目安として使うことが多いですが、これは過去の実績にもとづく仮定で、将来を保証するものではありません。低め・中央・高めの3パターンを並べて確認するのがおすすめです。" }
+      },
+      {
+        "@type": "Question",
+        "name": "非課税メリットの金額はどう計算していますか",
+        "acceptedAnswer": { "@type": "Answer", "text": "運用益に対して、通常の課税口座でかかる20.315%（所得税15.315%＋住民税5%）の税金を差し引いた額との差を表示しています。元本割れの場合は利益がないため税金もかからず、差は0円になります。" }
+      },
+      {
+        "@type": "Question",
+        "name": "NISAの年間枠を超える金額を入れた場合はどうなりますか",
+        "acceptedAnswer": { "@type": "Answer", "text": "このツールは枠の上限を判定していません。つみたて投資枠は年120万円、成長投資枠は年240万円が上限です。毎月10万円の積立は年120万円で、つみたて投資枠の上限と同じ水準になります。" }
+      },
+      {
+        "@type": "Question",
+        "name": "途中で積立額を変更した場合は計算できますか",
+        "acceptedAnswer": { "@type": "Answer", "text": "このツールは期間中の積立額が一定という前提です。増額・減額をしたい場合は、変更前と変更後を分けて計算し、それぞれの結果を足し合わせてください。" }
+      }
+    ]
+  }
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5598681929883061"
+     crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --ink: #0a1628;
+      --ink-soft: #172942;
+      --gold: #c9a84c;
+      --gold-deep: #a8822c;
+      --gold-pale: #f7ecd5;
+      --paper: #fdf8f1;
+      --card: #ffffff;
+      --line: #ecdfcb;
+      --brown: #3d1a00;
+      --body: #3f3a33;
+      --muted: #7a6a58;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+      background: var(--paper);
+      color: var(--body);
+      line-height: 1.85;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: #8B4513; text-underline-offset: .15em; }
+    a:hover { color: #a8822c; }
+    .wrap { width: min(1080px, calc(100% - 32px)); margin: 0 auto; }
+    .wrap-narrow { width: min(760px, calc(100% - 32px)); margin: 0 auto; }
+
+    /* ─── ヘッダー ─── */
+    .site-top { background: var(--ink); color: #fff; }
+    .top-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 0; }
+    .brand { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: .03em; }
+    .brand span { color: var(--gold); }
+    .top-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; font-size: 12.5px; }
+    .top-nav a { color: rgba(255,255,255,.82); text-decoration: none; }
+    .top-nav a:hover { color: #f2d58e; }
+
+    /* ─── パンくず ─── */
+    .breadcrumb { background: #fff8f0; border-bottom: 1px solid #f0e0cc; font-size: 11.5px; color: #a08060; }
+    .breadcrumb ol { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 9px 0; }
+    .breadcrumb li + li::before { content: "›"; margin-right: 7px; color: #c9b49a; }
+    .breadcrumb a { color: #8B4513; text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* ─── ヒーロー ─── */
+    .hero {
+      padding: 44px 0 38px;
+      background:
+        radial-gradient(circle at 88% 0%, rgba(201,168,76,.20), transparent 55%),
+        linear-gradient(180deg, #fffdf9 0%, #fdf6ec 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    .kicker { display: inline-flex; align-items: center; gap: 8px; color: #a8822c; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+    .kicker::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    h1 { margin: 14px 0 12px; font-family: 'Noto Serif JP', serif; font-size: clamp(24px, 4.2vw, 36px); line-height: 1.45; font-weight: 900; color: var(--brown); }
+    .hero p { max-width: 700px; color: #5a4634; font-size: 14.5px; }
+
+    /* ─── シミュレーター ─── */
+    .tool-section { padding: 34px 0 10px; }
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(61,26,0,.07);
+      padding: 26px 24px 22px;
+    }
+    .tool-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid #f2e6d4; }
+    .tool-head h2 { font-family: 'Noto Serif JP', serif; font-size: 19px; color: var(--brown); font-weight: 700; }
+    .tool-head p { font-size: 11.5px; color: var(--muted); }
+
+    .fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 22px 0 6px; }
+    .field { min-width: 0; }
+    .field-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+    .field label { font-size: 13px; font-weight: 700; color: #4a3a26; }
+    .field-value { font-size: 13px; font-weight: 800; color: #8B4513; white-space: nowrap; }
+    .field-value .unit { font-size: 11px; font-weight: 700; color: var(--muted); margin-left: 1px; }
+    input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 26px; background: transparent; cursor: pointer; }
+    input[type=range]::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #e8d5b5, #d6b985); }
+    input[type=range]::-moz-range-track { height: 6px; border-radius: 3px; background: linear-gradient(90deg, #e8d5b5, #d6b985); }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border-radius: 50%; background: #fff; border: 3px solid var(--gold-deep); box-shadow: 0 2px 6px rgba(61,26,0,.2); }
+    input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 3px solid var(--gold-deep); }
+    input[type=range]:focus-visible { outline: 2px solid #c9a84c; outline-offset: 3px; border-radius: 4px; }
+    .num-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+    .num-row input[type=number] {
+      width: 100%;
+      min-width: 0;
+      padding: 8px 10px;
+      border: 1px solid #ddc9ab;
+      border-radius: 8px;
+      background: #fffdf9;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brown);
+      text-align: right;
+    }
+    .num-row input[type=number]:focus { outline: 2px solid #c9a84c; outline-offset: 1px; border-color: #c9a84c; }
+    .num-row .suffix { font-size: 12px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+    .range-limits { display: flex; justify-content: space-between; margin-top: 2px; font-size: 10.5px; color: #a08d75; }
+
+    .presets { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 14px 0 0; }
+    .presets span { font-size: 11.5px; color: var(--muted); font-weight: 700; }
+    .preset {
+      padding: 5px 12px;
+      border: 1px solid #e2d0b4;
+      border-radius: 999px;
+      background: #fffaf2;
+      color: #7a4a18;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease;
+    }
+    .preset:hover { background: var(--gold-pale); border-color: var(--gold); }
+    .preset:focus-visible { outline: 2px solid #c9a84c; outline-offset: 2px; }
+
+    /* ─── 結果 ─── */
+    .results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 24px 0 0; }
+    .stat { padding: 14px 14px 13px; border: 1px solid #f0e2cc; border-radius: 12px; background: #fffdf8; }
+    .stat .stat-label { font-size: 11.5px; font-weight: 700; color: var(--muted); }
+    .stat .stat-value { display: block; margin-top: 5px; font-size: clamp(17px, 2.6vw, 21px); font-weight: 800; color: var(--brown); line-height: 1.4; letter-spacing: -.01em; }
+    .stat .stat-value .yen { font-size: .68em; margin-left: 1px; font-weight: 700; }
+    .stat .stat-note { display: block; margin-top: 4px; font-size: 10.5px; color: #9a8a74; }
+    .stat.is-main { background: var(--ink); border-color: var(--ink); }
+    .stat.is-main .stat-label { color: #f2d58e; }
+    .stat.is-main .stat-value { color: #fff; }
+    .stat.is-main .stat-note { color: rgba(255,255,255,.6); }
+    .stat.is-save { background: #fff6e2; border-color: #e8cf9a; }
+    .stat.is-save .stat-value { color: #8a5a12; }
+
+    /* ─── グラフ ─── */
+    .chart-block { margin-top: 26px; }
+    .chart-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 6px; }
+    .chart-head h3 { font-family: 'Noto Serif JP', serif; font-size: 15px; color: var(--brown); }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11.5px; color: #6b5a45; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .legend .lg-principal { background: #e3d0af; }
+    .legend .lg-gain { background: #b98a2f; }
+    .chart-svg { width: 100%; height: auto; display: block; }
+    .chart-caption { margin-top: 6px; font-size: 11px; color: #8d7a64; }
+
+    /* ─── 比較バー ─── */
+    .compare { margin-top: 22px; padding: 16px; border: 1px solid #f0e2cc; border-radius: 12px; background: #fffaf2; }
+    .compare h3 { font-family: 'Noto Serif JP', serif; font-size: 14px; color: var(--brown); margin-bottom: 10px; }
+    .cmp-row { display: grid; grid-template-columns: 8.5em 1fr auto; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+    .cmp-label { font-weight: 700; color: #5a4634; }
+    .cmp-track { height: 14px; border-radius: 7px; background: #f0e4d2; overflow: hidden; }
+    .cmp-fill { height: 100%; border-radius: 7px; }
+    .cmp-nisa { background: linear-gradient(90deg, #c9a84c, #b98a2f); }
+    .cmp-tax { background: #d8c3a1; }
+    .cmp-value { font-weight: 800; color: var(--brown); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .cmp-total { margin-top: 6px; padding-top: 10px; border-top: 1px dashed #e6d3b4; font-size: 12.5px; color: #6b5a45; }
+    .cmp-total strong { color: #8a5a12; font-size: 15px; }
+
+    /* ─── 早見表 ─── */
+    .table-block { margin-top: 24px; }
+    .table-block h3 { font-family: 'Noto Serif JP', serif; font-size: 15px; color: var(--brown); margin-bottom: 8px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.5px; background: #fff; }
+    th, td { border: 1px solid #ecdfcb; padding: 8px 10px; text-align: right; white-space: nowrap; }
+    th { background: #f9efe0; color: #6b3f12; font-weight: 700; text-align: right; }
+    th:first-child, td:first-child { text-align: center; }
+    tbody tr:nth-child(even) td { background: #fffcf6; }
+    tbody tr:last-child td { font-weight: 800; background: #fdf3de; }
+
+    .tool-note { margin-top: 18px; padding: 12px 14px; border-radius: 10px; background: #fdf6ec; border: 1px solid #f0e0cc; font-size: 11.5px; color: #6b5a45; line-height: 1.8; }
+
+    /* ─── 解説 ─── */
+    .guide { margin-top: 46px; padding: 44px 0 56px; background: #fffdf9; border-top: 3px solid var(--gold); }
+    .guide .guide-kicker { font-size: 11px; letter-spacing: .18em; color: #a08060; font-weight: 700; margin: 0 0 8px; }
+    .guide h2 { font-family: 'Noto Serif JP', 'Noto Sans JP', serif; font-size: 20px; line-height: 1.55; color: #4a2c0a; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid #f0e0cc; }
+    .guide h2:first-of-type { margin-top: 10px; }
+    .guide h3 { font-size: 15px; color: #7a4a18; margin: 24px 0 8px; }
+    .guide p, .guide li { font-size: 14px; line-height: 1.95; color: #4b3a2a; }
+    .guide p { margin-bottom: 1.1em; }
+    .guide .guide-lead { font-size: 14.5px; color: #5a4634; background: #fff8ee; border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 0 0 8px; }
+    .guide ul, .guide ol { padding-left: 1.35em; margin: 12px 0 18px; }
+    .guide li { margin-bottom: 6px; }
+    .guide .guide-table-wrap { overflow-x: auto; margin: 16px 0 20px; }
+    .guide .guide-table { width: 100%; border-collapse: collapse; font-size: 13px; background: #fff; }
+    .guide .guide-table th, .guide .guide-table td { border: 1px solid #ecdfd0; padding: 9px 10px; text-align: left; vertical-align: top; line-height: 1.8; white-space: normal; }
+    .guide .guide-table th { background: #f7eee2; color: #6b3f12; font-weight: 700; }
+    .guide .guide-formula { background: #3d1a00; color: #ffe9c9; border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.9; margin: 16px 0; }
+    .guide .guide-formula strong { color: #FFD700; }
+    .guide .guide-note { background: #fff8ee; border: 1px solid #f0d9b5; border-radius: 10px; padding: 14px 16px; margin: 18px 0; }
+    .guide .guide-note p { font-size: 13px; margin: 0; }
+    .guide .guide-faq h3 { border-left: 3px solid var(--gold); padding-left: 10px; font-size: 14.5px; }
+    .guide .guide-foot { margin-top: 36px; padding-top: 16px; border-top: 1px solid #f0e0cc; }
+    .guide .guide-foot p { font-size: 12px; color: #8a7060; }
+    .guide .guide-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; }
+    .guide .guide-nav a { display: inline-block; padding: 7px 12px; border: 1px solid #e0d0c0; border-radius: 16px; font-size: 12px; color: #8B4513; text-decoration: none; }
+    .guide .guide-nav a:hover { background: #f7eee2; }
+
+    /* ─── フッター ─── */
+    .site-footer { padding: 30px 0 34px; background: #3d1a00; text-align: center; }
+    .site-footer a { color: #CD853F; text-decoration: none; font-size: 13px; }
+    .site-footer a:hover { color: #f2d58e; }
+    .site-footer .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-bottom: 12px; }
+    .site-footer p { color: rgba(255,200,150,.55); font-size: 11px; line-height: 1.8; }
+
+    @media (max-width: 860px) {
+      .fields { grid-template-columns: 1fr; gap: 16px; }
+      .results { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .wrap, .wrap-narrow { width: min(100% - 26px, 1080px); }
+      .top-nav { gap: 11px; font-size: 11.5px; }
+      .hero { padding: 32px 0 28px; }
+      .tool-card { padding: 20px 15px 18px; border-radius: 14px; }
+      .results { gap: 9px; }
+      .stat { padding: 11px 11px 10px; }
+      .stat .stat-value { font-size: 17px; }
+      .cmp-row { grid-template-columns: 1fr auto; }
+      .cmp-track { grid-column: 1 / -1; order: 3; }
+      .guide { padding: 32px 0 44px; margin-top: 34px; }
+      .guide h2 { font-size: 18px; margin-top: 32px; }
+      .guide p, .guide li { font-size: 13.5px; }
+      .guide .guide-table { font-size: 12px; }
+      .guide .guide-table th, .guide .guide-table td { padding: 7px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-top">
+  <div class="wrap top-inner">
+    <a class="brand" href="/" aria-label="ゆゆくりっど トップ"><span>ゆゆ</span>くりっど</a>
+    <nav class="top-nav" aria-label="主なメニュー">
+      <a href="/start.html">目的から選ぶ</a>
+      <a href="/column/">コラム</a>
+      <a href="/beginner-guide.html">はじめての方へ</a>
+      <a href="/tools/furusato/">ふるさと納税計算</a>
+      <a href="/about.html">運営者情報</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <div class="wrap">
+    <ol>
+      <li><a href="/">ホーム</a></li>
+      <li>新NISA つみたて投資シミュレーター</li>
+    </ol>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="kicker">NISA SIMULATOR</p>
+    <h1>新NISA つみたて投資シミュレーター</h1>
+    <p>毎月の積立額・想定年利・積立期間を動かすと、最終評価額・積立元本・運用益・非課税メリットをその場で計算します。金額はすべて目安です。入力した金額が外部に送信されることはありません。</p>
+  </div>
+</div>
+
+<main>
+  <section class="tool-section">
+    <div class="wrap">
+      <noscript>
+        <p class="tool-note" style="margin:0 0 16px;">このページの計算機能はJavaScriptで動いています。JavaScriptが無効な環境では計算は動きませんが、下の解説はそのままお読みいただけます。</p>
+      </noscript>
+      <div class="tool-card">
+        <div class="tool-head">
+          <h2>条件を入れて、いくらになるか見てみる</h2>
+          <p>スライダーと数値入力はどちらも使えます</p>
+        </div>
+
+        <div class="fields">
+          <div class="field">
+            <div class="field-head">
+              <label for="monthly-range">毎月の積立額</label>
+              <span class="field-value" id="monthly-display">30,000<span class="unit">円</span></span>
+            </div>
+            <input type="range" id="monthly-range" min="10000" max="100000" step="1000" value="30000" aria-describedby="monthly-limits" />
+            <div class="range-limits" id="monthly-limits"><span>1万円</span><span>10万円</span></div>
+            <div class="num-row">
+              <input type="number" id="monthly-input" min="1000" max="1000000" step="1000" value="30000" inputmode="numeric" aria-label="毎月の積立額（円）" />
+              <span class="suffix">円／月</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <label for="rate-range">想定年利（複利）</label>
+              <span class="field-value" id="rate-display">5.0<span class="unit">%</span></span>
+            </div>
+            <input type="range" id="rate-range" min="0.5" max="10" step="0.1" value="5" aria-describedby="rate-limits" />
+            <div class="range-limits" id="rate-limits"><span>0.5%</span><span>10%</span></div>
+            <div class="num-row">
+              <input type="number" id="rate-input" min="0.1" max="15" step="0.1" value="5" inputmode="decimal" aria-label="想定年利（パーセント）" />
+              <span class="suffix">%／年</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-head">
+              <label for="years-range">積立期間</label>
+              <span class="field-value" id="years-display">20<span class="unit">年</span></span>
+            </div>
+            <input type="range" id="years-range" min="1" max="40" step="1" value="20" aria-describedby="years-limits" />
+            <div class="range-limits" id="years-limits"><span>1年</span><span>40年</span></div>
+            <div class="num-row">
+              <input type="number" id="years-input" min="1" max="40" step="1" value="20" inputmode="numeric" aria-label="積立期間（年）" />
+              <span class="suffix">年間</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="presets">
+          <span>よく使う条件：</span>
+          <button type="button" class="preset" data-monthly="10000" data-rate="3" data-years="20">月1万・3%・20年</button>
+          <button type="button" class="preset" data-monthly="30000" data-rate="5" data-years="30">月3万・5%・30年</button>
+          <button type="button" class="preset" data-monthly="100000" data-rate="5" data-years="20">月10万・5%・20年</button>
+        </div>
+
+        <div class="results" id="results" aria-live="polite">
+          <div class="stat">
+            <span class="stat-label">積立元本</span>
+            <span class="stat-value" id="out-principal">—</span>
+            <span class="stat-note">自分で出したお金の合計</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">運用益</span>
+            <span class="stat-value" id="out-gain">—</span>
+            <span class="stat-note">増えた分（税引前）</span>
+          </div>
+          <div class="stat is-main">
+            <span class="stat-label">最終評価額</span>
+            <span class="stat-value" id="out-value">—</span>
+            <span class="stat-note">NISAなら全額が非課税</span>
+          </div>
+          <div class="stat is-save">
+            <span class="stat-label">非課税メリット</span>
+            <span class="stat-value" id="out-saving">—</span>
+            <span class="stat-note">課税口座との手取り差</span>
+          </div>
+        </div>
+
+        <div class="chart-block">
+          <div class="chart-head">
+            <h3>積立元本と運用益の積み上がり</h3>
+            <div class="legend">
+              <span><i class="lg-principal"></i>元本</span>
+              <span><i class="lg-gain"></i>運用益</span>
+            </div>
+          </div>
+          <div id="chart" role="img" aria-label="年ごとの積立元本と運用益の積み上げグラフ"></div>
+          <p class="chart-caption" id="chart-caption">グラフは毎年の年末時点の評価額です。</p>
+        </div>
+
+        <div class="compare">
+          <h3>同じ運用をしたとき、NISAと課税口座でいくら違うか</h3>
+          <div class="cmp-row">
+            <span class="cmp-label">NISA（非課税）</span>
+            <div class="cmp-track"><div class="cmp-fill cmp-nisa" id="cmp-nisa" style="width:100%"></div></div>
+            <span class="cmp-value" id="cmp-nisa-value">—</span>
+          </div>
+          <div class="cmp-row">
+            <span class="cmp-label">課税口座の手取り</span>
+            <div class="cmp-track"><div class="cmp-fill cmp-tax" id="cmp-tax" style="width:100%"></div></div>
+            <span class="cmp-value" id="cmp-tax-value">—</span>
+          </div>
+          <p class="cmp-total" id="cmp-total">差額（非課税メリット）：—</p>
+        </div>
+
+        <div class="table-block">
+          <h3>5年ごとの早見表</h3>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">年</th>
+                  <th scope="col">積立元本</th>
+                  <th scope="col">評価額</th>
+                  <th scope="col">運用益</th>
+                  <th scope="col">元本比</th>
+                </tr>
+              </thead>
+              <tbody id="year-table">
+                <tr><td colspan="5">計算中です</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="tool-note"><strong>この試算の前提：</strong>毎月一定額を月末に積み立て、年利が一定のまま月次で複利運用されるものとして計算しています。税金は課税口座の場合に運用益へ20.315%（所得税15.315%＋住民税5%）がかかるものとし、手数料・価格変動・積立タイミングのずれは含みません。実際の運用結果とは異なります。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="guide" id="guide">
+    <div class="wrap-narrow">
+      <p class="guide-kicker">GUIDE</p>
+      <p class="guide-lead">上のシミュレーターが出している数字は、どこから来ているのか。非課税メリットの正体、想定利回りの現実的な置き方、元本割れと長期分散の意味を順に整理しました。数字の大きさに驚いたときこそ、前提を確かめる順番です。</p>
+
+      <h2>1. このシミュレーターが計算しているもの</h2>
+      <p>計算の中心は、毎月一定額を積み立てたときの将来の評価額です。月利を i、積立月数を n、毎月の積立額を P とすると、評価額は次の式で求められます。</p>
+      <div class="guide-formula">
+        評価額 ＝ P × ｛（1 ＋ i）<sup>n</sup> − 1｝ ÷ i<br />
+        <span style="font-size:12px;color:#ffd9a8;">※ i ＝ 年利 ÷ 12、n ＝ 積立年数 × 12。月末に積み立てる前提です。</span>
+      </div>
+      <p>積立元本は「毎月の積立額 × 月数」で、運用益は「評価額 − 積立元本」です。この2つを足したものが評価額になるので、グラフでは元本を下、運用益を上に積み上げて表示しています。</p>
+      <p>非課税メリットは、同じ運用を課税口座で行った場合にかかる税金との差です。課税口座では、売却して利益が出たときにその利益へ20.315%の税金がかかります。NISAではこれがかからないため、運用益 × 20.315% がそのまま手元に残る差になります。</p>
+
+      <h2>2. 新NISAの非課税メリットの仕組み</h2>
+      <p>投資の利益には、通常、所得税と住民税がかかります。合計20.315%という税率は、利益が100万円なら約20万3,150円が税金として差し引かれる水準です。新NISAは、この税金がかからない制度で、利益をそのまま次の運用に回せます。</p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr><th>項目</th><th>課税口座（特定口座など）</th><th>新NISA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>利益への税金</td><td>20.315%（所得税・住民税）</td><td>0%（非課税）</td></tr>
+            <tr><td>非課税で保有できる期間</td><td>—</td><td>無期限（2024年以降の制度）</td></tr>
+            <tr><td>年間の投資枠</td><td>なし</td><td>つみたて投資枠120万円／成長投資枠240万円（合計360万円）</td></tr>
+            <tr><td>生涯の非課税保有限度額</td><td>なし</td><td>1,800万円（うち成長投資枠は1,200万円まで）</td></tr>
+            <tr><td>売却したときの枠</td><td>—</td><td>売却した分（簿価）の枠が翌年に復活</td></tr>
+            <tr><td>損失が出たとき</td><td>他の利益と相殺できる（損益通算）</td><td>損益通算・繰越控除はできない</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>非課税メリットが効くのは、利益が出ているときです。逆に損失が出た場合、NISAではその損失を他の利益と相殺できないため、課税口座より不利になる場面があります。制度は「利益を非課税にする」ものであって、「損を埋めてくれる」ものではない点は、同じくらい大事な前提です。</p>
+      <div class="guide-note">
+        <p><strong>枠の埋め方に決まりはありません：</strong>つみたて投資枠と成長投資枠は別々に管理されますが、どちらから先に使う義務もありません。年間枠を使わなかった分は翌年に繰り越せないため、「今年はいくらまで使うか」を年初に決めておくと、年末に慌てずに済みます。</p>
+      </div>
+
+      <h2>3. 想定利回りの現実的な目安</h2>
+      <p>シミュレーターの年利を10%にすると、誰でも驚くような金額になります。ただし、長期の資産形成で「これくらい」と置かれることが多いのは、世界の株式インデックスで年3〜5%前後、債券を混ぜた組み合わせで年2〜4%前後の範囲です。これは過去の実績から計算された期待値であって、将来の保証ではありません。</p>
+      <p>年0.5%は、預金に近い水準です。運用している感覚はほとんどなく、インフレが2%進めば実質的な価値は目減りします。年10%は、長期にわたって毎年10%を出し続けるという前提で、かなり楽観的な側に寄った数字です。このツールのスライダーを0.5%から10%まで動かせるのは、この幅のどこに自分の前提を置くかを意識するためです。</p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr><th>想定年利</th><th>位置づけ</th><th>注意点</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0.5〜1%</td><td>預金・短期債に近い</td><td>インフレ率が上回ると実質価値は減る</td></tr>
+            <tr><td>2〜3%</td><td>債券中心・バランス型の控えめな想定</td><td>下落局面でも振れ幅は比較的小さい</td></tr>
+            <tr><td>3〜5%</td><td>株式インデックス長期運用の目安としてよく使われる範囲</td><td>過去の実績にもとづく仮定。途中で大きく下がる年もある</td></tr>
+            <tr><td>7〜10%</td><td>楽観シナリオ・上限の確認用</td><td>この水準が続く前提を置くと、計画が崩れたときの落差が大きい</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>もう1つ見落としやすいのがコストです。投資信託には信託報酬などの手数料があり、年0.1〜0.2%でも長期では無視できない差になります。年利5%で計算した結果から、実際には手数料が引かれると考えておくと、数字との距離感がつかみやすくなります。</p>
+
+      <h2>4. 元本割れリスクと「長期・分散」の意味</h2>
+      <p>このツールのグラフは、右肩上がりのなめらかな曲線です。しかし現実の運用は、年ごとに上下します。世界的な株価が1年で3割から5割下落した局面は、過去にも何度かありました。10年、20年と保有していても、途中にそうした年が挟まるのが普通です。</p>
+      <p>だからこそ「長期・積立・分散」という言葉が使われます。長期は、短い期間の上下をならすため。積立は、買うタイミングを1点に賭けないため。分散は、1つの銘柄や1つの国に賭けないためです。ただし、どれも損失をゼロにする魔法ではありません。長く続けても元本を下回ることはありますし、積立は下落が続けば評価額も一緒に下がります。</p>
+      <p>実務的には、次の3つを先に決めておくと判断がぶれません。</p>
+      <ul>
+        <li><strong>使う予定のあるお金は入れない</strong>：数年内に使う資金は、価格が下がっているときに取り崩すことになります。</li>
+        <li><strong>生活防衛資金を別に確保する</strong>：生活費の3〜6か月分を現金で持っておくと、下落局面で慌てて売らずに済みます。</li>
+        <li><strong>下落しても続けられる金額にする</strong>：シミュレーターで月10万円を入れる前に、半分の金額でも生活が回るかを確認します。</li>
+      </ul>
+      <p>取り崩す時期が近づいたら、株式の比率を下げて安定した資産に移す「出口の設計」も必要です。積み立てる段階の計算だけでなく、使い始める段階の計画まで含めて考えると、数字の意味が変わってきます。</p>
+
+      <h2>5. つみたて投資枠と成長投資枠、どちらで積み立てるか</h2>
+      <p>新NISAには2つの枠があります。つみたて投資枠（年120万円）は、金融庁の要件を満たす投資信託やETFを、積立設定で買う枠です。成長投資枠（年240万円）は、上場株式や幅広い投資信託を買える枠で、こちらも年2回以上・毎月の積立（累積投資）であれば利用できます。</p>
+      <p>毎月コツコツ積み立てる使い方なら、まずつみたて投資枠の範囲で足りることが多いです。月10万円の積立は年120万円で、ちょうどつみたて投資枠の上限に当たります。このシミュレーターで月10万円を超える金額を入れたい場合は、成長投資枠も組み合わせる前提になります。詳しい使い分けは<a href="/column/nisa-tsumitate-vs-growth.html">つみたて投資枠と成長投資枠の使い分け</a>で整理しています。</p>
+
+      <h2>6. よくある質問</h2>
+      <div class="guide-faq">
+        <h3>この金額は実際の運用結果と同じになりますか</h3>
+        <p>同じにはなりません。毎月一定額を、毎年一定の利率で複利運用した場合の試算です。実際の投資信託は日ごとに価格が変動し、手数料もかかるため、結果は目安としてお考えください。</p>
+
+        <h3>想定年利は何パーセントで計算すればいいですか</h3>
+        <p>長期の株式インデックス運用では年3〜5%前後を目安として使うことが多いですが、これは過去の実績にもとづく仮定で、将来を保証するものではありません。低め・中央・高めの3パターンを並べて確認するのがおすすめです。</p>
+
+        <h3>非課税メリットの金額はどう計算していますか</h3>
+        <p>運用益に対して、通常の課税口座でかかる20.315%（所得税15.315%＋住民税5%）の税金を差し引いた額との差を表示しています。元本割れの場合は利益がないため税金もかからず、差は0円になります。</p>
+
+        <h3>NISAの年間枠を超える金額を入れた場合はどうなりますか</h3>
+        <p>このツールは枠の上限を判定していません。つみたて投資枠は年120万円、成長投資枠は年240万円が上限です。毎月10万円の積立は年120万円で、つみたて投資枠の上限と同じ水準になります。</p>
+
+        <h3>途中で積立額を変更した場合は計算できますか</h3>
+        <p>このツールは期間中の積立額が一定という前提です。増額・減額をしたい場合は、変更前と変更後を分けて計算し、それぞれの結果を足し合わせてください。</p>
+
+        <h3>毎月いくらから始められますか</h3>
+        <p>制度上の下限はありませんが、金融機関や商品によって最低積立額が決まっています。100円から積立できる商品もあります。このツールは1万円から10万円の範囲をスライダーにしていますが、数値入力欄からは1,000円単位で変更できます。</p>
+      </div>
+
+      <div class="guide-note">
+        <p><strong>計算と解説について：</strong>結果は入力条件にもとづく機械的な試算で、特定の金融商品や運用方法を推奨するものではありません。制度の内容は改正されることがあるため、最新の情報は金融庁の公表資料や各金融機関の公式サイトでご確認ください。投資には元本割れを含むリスクがあり、最終的な判断はご自身の責任で行ってください。</p>
+      </div>
+
+      <nav class="guide-nav" aria-label="関連ページ">
+        <a href="/">ゆゆくりっど トップ</a>
+        <a href="/column/nisa-tsumitate-vs-growth.html">つみたて投資枠と成長投資枠の使い分け</a>
+        <a href="/column/nisa-crowdfunding.html">新NISA×クラウドファンディングの資産形成術</a>
+        <a href="/nisa-checklist.html">新NISAを始める前の確認シート</a>
+        <a href="/tools/furusato/">ふるさと納税 控除上限額計算</a>
+        <a href="/glossary.html">用語集</a>
+      </nav>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-links">
+      <a href="/">ゆゆくりっど トップ</a>
+      <a href="/column/">コラム</a>
+      <a href="/start.html">目的から選ぶ</a>
+      <a href="/tools/furusato/">ふるさと納税計算</a>
+      <a href="/about.html">運営者情報</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+    </div>
+    <p>© 2026 ゆゆくりっど ／ 計算結果は目安です。投資判断はご自身の責任で行ってください。</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var TAX_RATE = 0.20315;
+
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+  // 毎月積立・月次複利の試算。rows は各年末時点の元本と評価額。
+  function simulate(monthlyRaw, ratePctRaw, yearsRaw) {
+    var monthly = clamp(Math.round(Number(monthlyRaw) || 0), 0, 1000000);
+    var ratePct = clamp(Number(ratePctRaw) || 0, 0, 20);
+    var years = clamp(Math.round(Number(yearsRaw) || 1), 1, 40);
+    var i = (ratePct / 100) / 12;
+    var balance = 0;
+    var principal = 0;
+    var rows = [];
+    for (var y = 1; y <= years; y++) {
+      for (var k = 0; k < 12; k++) {
+        balance = balance * (1 + i) + monthly;
+        principal += monthly;
+      }
+      var value = Math.round(balance);
+      rows.push({ year: y, principal: principal, value: value, gain: value - principal });
+    }
+    var last = rows[rows.length - 1];
+    var gain = last.gain;
+    var taxAmount = gain > 0 ? Math.round(gain * TAX_RATE) : 0;
+    var taxableNet = last.value - taxAmount;
+    return {
+      monthly: monthly,
+      ratePct: ratePct,
+      years: years,
+      principal: last.principal,
+      value: last.value,
+      gain: gain,
+      taxAmount: taxAmount,
+      taxableNet: taxableNet,
+      taxSaving: last.value - taxableNet,
+      rows: rows
+    };
+  }
+
+  function fmt(n) {
+    var v = Math.round(n);
+    if (!isFinite(v)) { v = 0; }
+    var s = String(Math.abs(v));
+    s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return (v < 0 ? '-' : '') + s;
+  }
+
+  function yen(n) {
+    return fmt(n);
+  }
+
+  // 目盛りがきれいな数字になるように、軸の上端と刻みを決める
+  function niceScale(max) {
+    if (!(max > 0)) { return { top: 1, step: 0.25, count: 4 }; }
+    var raw = max / 4;
+    var base = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10));
+    var f = raw / base;
+    var nf = f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10;
+    var step = nf * base;
+    var count = Math.ceil(max / step);
+    if (count < 2) { count = 2; }
+    return { top: step * count, step: step, count: count };
+  }
+
+  // 軸の単位は上端の値で一度だけ決める（途中で万円と円が混ざらないように）
+  function axisUnit(top) {
+    if (top >= 100000000) { return 'oku'; }
+    if (top >= 100000) { return 'man'; }
+    return 'yen';
+  }
+
+  function axisLabel(v, unit) {
+    if (v === 0) { return '0'; }
+    if (unit === 'oku') { return (Math.round(v / 10000000) / 10).toString().replace(/\.0$/, '') + '億'; }
+    if (unit === 'man') {
+      var m = v / 10000;
+      if (m >= 10) { return fmt(Math.round(m)) + '万'; }
+      var r = Math.round(m * 10) / 10;
+      return (r % 1 === 0 ? fmt(r) : r.toFixed(1)) + '万';
+    }
+    return fmt(v) + '円';
+  }
+
+  function buildChart(rows) {
+    var W = 760, H = 320;
+    var padL = 62, padR = 12, padT = 16, padB = 34;
+    var plotW = W - padL - padR;
+    var plotH = H - padT - padB;
+    var n = rows.length;
+    var maxValue = rows[n - 1].value;
+    var scale = niceScale(maxValue);
+    var top = scale.top;
+    var unit = axisUnit(top);
+    var baseY = padT + plotH;
+    var slot = plotW / n ;
+    var barW = Math.min(34, Math.max(2.5, slot * 0.62));
+    var parts = [];
+
+    parts.push('<svg class="chart-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans JP, sans-serif">');
+    parts.push('<defs><linearGradient id="gainGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dfb869"/><stop offset="100%" stop-color="#a8822c"/></linearGradient></defs>');
+
+    // 横のグリッド線と目盛り
+    for (var t = 0; t <= scale.count; t++) {
+      var value = scale.step * t;
+      var ratio = top > 0 ? value / top : 0;
+      var y = baseY - plotH * ratio;
+      parts.push('<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '" stroke="#efe3d1" stroke-width="1" />');
+      parts.push('<text x="' + (padL - 8) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end" font-size="10.5" fill="#9c8a72">' + axisLabel(value, unit) + '</text>');
+    }
+    parts.push('<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" stroke="#d8c5a8" stroke-width="1.2" />');
+
+    // 積み上げ棒
+    for (var i2 = 0; i2 < n; i2++) {
+      var r = rows[i2];
+      var x = padL + slot * i2 + (slot - barW) / 2;
+      var principalH = top > 0 ? (r.principal / top) * plotH : 0;
+      var gainH = top > 0 ? (Math.max(0, r.gain) / top) * plotH : 0;
+      var isLast = (i2 === n - 1);
+      parts.push('<rect x="' + x.toFixed(1) + '" y="' + (baseY - principalH).toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + Math.max(0.6, principalH).toFixed(1) + '" fill="' + (isLast ? '#d6bd93' : '#e6d5b8') + '" />');
+      if (gainH > 0.4) {
+        parts.push('<rect x="' + x.toFixed(1) + '" y="' + (baseY - principalH - gainH).toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + gainH.toFixed(1) + '" fill="url(#gainGrad)" rx="1.5" />');
+      }
+      // 最後の棒に評価額ラベル
+      if (isLast && n > 0) {
+        var topY = baseY - principalH - gainH;
+        parts.push('<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (topY - 7).toFixed(1) + '" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7a4a18">' + fmt(Math.round(r.value / 10000)) + '万</text>');
+      }
+    }
+
+    // 年の目盛り
+    var labelStep = n <= 10 ? 1 : (n <= 20 ? 5 : (n <= 30 ? 5 : 10));
+    for (var j = 0; j < n; j++) {
+      var year = rows[j].year;
+      var show = (year === 1) || (year === n) || (year % labelStep === 0);
+      if (!show) { continue; }
+      var cx = padL + slot * j + slot / 2;
+      parts.push('<text x="' + cx.toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" font-size="10.5" fill="#9c8a72">' + year + '年</text>');
+    }
+    parts.push('<text x="' + padL + '" y="' + (H - 4) + '" font-size="10" fill="#b3a48f">縦軸：評価額（' + (unit === 'oku' ? '億円' : unit === 'man' ? '万円' : '円') + '）　横軸：積立からの年数</text>');
+    parts.push('</svg>');
+    return parts.join('');
+  }
+
+  function formatRows(rows) {
+    var out = [];
+    var n = rows.length;
+    for (var i = 0; i < n; i++) {
+      var r = rows[i];
+      if (r.year % 5 !== 0 && r.year !== n && r.year !== 1) { continue; }
+      var ratio = r.principal > 0 ? (r.value / r.principal) : 0;
+      out.push(
+        '<tr>' +
+        '<td>' + r.year + '年</td>' +
+        '<td>' + yen(r.principal) + '円</td>' +
+        '<td>' + yen(r.value) + '円</td>' +
+        '<td>' + yen(r.gain) + '円</td>' +
+        '<td>' + (ratio > 0 ? ratio.toFixed(2) : '-') + '倍</td>' +
+        '</tr>'
+      );
+    }
+    return out.join('');
+  }
+
+  var els = {
+    monthlyRange: document.getElementById('monthly-range'),
+    monthlyInput: document.getElementById('monthly-input'),
+    monthlyDisplay: document.getElementById('monthly-display'),
+    rateRange: document.getElementById('rate-range'),
+    rateInput: document.getElementById('rate-input'),
+    rateDisplay: document.getElementById('rate-display'),
+    yearsRange: document.getElementById('years-range'),
+    yearsInput: document.getElementById('years-input'),
+    yearsDisplay: document.getElementById('years-display'),
+    outPrincipal: document.getElementById('out-principal'),
+    outGain: document.getElementById('out-gain'),
+    outValue: document.getElementById('out-value'),
+    outSaving: document.getElementById('out-saving'),
+    cmpNisa: document.getElementById('cmp-nisa'),
+    cmpTax: document.getElementById('cmp-tax'),
+    cmpNisaValue: document.getElementById('cmp-nisa-value'),
+    cmpTaxValue: document.getElementById('cmp-tax-value'),
+    cmpTotal: document.getElementById('cmp-total'),
+    chart: document.getElementById('chart'),
+    chartCaption: document.getElementById('chart-caption'),
+    table: document.getElementById('year-table')
+  };
+
+  function readValue() {
+    return {
+      monthly: Number(els.monthlyInput.value),
+      rate: Number(els.rateInput.value),
+      years: Number(els.yearsInput.value)
+    };
+  }
+
+  var lastGood = { monthly: 30000, rate: 5, years: 20 };
+
+  function render(input) {
+    var d = simulate(input.monthly, input.rate, input.years);
+
+    els.monthlyDisplay.innerHTML = fmt(d.monthly) + '<span class="unit">円</span>';
+    els.rateDisplay.innerHTML = d.ratePct.toFixed(1) + '<span class="unit">%</span>';
+    els.yearsDisplay.innerHTML = d.years + '<span class="unit">年</span>';
+
+    els.outPrincipal.innerHTML = yen(d.principal) + '<span class="yen">円</span>';
+    els.outGain.innerHTML = yen(d.gain) + '<span class="yen">円</span>';
+    els.outValue.innerHTML = yen(d.value) + '<span class="yen">円</span>';
+    els.outSaving.innerHTML = yen(d.taxSaving) + '<span class="yen">円</span>';
+
+    var nisaW = d.value > 0 ? 100 : 0;
+    var taxW = d.value > 0 ? (d.taxableNet / d.value) * 100 : 0;
+    els.cmpNisa.style.width = nisaW + '%';
+    els.cmpTax.style.width = taxW.toFixed(2) + '%';
+    els.cmpNisaValue.textContent = yen(d.value) + '円';
+    els.cmpTaxValue.textContent = yen(d.taxableNet) + '円';
+    if (d.gain > 0) {
+      els.cmpTotal.innerHTML = '差額（非課税メリット）：<strong>＋' + yen(d.taxSaving) + '円</strong>　※課税口座なら利益' + yen(d.gain) + '円に約' + yen(d.taxAmount) + '円の税金';
+    } else if (d.gain === 0) {
+      els.cmpTotal.innerHTML = '差額（非課税メリット）：<strong>0円</strong>　※利益が出ていないため税金はかかりません';
+    } else {
+      els.cmpTotal.innerHTML = '差額（非課税メリット）：<strong>0円</strong>　※元本割れのため税金はかかりません（損失は損益通算できません）';
+    }
+
+    els.chart.innerHTML = buildChart(d.rows);
+    els.chart.setAttribute('aria-label', '積立元本' + yen(d.principal) + '円、運用益' + yen(d.gain) + '円、評価額' + yen(d.value) + '円の積み上げグラフ');
+    els.chartCaption.textContent = '毎月' + yen(d.monthly) + '円を' + d.years + '年間、年' + d.ratePct.toFixed(1) + '%で運用した場合の年末時点の評価額です（棒の下が元本、上が運用益）。';
+
+    els.table.innerHTML = formatRows(d.rows);
+    lastGood = { monthly: d.monthly, rate: d.ratePct, years: d.years };
+  }
+
+  // スライダー操作
+  els.monthlyRange.addEventListener('input', function () {
+    els.monthlyInput.value = this.value;
+    render(readValue());
+  });
+  els.rateRange.addEventListener('input', function () {
+    els.rateInput.value = this.value;
+    render(readValue());
+  });
+  els.yearsRange.addEventListener('input', function () {
+    els.yearsInput.value = this.value;
+    render(readValue());
+  });
+
+  // 数値入力（入力中は空欄を許すため change と blur で確定）
+  function onNumberChange(which) {
+    var raw = Number(els[which + 'Input'].value);
+    if (els[which + 'Input'].value === '' || !isFinite(raw)) {
+      els[which + 'Input'].value = lastGood[which];
+      render(readValue());
+      return;
+    }
+    var d = simulate(
+      which === 'monthly' ? raw : lastGood.monthly,
+      which === 'rate' ? raw : lastGood.rate,
+      which === 'years' ? raw : lastGood.years
+    );
+    var fixed = which === 'monthly' ? d.monthly : (which === 'rate' ? d.ratePct : d.years);
+    els[which + 'Input'].value = fixed;
+    els[which + 'Range'].value = fixed;
+    render(readValue());
+  }
+
+  els.monthlyInput.addEventListener('change', function () { onNumberChange('monthly'); });
+  els.rateInput.addEventListener('change', function () { onNumberChange('rate'); });
+  els.yearsInput.addEventListener('change', function () { onNumberChange('years'); });
+  els.monthlyInput.addEventListener('blur', function () { onNumberChange('monthly'); });
+  els.rateInput.addEventListener('blur', function () { onNumberChange('rate'); });
+  els.yearsInput.addEventListener('blur', function () { onNumberChange('years'); });
+
+  // プリセット
+  var presets = document.querySelectorAll('.preset');
+  for (var p = 0; p < presets.length; p++) {
+    presets[p].addEventListener('click', function () {
+      var m = Number(this.getAttribute('data-monthly'));
+      var r = Number(this.getAttribute('data-rate'));
+      var y = Number(this.getAttribute('data-years'));
+      els.monthlyRange.value = m;
+      els.monthlyInput.value = m;
+      els.rateRange.value = r;
+      els.rateInput.value = r;
+      els.yearsRange.value = y;
+      els.yearsInput.value = y;
+      render({ monthly: m, rate: r, years: y });
+    });
+  }
+
+  // 初期表示
+  render(readValue());
+})();
+</script>
+</body>
+</html>

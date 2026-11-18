@@ -155,6 +155,14 @@
     .column-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
     .column-card .column-link { margin-top: auto; padding-top: 18px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
     .column-card:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
+    .tool-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .tool-tile { position: relative; display: flex; flex-direction: column; min-height: 250px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(160deg, #fffdf8 0%, #fbf1dd 100%); text-decoration: none; box-shadow: 0 8px 24px rgba(10,22,40,.05); transition: transform .2s ease, box-shadow .2s ease; }
+    .tool-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .tool-tile:focus-visible { outline: 3px solid #f2d58e; outline-offset: 4px; }
+    .tool-tile .tool-badge { display: inline-block; align-self: flex-start; padding: 4px 10px; border: 1px solid rgba(168,130,44,.45); border-radius: 999px; color: #8a6320; font-size: 10.5px; font-weight: 700; letter-spacing: .12em; }
+    .tool-tile h3 { margin: 14px 0 8px; font-size: 21px; line-height: 1.5; color: var(--ink); }
+    .tool-tile p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .tool-tile .tool-link { margin-top: auto; padding-top: 18px; color: var(--ink-soft); font-size: 13px; font-weight: 700; }
     .blog-notice { margin: 20px 0 0; padding: 14px 17px; border-left: 3px solid var(--gold); background: var(--gold-pale); color: #594b2e; font-size: 12px; }
     .media-flow { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: stretch; }
     .content-card, .trust-card { border-radius: var(--radius); padding: clamp(25px, 4vw, 46px); }
@@ -184,7 +192,7 @@
       .site-nav { gap: 13px; font-size: 12px; }
       .hero { min-height: auto; padding: 125px 0 64px; }
       .section { padding: 56px 0; }
-      .video-grid, .blog-grid, .column-grid { grid-template-columns: 1fr; }
+      .video-grid, .blog-grid, .column-grid, .tool-grid { grid-template-columns: 1fr; }
       .checklist-grid { grid-template-columns: 1fr; }
       .checklist-card, .checklist-card.featured-guide { grid-column: auto; }
       .checklist-card.featured-guide {
@@ -304,6 +312,32 @@
           </a>
           <a class="checklist-card featured-guide" href="/renovation-estimate-checklist.html" data-analytics="renovation_estimate_checklist_landing" data-cta-location="checklist_hub">
             <div><span class="card-kicker">FREE COMPARISON CHECKLIST</span><h3>リノベーション<br>見積もり前<span class="u-nowrap">チェックシート</span></h3><p>費用だけで決めず、希望・内訳・追加費用・契約条件を整理します。</p></div><span class="guide-arrow">無料PDFを見る →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section section-alt" aria-labelledby="tools-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Free tools</span>
+            <h2 id="tools-title">決める前に、数字を入れてみる。</h2>
+          </div>
+          <p class="section-lead">記事を読む前に、自分の条件で金額を見ておくと判断しやすくなります。どちらも無料で、入力した内容が外部に送信されることはありません。</p>
+        </div>
+        <div class="tool-grid">
+          <a class="tool-tile" href="/tools/nisa-simulator/" data-analytics="tool_nisa_simulator" data-cta-location="tools_hub">
+            <span class="tool-badge">NISA SIMULATOR</span>
+            <h3>新NISA つみたて投資シミュレーター</h3>
+            <p>毎月の積立額・想定年利・期間を動かすと、最終評価額・積立元本・運用益・課税口座との手取り差をその場で計算。積み上げグラフと5年ごとの早見表つきです。</p>
+            <span class="tool-link">シミュレーターを開く →</span>
+          </a>
+          <a class="tool-tile" href="/tools/furusato/" data-analytics="tool_furusato" data-cta-location="tools_hub">
+            <span class="tool-badge">FURUSATO TAX</span>
+            <h3>ふるさと納税 控除上限額かんたん計算</h3>
+            <p>年収と家族構成から控除上限額の目安を計算します。夫婦合算・住宅ローン控除・医療費控除にも対応しています。</p>
+            <span class="tool-link">計算ツールを開く →</span>
           </a>
         </div>
       </div>
@@ -445,6 +479,18 @@
             <p>ステマ規制の考え方、断定的表現の注意点、数字のトリック、一次情報の確認手順。</p>
             <span class="column-link">記事を読む →</span>
           </a>
+          <a class="column-card" href="/column/nisa-tsumitate-vs-growth.html" data-analytics="column_nisa_frames" data-cta-location="column_hub">
+            <span class="column-kicker">NISA BASICS</span>
+            <h3>新NISAの「つみたて投資枠」と「成長投資枠」どう使い分ける？</h3>
+            <p>対象商品・買い方・金額配分の3つの判断基準。枠の数え方と誤解しやすい4つのポイント。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
+          <a class="column-card" href="/column/side-job-200k-tax-guide.html" data-analytics="column_sidejob_tax" data-cta-location="column_hub">
+            <span class="column-kicker">TAX BASICS</span>
+            <h3>副業の所得20万円ルールとは？確定申告・住民税・経費の基礎整理</h3>
+            <p>判定に使う「所得」の計算、20万円以下でも申告が必要なケース、経費と家事按分。</p>
+            <span class="column-link">記事を読む →</span>
+          </a>
         </div>
         <div class="cta-row">
           <a class="button button-primary" href="/column/" data-analytics="column_index" data-cta-location="column_hub">コラム一覧を見る</a>
@@ -487,6 +533,8 @@
           <a href="/post-guides.html" data-analytics="post_guides_landing" data-cta-location="footer">投稿テーマから探す</a>
           <a href="/quick-checks.html" data-analytics="quick_checks_landing" data-cta-location="footer">30秒確認カード</a>
           <a href="/glossary.html" data-analytics="term_hub_landing" data-cta-location="footer">用語・公式情報</a>
+          <a href="/tools/nisa-simulator/" data-analytics="tool_nisa_simulator" data-cta-location="footer">新NISAシミュレーター</a>
+          <a href="/tools/furusato/" data-analytics="tool_furusato" data-cta-location="footer">ふるさと納税計算</a>
           <a href="/updates.html" data-analytics="update_history_view" data-cta-location="footer">更新方針・履歴</a>
           <a href="/comparison-policy.html" data-analytics="comparison_policy" data-cta-location="footer">広告・比較方針</a>
           <a href="/privacy.html">プライバシーポリシー</a>
