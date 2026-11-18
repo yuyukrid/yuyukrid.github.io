@@ -678,9 +678,13 @@
     return fmt(v) + '円';
   }
 
+  // グラフは表示幅に合わせて描く（1単位＝1px相当にして、文字が小さくなりすぎないようにする）
   function buildChart(rows) {
-    var W = 760, H = 320;
-    var padL = 62, padR = 12, padT = 16, padB = 34;
+    var W = Math.round(Math.max(280, Math.min(960, els.chart.clientWidth || 720)));
+    var narrow = W < 480;
+    var H = narrow ? 300 : 320;
+    var padL = narrow ? 46 : 62;
+    var padR = 10, padT = 18, padB = 36;
     var plotW = W - padL - padR;
     var plotH = H - padT - padB;
     var n = rows.length;
@@ -689,11 +693,14 @@
     var top = scale.top;
     var unit = axisUnit(top);
     var baseY = padT + plotH;
-    var slot = plotW / n ;
-    var barW = Math.min(34, Math.max(2.5, slot * 0.62));
+    var slot = plotW / n;
+    var barW = Math.min(34, Math.max(2.4, slot * 0.62));
+    var fsAxis = narrow ? 9.5 : 10.5;
+    var fsX = narrow ? 9.5 : 10.5;
+    var fsValue = narrow ? 10 : 11;
     var parts = [];
 
-    parts.push('<svg class="chart-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans JP, sans-serif">');
+    parts.push('<svg class="chart-svg" viewBox="0 0 ' + W + ' ' + H + '" width="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" font-family="Noto Sans JP, sans-serif">');
     parts.push('<defs><linearGradient id="gainGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dfb869"/><stop offset="100%" stop-color="#a8822c"/></linearGradient></defs>');
 
     // 横のグリッド線と目盛り
@@ -702,7 +709,7 @@
       var ratio = top > 0 ? value / top : 0;
       var y = baseY - plotH * ratio;
       parts.push('<line x1="' + padL + '" y1="' + y.toFixed(1) + '" x2="' + (W - padR) + '" y2="' + y.toFixed(1) + '" stroke="#efe3d1" stroke-width="1" />');
-      parts.push('<text x="' + (padL - 8) + '" y="' + (y + 3.5).toFixed(1) + '" text-anchor="end" font-size="10.5" fill="#9c8a72">' + axisLabel(value, unit) + '</text>');
+      parts.push('<text x="' + (padL - 6) + '" y="' + (y + 3.2).toFixed(1) + '" text-anchor="end" font-size="' + fsAxis + '" fill="#9c8a72">' + axisLabel(value, unit) + '</text>');
     }
     parts.push('<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" stroke="#d8c5a8" stroke-width="1.2" />');
 
@@ -717,23 +724,24 @@
       if (gainH > 0.4) {
         parts.push('<rect x="' + x.toFixed(1) + '" y="' + (baseY - principalH - gainH).toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + gainH.toFixed(1) + '" fill="url(#gainGrad)" rx="1.5" />');
       }
-      // 最後の棒に評価額ラベル
-      if (isLast && n > 0) {
+      if (isLast) {
         var topY = baseY - principalH - gainH;
-        parts.push('<text x="' + (x + barW / 2).toFixed(1) + '" y="' + (topY - 7).toFixed(1) + '" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7a4a18">' + fmt(Math.round(r.value / 10000)) + '万</text>');
+        var lx = Math.min(W - padR - 2, Math.max(padL + 18, x + barW / 2));
+        parts.push('<text x="' + lx.toFixed(1) + '" y="' + (topY - 6).toFixed(1) + '" text-anchor="middle" font-size="' + fsValue + '" font-weight="700" fill="#7a4a18">' + fmt(Math.round(r.value / 10000)) + '万</text>');
       }
     }
 
     // 年の目盛り
-    var labelStep = n <= 10 ? 1 : (n <= 20 ? 5 : (n <= 30 ? 5 : 10));
+    var labelStep = n <= 10 ? 1 : (narrow ? 10 : 5);
     for (var j = 0; j < n; j++) {
       var year = rows[j].year;
       var show = (year === 1) || (year === n) || (year % labelStep === 0);
       if (!show) { continue; }
       var cx = padL + slot * j + slot / 2;
-      parts.push('<text x="' + cx.toFixed(1) + '" y="' + (baseY + 16) + '" text-anchor="middle" font-size="10.5" fill="#9c8a72">' + year + '年</text>');
+      cx = Math.min(W - padR - 8, Math.max(padL + 6, cx));
+      parts.push('<text x="' + cx.toFixed(1) + '" y="' + (baseY + 15) + '" text-anchor="middle" font-size="' + fsX + '" fill="#9c8a72">' + year + '年</text>');
     }
-    parts.push('<text x="' + padL + '" y="' + (H - 4) + '" font-size="10" fill="#b3a48f">縦軸：評価額（' + (unit === 'oku' ? '億円' : unit === 'man' ? '万円' : '円') + '）　横軸：積立からの年数</text>');
+    parts.push('<text x="' + padL + '" y="' + (H - 3) + '" font-size="' + (narrow ? 9 : 10) + '" fill="#b3a48f">縦軸：評価額（' + (unit === 'oku' ? '億円' : unit === 'man' ? '万円' : '円') + '）　横軸：積立からの年数</text>');
     parts.push('</svg>');
     return parts.join('');
   }
@@ -882,6 +890,13 @@
       render({ monthly: m, rate: r, years: y });
     });
   }
+
+  // 画面幅が変わったらグラフを描き直す
+  var resizeTimer = null;
+  window.addEventListener('resize', function () {
+    if (resizeTimer) { clearTimeout(resizeTimer); }
+    resizeTimer = setTimeout(function () { render(readValue()); }, 150);
+  });
 
   // 初期表示
   render(readValue());
