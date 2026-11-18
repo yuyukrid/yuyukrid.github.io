@@ -173,6 +173,41 @@ transition: transform 0.2s;
 .tool-card:hover .tool-link::after { transform: translateX(5px); }
 
 </style>
+  <style>
+    /* ─── 静的解説セクション（JSに依存しない本文） ─── */
+    .furusato-guide { background: #fffdf9; border-top: 3px solid #c9a84c; padding: 44px 16px 56px; }
+    .furusato-guide .guide-inner { max-width: 720px; margin: 0 auto; }
+    .furusato-guide .guide-kicker { font-size: 11px; letter-spacing: 0.18em; color: #a08060; font-weight: 700; margin: 0 0 8px; }
+    .furusato-guide h2 { font-family: 'Noto Serif JP', 'Noto Sans JP', serif; font-size: 20px; line-height: 1.5; color: #4a2c0a; margin: 40px 0 12px; padding-bottom: 8px; border-bottom: 1px solid #f0e0cc; }
+    .furusato-guide h2:first-of-type { margin-top: 10px; }
+    .furusato-guide h3 { font-size: 15px; color: #7a4a18; margin: 24px 0 8px; }
+    .furusato-guide p, .furusato-guide li { font-size: 14px; line-height: 1.95; color: #4b3a2a; }
+    .furusato-guide .guide-lead { font-size: 14.5px; color: #5a4634; background: #fff8ee; border-left: 4px solid #c9a84c; border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 0 0 8px; }
+    .furusato-guide ul, .furusato-guide ol { padding-left: 1.35em; margin: 12px 0; }
+    .furusato-guide li { margin-bottom: 6px; }
+    .furusato-guide .guide-table-wrap { overflow-x: auto; margin: 16px 0; }
+    .furusato-guide .guide-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .furusato-guide .guide-table th, .furusato-guide .guide-table td { border: 1px solid #ecdfd0; padding: 9px 10px; text-align: left; vertical-align: top; line-height: 1.8; }
+    .furusato-guide .guide-table th { background: #f7eee2; color: #6b3f12; font-weight: 700; white-space: nowrap; }
+    .furusato-guide .guide-formula { background: #3d1a00; color: #ffe9c9; border-radius: 10px; padding: 14px 16px; font-size: 13px; line-height: 1.9; margin: 16px 0; }
+    .furusato-guide .guide-formula strong { color: #FFD700; }
+    .furusato-guide .guide-note { background: #fff8ee; border: 1px solid #f0d9b5; border-radius: 10px; padding: 14px 16px; margin: 18px 0; }
+    .furusato-guide .guide-note p { font-size: 13px; margin: 0; }
+    .furusato-guide .guide-faq h3 { border-left: 3px solid #c9a84c; padding-left: 10px; font-size: 14.5px; }
+    .furusato-guide .guide-foot { margin-top: 36px; padding-top: 16px; border-top: 1px solid #f0e0cc; }
+    .furusato-guide .guide-foot p { font-size: 12px; color: #8a7060; }
+    .furusato-guide .guide-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 0; }
+    .furusato-guide .guide-nav a { display: inline-block; padding: 7px 12px; border: 1px solid #e0d0c0; border-radius: 16px; font-size: 12px; color: #8B4513; text-decoration: none; }
+    .furusato-guide .guide-nav a:hover { background: #f7eee2; }
+    @media (max-width: 600px) {
+      .furusato-guide { padding: 32px 14px 44px; }
+      .furusato-guide h2 { font-size: 18px; }
+      .furusato-guide p, .furusato-guide li { font-size: 13.5px; }
+      .furusato-guide .guide-table { font-size: 12px; }
+      .furusato-guide .guide-table th, .furusato-guide .guide-table td { padding: 7px; }
+      .furusato-guide .guide-table th { white-space: normal; }
+    }
+  </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5598681929883061"
      crossorigin="anonymous"></script>
 </head>
@@ -186,6 +221,106 @@ transition: transform 0.2s;
   </nav>
 
   <div id="root"></div>
+
+  <!-- 静的な解説コンテンツ（ツールの下に置く本文。JavaScriptが動かない環境でも読める） -->
+  <main class="furusato-guide" id="guide">
+    <div class="guide-inner">
+      <p class="guide-kicker">GUIDE</p>
+      <p class="guide-lead">上の計算ツールは、年収と家族構成から控除上限額の目安を出すものです。ここでは、その数字がどうやって決まるのか、手続きの選び方、他の控除と重なるときの注意点をまとめました。ツールの結果と合わせて読むと、寄付する金額を決めやすくなります。</p>
+
+      <h2>1. ふるさと納税の控除上限額はどう決まるのか</h2>
+      <p>ふるさと納税は「寄付」ですが、寄付した金額のうち2,000円を超える部分が、所得税の還付と住民税の控除で戻ってきます。このとき戻せる金額には上限があり、これを「控除上限額」と呼びます。上限を超えて寄付した分は控除されないため、実質的な持ち出しになります。</p>
+      <p>上限額は、年収ではなく<strong>住民税の所得割額</strong>と<strong>所得税の税率</strong>の2つで決まります。住民税の所得割額は「課税所得 × 10%」、所得税の税率は課税所得の段階に応じて5%〜45%です。住民税から控除できる特例分には「住民税所得割額の20%まで」という枠があるため、上限額は次の式で求められます。</p>
+      <div class="guide-formula">
+        控除上限額 ＝ 住民税所得割額 × 20% ÷ （90% − 所得税の税率 × 1.021） ＋ 2,000円<br>
+        <span style="font-size:12px;color:#ffd9a8;">※ 所得税の税率は、課税所得から決まる「限界税率」を使います。</span>
+      </div>
+      <p>つまり、年収が同じでも、扶養の人数・社会保険料・各種の所得控除が違えば上限額は変わります。逆に言えば、年収だけで上限を決め打ちすると、寄付しすぎたり、逆に枠を余らせたりします。</p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr><th>条件の変化</th><th>控除上限額への影響</th><th>理由</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>年収が上がる</td><td>上がる</td><td>課税所得が増え、住民税所得割額が増えるため</td></tr>
+            <tr><td>扶養家族が増える</td><td>下がる</td><td>扶養控除で課税所得が減るため</td></tr>
+            <tr><td>社会保険料が増える</td><td>下がる</td><td>社会保険料控除で課税所得が減るため</td></tr>
+            <tr><td>住宅ローン控除を受けている</td><td>大きく下がることがある</td><td>住民税からも控除され、所得割額が減るため</td></tr>
+            <tr><td>医療費控除・iDeCo等を申告する</td><td>下がる</td><td>所得控除で課税所得が減るため</td></tr>
+            <tr><td>年の途中で退職・転職した</td><td>読みにくくなる</td><td>その年の所得と住民税の課税が別々に動くため</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>なお、給与以外の所得（事業・不動産・配当など）がある場合は、源泉徴収票の支払金額だけでは上限を正しく出せません。確定申告の内容や住民税の決定通知書（課税明細）の「所得割額」を見て確認するのが確実です。</p>
+
+      <h2>2. ワンストップ特例制度と確定申告の違い</h2>
+      <p>寄付した後の手続きは、大きく2つに分かれます。どちらを選ぶかで、控除の出方と必要な作業が変わります。</p>
+      <div class="guide-table-wrap">
+        <table class="guide-table">
+          <thead>
+            <tr><th>項目</th><th>ワンストップ特例制度</th><th>確定申告で申告する</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>使える人</td><td>確定申告が不要な給与所得者などで、その年の寄付先が5自治体以内</td><td>誰でも使える（寄付先の数に制限なし）</td></tr>
+            <tr><td>必要な作業</td><td>寄付のたびに申請書を提出（期限は翌年1月10日必着）</td><td>翌年2月16日〜3月15日に確定申告書を提出</td></tr>
+            <tr><td>控除の出方</td><td>所得税の還付はなく、全額が翌年度の住民税から控除される</td><td>所得税が還付され、残りが住民税から控除される</td></tr>
+            <tr><td>注意点</td><td>6自治体以上に寄付すると使えない。申請後に確定申告をすると無効になる</td><td>医療費控除などで申告する場合は、寄付金控除も一緒に申告する</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>受け取る金額の合計は、原則としてどちらでも変わりません。違うのは「いつ、どこから戻るか」と「必要な手間」です。寄付先が5自治体を超えそうなときや、医療費控除・住宅ローン控除などで確定申告をする予定があるときは、最初から確定申告に寄せたほうが手戻りが少なくなります。</p>
+      <div class="guide-note">
+        <p><strong>申請書の期限に注意：</strong>ワンストップ特例の申請書は、寄付した年の翌年1月10日必着です。12月下旬の駆け込み寄付は、返礼品や書類の到着が年をまたぐことがあります。寄付するなら、書類の往復に余裕を持たせた時期に済ませておくと安全です。</p>
+      </div>
+
+      <h2>3. 住宅ローン控除・医療費控除と併用するときの注意点</h2>
+      <p>ふるさと納税の上限は「住民税所得割額」に連動します。そのため、他の制度で住民税や課税所得が動くと、上限も一緒に動きます。見落としやすいのが次の3つです。</p>
+      <h3>① 住宅ローン控除がある年</h3>
+      <p>住宅ローン控除は、まず所得税から引き、引ききれない分が住民税から控除されます（住民税側には上限があります）。住民税所得割額がその分だけ減るので、ふるさと納税の上限は下がります。とくに、所得税が少ない年（収入が一時的に下がった年、扶養が多い年など）は、所得税から引ききれずに住民税へ回る額が大きくなり、上限が大きく圧縮されることがあります。</p>
+      <p>また、所得税がほぼ0になっている年は、ふるさと納税の「所得税からの還付」が発生しません。この場合、自己負担が2,000円で収まらないことがあるため、上限額を多めに見積もらず、余裕を持った金額にするのが安全です。</p>
+      <h3>② 医療費控除・セルフメディケーション税制を申告する年</h3>
+      <p>医療費控除は所得控除です。申告すると課税所得が下がり、住民税所得割額も下がるため、ふるさと納税の上限は下がります。「医療費が多くかかった年は、ふるさと納税の枠も狭くなる」と覚えておくと判断しやすくなります。</p>
+      <h3>③ iDeCo・小規模企業共済等掛金控除</h3>
+      <p>これらも全額が所得控除の対象です。掛金を増やした年は課税所得が減るので、同じ年収でも上限は下がります。掛金の変更と寄付の予定が重なる年は、変更後の数字で計算し直してください。</p>
+      <p>順番としては、①その年に受ける控除をすべて確定させる → ②課税所得と住民税所得割額を出す → ③上限額を計算する → ④寄付する、の順が確実です。寄付を先に決めてから控除を足すと、枠を超えてしまうことがあります。</p>
+
+      <h2>4. よくある質問</h2>
+      <div class="guide-faq">
+        <h3>年収だけで上限額は決まりますか</h3>
+        <p>決まりません。同じ年収でも、扶養の人数、社会保険料、住宅ローン控除・医療費控除の有無で上限は変わります。ツールの結果は目安として使い、実際の寄付額は住民税の決定通知書や源泉徴収票で確認するのがおすすめです。</p>
+
+        <h3>上限を超えて寄付するとどうなりますか</h3>
+        <p>超えた部分は控除の対象になりません。2,000円の自己負担に加えて、超えた金額がそのまま持ち出しになります。返礼品を受け取っていても、その分の価値で埋まるとは限りません。</p>
+
+        <h3>12月に寄付すると、その年の控除になりますか</h3>
+        <p>寄付した年（通常は決済が完了した日）の扱いになります。クレジットカード決済は、申し込み日ではなく決済日で判断されるのが一般的です。年末は決済が年をまたぐことがあるため、余裕を持った日程で手続きしてください。</p>
+
+        <h3>夫婦の場合はどう計算しますか</h3>
+        <p>ふるさと納税は個人単位の制度です。世帯の合計額ではなく、夫・妻それぞれの年収と控除で上限を計算し、それぞれが寄付します。片方に寄付をまとめると、もう片方の枠は使えません。</p>
+
+        <h3>返礼品はどのくらいの価値ですか</h3>
+        <p>返礼品の内容や還元率は自治体ごとに異なります。総務省の基準では、返礼品の調達価格が寄付額の3割以下であることなどが定められています。ただし、これは「もらえるものの上限」の話であり、寄付の損得は控除の仕組みで判断するのが基本です。</p>
+
+        <h3>ワンストップの期限を過ぎてしまったら</h3>
+        <p>期限内に申請書が届かなかった場合は、確定申告で寄付金控除として申告します。寄付した自治体から交付される受領証明書が必要になるので、保管しておいてください。</p>
+
+        <h3>上限額は毎年同じですか</h3>
+        <p>同じではありません。年収、扶養の状況、各種控除、税制の変更で毎年変わります。前年の上限額をそのまま使わず、その年ごとに計算し直してください。</p>
+      </div>
+
+      <div class="guide-note">
+        <p><strong>このページの計算と解説について：</strong>計算結果は、入力された年収と家族構成をもとにした目安です。実際の控除額は、各種控除・給与以外の収入・自治体の手続き状況によって異なります。制度の詳細は総務省・国税庁・お住まいの自治体の案内をご確認ください。個別の税務判断は税務署または税理士にご相談ください。</p>
+      </div>
+
+      <nav class="guide-nav" aria-label="関連ページ">
+        <a href="https://yuyukrid.github.io/">ゆゆくりっど トップ</a>
+        <a href="https://yuyukrid.github.io/beginner-guide.html">はじめての方へ</a>
+        <a href="https://yuyukrid.github.io/column/nisa-and-side-job-balance.html">本業と副業・資産形成の両立</a>
+        <a href="https://yuyukrid.github.io/glossary.html">用語集</a>
+      </nav>
+    </div>
+  </main>
+
 
   <!-- フッター -->
 
