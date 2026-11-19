@@ -1,8 +1,24 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-18T07:39:23.558Z",
+  "updatedAt": "2026-11-19T07:35:19.775Z",
   "videos": [
+    {
+      "id": "aviFziYrQoQ",
+      "title": "100万円を10年寝かせたら？銀行と新NISAの差がエグい #新NISA #資産形成 #PR",
+      "url": "https://www.youtube.com/shorts/aviFziYrQoQ",
+      "thumbnail": "https://i2.ytimg.com/vi/aviFziYrQoQ/hqdefault.jpg",
+      "published": "2026-11-19T00:14:22+00:00",
+      "dateLabel": "2026.11.19"
+    },
+    {
+      "id": "iDuV0zZo15M",
+      "title": "AliExpress 11.11セール最終日！最大80%OFF 本日23:59まで",
+      "url": "https://www.youtube.com/shorts/iDuV0zZo15M",
+      "thumbnail": "https://i2.ytimg.com/vi/iDuV0zZo15M/hqdefault.jpg",
+      "published": "2026-11-18T10:54:20+00:00",
+      "dateLabel": "2026.11.18"
+    },
     {
       "id": "spO9Xne71bk",
       "title": "副業が続かない人は「振り返り」が足りてないだけ",
@@ -34,22 +50,6 @@
       "thumbnail": "https://i4.ytimg.com/vi/3uU7T5ZdfdY/hqdefault.jpg",
       "published": "2026-11-15T15:10:52+00:00",
       "dateLabel": "2026.11.16"
-    },
-    {
-      "id": "M4fDiHlcKes",
-      "title": "TikTok Lite新規登録で1,400円分もらえる！ #PR",
-      "url": "https://www.youtube.com/shorts/M4fDiHlcKes",
-      "thumbnail": "https://i2.ytimg.com/vi/M4fDiHlcKes/hqdefault.jpg",
-      "published": "2026-11-15T15:06:48+00:00",
-      "dateLabel": "2026.11.16"
-    },
-    {
-      "id": "3stfdmgyfwg",
-      "title": "新NISAで損してる人多すぎ…知らないと怖い「3つの落とし穴」 #PR",
-      "url": "https://www.youtube.com/shorts/3stfdmgyfwg",
-      "thumbnail": "https://i4.ytimg.com/vi/3stfdmgyfwg/hqdefault.jpg",
-      "published": "2026-11-15T13:47:23+00:00",
-      "dateLabel": "2026.11.15"
     }
   ]
 }
