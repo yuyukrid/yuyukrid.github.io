@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-19T07:35:19.775Z",
+  "updatedAt": "2026-11-20T07:26:37.655Z",
   "videos": [
+    {
+      "id": "wanPE1mBO34",
+      "title": "スマホで作物を育てるとギフトカードになるって知ってた？ #ポイ活 #dipsファーム #PR",
+      "url": "https://www.youtube.com/shorts/wanPE1mBO34",
+      "thumbnail": "https://i4.ytimg.com/vi/wanPE1mBO34/hqdefault.jpg",
+      "published": "2026-11-19T13:42:13+00:00",
+      "dateLabel": "2026.11.19"
+    },
     {
       "id": "aviFziYrQoQ",
       "title": "100万円を10年寝かせたら？銀行と新NISAの差がエグい #新NISA #資産形成 #PR",
@@ -41,14 +49,6 @@
       "url": "https://www.youtube.com/shorts/EZGLevCcllY",
       "thumbnail": "https://i2.ytimg.com/vi/EZGLevCcllY/hqdefault.jpg",
       "published": "2026-11-16T10:40:07+00:00",
-      "dateLabel": "2026.11.16"
-    },
-    {
-      "id": "3uU7T5ZdfdY",
-      "title": "本家TikTok新規登録で6,000円分もらえる！ #PR",
-      "url": "https://www.youtube.com/shorts/3uU7T5ZdfdY",
-      "thumbnail": "https://i4.ytimg.com/vi/3uU7T5ZdfdY/hqdefault.jpg",
-      "published": "2026-11-15T15:10:52+00:00",
       "dateLabel": "2026.11.16"
     }
   ]
