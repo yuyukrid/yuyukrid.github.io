@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-24T10:01:53.396Z",
+  "updatedAt": "2026-11-27T08:44:58.647Z",
   "videos": [
+    {
+      "id": "15WJDgRR7cs",
+      "title": "新NISAの次に注目！上場前の成長企業に1口約10万円から投資できる『FUNDINNO』 #PR",
+      "url": "https://www.youtube.com/shorts/15WJDgRR7cs",
+      "thumbnail": "https://i2.ytimg.com/vi/15WJDgRR7cs/hqdefault.jpg",
+      "published": "2026-11-26T10:42:45+00:00",
+      "dateLabel": "2026.11.26"
+    },
     {
       "id": "s9KKydsf3g8",
       "title": "年18.0%・10か月｜TORCHES No.74 唐津市 系統用蓄電池用地ファンド｜11/25(水)12:00募集開始 #PR",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/qD5JzJmnzL0/hqdefault.jpg",
       "published": "2026-11-22T14:03:05+00:00",
       "dateLabel": "2026.11.22"
-    },
-    {
-      "id": "E7SvPDdf7ig",
-      "title": "【Yahoo!】ブラックフライデー2026開幕｜Ankerイヤホン5,990円・天然水48本2,980円｜最大23%還元 #PR",
-      "url": "https://www.youtube.com/shorts/E7SvPDdf7ig",
-      "thumbnail": "https://i2.ytimg.com/vi/E7SvPDdf7ig/hqdefault.jpg",
-      "published": "2026-11-21T14:41:10+00:00",
-      "dateLabel": "2026.11.21"
     }
   ]
 }
