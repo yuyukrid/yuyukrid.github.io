@@ -1,8 +1,16 @@
 {
   "channelId": "UCABxg7GwnxlhkuXpEChazLg",
   "channelUrl": "https://www.youtube.com/channel/UCABxg7GwnxlhkuXpEChazLg",
-  "updatedAt": "2026-11-27T08:44:58.647Z",
+  "updatedAt": "2026-11-28T07:58:59.668Z",
   "videos": [
+    {
+      "id": "48lvk0MFx3o",
+      "title": "10万円が1年で+22,000円の計算｜TORCHES No.75 データセンター用地ファンド #PR",
+      "url": "https://www.youtube.com/shorts/48lvk0MFx3o",
+      "thumbnail": "https://i1.ytimg.com/vi/48lvk0MFx3o/hqdefault.jpg",
+      "published": "2026-11-27T10:50:34+00:00",
+      "dateLabel": "2026.11.27"
+    },
     {
       "id": "15WJDgRR7cs",
       "title": "新NISAの次に注目！上場前の成長企業に1口約10万円から投資できる『FUNDINNO』 #PR",
@@ -42,14 +50,6 @@
       "thumbnail": "https://i2.ytimg.com/vi/i1Ls-5ILGKc/hqdefault.jpg",
       "published": "2026-11-23T13:03:41+00:00",
       "dateLabel": "2026.11.23"
-    },
-    {
-      "id": "qD5JzJmnzL0",
-      "title": "年18.0%・10か月｜TORCHES No.73 天草市 系統用蓄電池用地ファンド｜11/24(火)15:00締切 #PR",
-      "url": "https://www.youtube.com/shorts/qD5JzJmnzL0",
-      "thumbnail": "https://i2.ytimg.com/vi/qD5JzJmnzL0/hqdefault.jpg",
-      "published": "2026-11-22T14:03:05+00:00",
-      "dateLabel": "2026.11.22"
     }
   ]
 }
